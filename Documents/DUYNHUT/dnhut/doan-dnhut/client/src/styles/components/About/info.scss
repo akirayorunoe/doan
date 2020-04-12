@@ -1,0 +1,14 @@
+.info {
+}
+
+.info-wrap {
+  margin-top: 60px;
+  display: flex;
+  flex-flow: row, nowrap;
+  justify-content: space-between;
+}
+
+.info-text {
+  &__wrap {
+  }
+}

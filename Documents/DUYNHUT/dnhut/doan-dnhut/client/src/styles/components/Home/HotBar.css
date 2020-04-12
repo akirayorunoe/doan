@@ -1,0 +1,22 @@
+.bar-wrapper{
+    background-color: #F72828;
+    display: flex;
+    max-width: 100%;
+    height:30px;
+    justify-content: space-between;
+    align-items: center;
+    margin: 30px;
+    border-radius: 30px;
+}
+.hot-text{
+    color:yellow;
+    display: flex;
+    justify-content: center;
+    flex:14;
+}
+.watchmore{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 10px;
+    flex:2;
+}

@@ -1,0 +1,57 @@
+.nav-bar{
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: #B0EACD;
+    height: 47px;
+    max-width: 100%;
+    max-height: fit-content;
+}
+
+#searchInput{
+    width: 229px;
+    height: 16px;
+    background: #FFFFFF;
+    border-radius: 20px;
+    border: none;
+}
+
+#searchBar{
+    display: flex;
+    flex:1;
+    justify-content: flex-end;
+    margin-right: 30px;
+    width: auto;
+    
+}
+
+ul{
+    display: flex;
+    list-style: none;
+    flex:1;
+    justify-content: space-around;
+}
+
+a{
+    text-decoration: none;
+    padding: 13px;
+}
+
+li{
+    font-family: Fondamento;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 21px;
+    color: #000;
+}
+
+.nav-bar .active li{
+    /* class active dùng trong react-router*/
+    color:#fff;
+}
+.img-container{
+    width: auto;
+    margin-right: 20px;
+}

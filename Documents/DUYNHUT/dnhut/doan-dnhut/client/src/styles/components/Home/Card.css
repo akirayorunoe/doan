@@ -1,0 +1,16 @@
+.card{
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+}
+.productImg{
+    width: 100%;
+    height: auto;
+}
+.text-left{
+    text-align: left;
+}
+.cartIcon{
+    display: flex;  
+    justify-content: center;
+}

@@ -1,0 +1,11 @@
+@font-face {
+    font-family: 'Fondamento';
+    src: local('Fondamento'), url(./fonts/Fondamento-Regular.ttf) format('truetype');
+}
+
+body{
+    margin:0;
+    padding:0;
+    max-width: 100%;
+    max-height: 100%;
+}

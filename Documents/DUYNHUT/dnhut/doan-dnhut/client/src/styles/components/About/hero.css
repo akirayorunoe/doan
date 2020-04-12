@@ -1,0 +1,25 @@
+.hero-wrap {
+}
+
+.hero-wrap__image {
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  margin-top: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.hero-wrap__text {
+  position: absolute;
+  top: 80%;
+  left: 30%;
+  color: white;
+  text-align: center;
+}
+/*# sourceMappingURL=hero.css.map */

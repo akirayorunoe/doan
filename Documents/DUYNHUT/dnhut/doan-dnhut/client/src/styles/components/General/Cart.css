@@ -1,0 +1,25 @@
+.cart-container{
+    width: 0%;
+    height: 10px;
+
+}
+.cart-box{
+    width: 12%;
+    height: auto;
+    position: absolute;
+    right: 0;
+    top:170px;
+    background-color: white;
+}
+.cart-box p{
+    background-color: #81F79F;
+}
+.cart-product img{
+    height: 40px;
+    width: auto;
+    margin-top: 10px;
+}
+.cart-end p{
+    background-color: red;
+    text-align: center;
+}
