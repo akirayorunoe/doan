@@ -21,7 +21,7 @@ function ProductList(){
         <nav>
             <ul className="Product-list">
             <li className="Fruit">
-            <NavLink to='/Products/Fruits' isActive={checkActive} activeStyle={styles}><p>Fruits</p></NavLink>
+            <NavLink to='/Products?filter=fruit' isActive={checkActive} activeStyle={styles}><p>Fruits</p></NavLink>
                 <ul>
                 <NavLink to='/Products/Fruits/Viet'activeStyle={styles}><li>Vietnamese Fruits</li></NavLink>
                 <NavLink to='/Products/Fruits/Import'activeStyle={styles}><li>Import Fruits</li></NavLink> 
