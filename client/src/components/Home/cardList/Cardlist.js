@@ -7,7 +7,6 @@ import { addToCart } from '../../../action/cart-action';
 import { connect } from 'react-redux'
 import Axios from 'axios';
 import Pagination from "../../Product/Pagination/Pagination";
-// import Pagination from '../../Product/Pagination/Pagination';
 //use this in product page :v
 class Cardlist extends React.Component {
   constructor(props) {
@@ -50,13 +49,14 @@ class Cardlist extends React.Component {
    {
      console.log(`http://localhost:3030/products${this.props.route==='/'?`?page=${this.props.number}`:`${this.props.route}&page=${this.props.number}`}`)
       await Axios.get(`http://localhost:3030/products${this.props.route==='/'?`?page=${this.props.number}`:`${this.props.route}&page=${this.props.number}`}`)
+
     .then(data=>data.data)
       .then(data=>this.setState({productsData:data.result,maxPage:data.maxPage})).catch(err=>console.log(err))}
       while(this.state.productsData.length===0);
   }
 
  async componentDidUpdate(prevProps, prevState){
-  console.log(`http://localhost:3030/products${this.props.route==='/'?`?page=${this.props.number}`:`${this.props.route}&page=${this.props.number}`}`)
+  // console.log(`http://localhost:3030/products${this.props.route==='/'?`?page=${this.props.number}`:`${this.props.route}&page=${this.props.number}`}`)
     if(prevProps.route!==this.props.route||this.props.number!==prevProps.number){
       console.log(`http://localhost:3030/products${this.props.route==='/'?`?page=${this.props.number}`:`${this.props.route}&page=${this.props.number}`}`)
       do

@@ -25,7 +25,7 @@ const Header = ()=>{
                     </Link>
                 </div>
             </div>:<div className="btnLocation">
-                <p>{onLog}</p>
+                <p className="usr-name">Hi, {onLog}</p>
                 <Button name='Log out' onClick={()=>{
                     localStorage.removeItem('auth-token')
                     dispatch(usrLogout())}
