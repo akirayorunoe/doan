@@ -10,6 +10,9 @@
   flex-direction: column;
   margin: 30px;
 }
+.container-form input{
+  padding: 20px;
+}
 .bg-signup{
   display: flex;
   justify-content: center;

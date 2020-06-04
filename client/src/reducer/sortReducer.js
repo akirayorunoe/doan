@@ -16,6 +16,7 @@ switch(action.type){
         case 'low_high':
             return {...state,route:'?sort=low_high'}
        }
+       break;
     default: return state;
 }
 }

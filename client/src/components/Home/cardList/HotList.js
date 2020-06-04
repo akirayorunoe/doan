@@ -6,7 +6,7 @@ import { addToCart } from '../../../action/cart-action'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import Axios from 'axios'
-import Carousel, { Dots } from '@brainhubeu/react-carousel';
+import Carousel from '@brainhubeu/react-carousel';
 import '@brainhubeu/react-carousel/lib/style.css';
 class HotList extends React.Component {
   constructor() {
