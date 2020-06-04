@@ -5,15 +5,17 @@
     
 }
 .cardlist-wrapper{
-width: 100%;
+    width: 100%;
     margin: auto;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
 }
 .card-container{
-    width: auto;
+    width: fit-content;
     margin: 10px;
+    padding: 10px;
 }
 /* .cardList{
     display: flex;

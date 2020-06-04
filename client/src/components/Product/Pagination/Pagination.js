@@ -1,6 +1,7 @@
 import React from 'react';
 import {useDispatch} from 'react-redux';
 import {pageGet} from '../../../action/paginate';
+import '../../../styles/components/Product/Pagination.css';
 const Pagination = ({maxPage})=>{
     const dispatch=useDispatch();
     const pageNumbers = [];
@@ -8,7 +9,7 @@ const Pagination = ({maxPage})=>{
         pageNumbers.push(i);
     }
     return(
-        <nav>
+        <nav className="pageNum">
             <ul className="pagination">
             {
                 pageNumbers.map(number=>(

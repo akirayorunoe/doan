@@ -21,15 +21,22 @@ function ProductList(){
         <nav>
             <ul className="Product-list">
             <li className="Fruit">
+<<<<<<< HEAD
             <NavLink to='/Products?filter=fruit' isActive={checkActive} activeStyle={styles}><p>Fruits</p></NavLink>
                 <ul>
                 <NavLink to='/Products/Fruits/Viet'activeStyle={styles}><li>Vietnamese Fruits</li></NavLink>
                 <NavLink to='/Products/Fruits/Import'activeStyle={styles}><li>Import Fruits</li></NavLink> 
                 </ul>
+=======
+            <NavLink to='/Products/?filter=fruit' isActive={checkActive} activeStyle={styles}><p>Fruits</p></NavLink>
             </li>
-            <ul>
-            <NavLink to='/Products/Vegetables' activeStyle={styles}><li>Vegetables</li></NavLink>
-            </ul>
+            <li>
+            <NavLink to='/Products/?filter=vegetables' activeStyle={styles}><li>Vegetables</li></NavLink>
+            </li>
+            <li>
+            <NavLink to='/Products/?filter=spices' activeStyle={styles}><li>Spices</li></NavLink>
+>>>>>>> 8514366d022c67bbe34cbf1003346b9318b1d65e
+            </li>
             </ul>
         </nav>
     )

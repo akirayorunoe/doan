@@ -1,17 +1,14 @@
 .hotList{
     display: flex;
-    width: 100%;
+    /* width: 100%; */
 }
-.hotList ul{
+/* .hotList ul{
     width: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-}
-.scrollList{
-    display: flex;
-    width: 100%;
-}
+} */
+
 /* .hotList ul li{
     width: 100%;
 } */

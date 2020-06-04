@@ -6,6 +6,8 @@ import { addToCart } from '../../../action/cart-action'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import Axios from 'axios'
+import Carousel, { Dots } from '@brainhubeu/react-carousel';
+import '@brainhubeu/react-carousel/lib/style.css';
 class HotList extends React.Component {
   constructor() {
     super();
@@ -67,11 +69,13 @@ class HotList extends React.Component {
   render() {
     return (
       <div className="hotList">
-        <ul>
-          <div className="scrollList" style={{ overflowX: 'scroll' }}>
-            {this.createHotList()}
-          </div>
-        </ul>
+        <Carousel
+          slidesPerPage={4}
+          arrows
+          infinite
+        >
+          {this.createHotList()}
+        </Carousel>
       </div>
     )
   }
@@ -88,16 +92,3 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(HotList);
-
-// hData.map((item)=>{
-//     hotContent.push(
-//         <li>
-//         <Card 
-//           key={item.id}
-//           img={item.img.src}
-//           price={item.price}
-//           productName={item.productName}
-//           />
-//         </li>
-//     )
-//   }
