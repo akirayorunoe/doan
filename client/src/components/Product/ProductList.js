@@ -1,10 +1,12 @@
 import React from "react";
+import {useDispatch} from 'react-redux'
 import '../../styles/components/Product/ProductList.css';
 import { NavLink } from 'react-router-dom';
-
+import {sortChoose} from '../../action/sort-action';
+import {pageReset} from '../../action/paginate';
 function ProductList(){
     // const [appear,setAppear]=useState(false);
-
+    const dispatch=useDispatch();
     const checkActive = (match, location) => {
         //some additional logic to verify you are in the home URI
         if (!location) return false;
@@ -21,13 +23,13 @@ function ProductList(){
         <nav>
             <ul className="Product-list">
             <li className="Fruit">
-            <NavLink to='/Products/?filter=fruit' isActive={checkActive} activeStyle={styles}><p>Fruits</p></NavLink>
+            <NavLink to='/Products/?filter=fruit' isActive={checkActive} onClick={()=>{dispatch(sortChoose('fruit'));dispatch(pageReset())}} activeStyle={styles}><p>Fruits</p></NavLink>
             </li>
             <li>
-            <NavLink to='/Products/?filter=vegetables' activeStyle={styles}><li>Vegetables</li></NavLink>
+            <NavLink to='/Products/?filter=vegetables' activeStyle={styles} onClick={()=>{dispatch(sortChoose('vegetables'));dispatch(pageReset())}}><li>Vegetables</li></NavLink>
             </li>
             <li>
-            <NavLink to='/Products/?filter=spices' activeStyle={styles}><li>Spices</li></NavLink>
+            <NavLink to='/Products/?filter=spices' activeStyle={styles} onClick={()=>{dispatch(sortChoose('spices'));dispatch(pageReset())}}><li>Spices</li></NavLink>
             </li>
             </ul>
         </nav>

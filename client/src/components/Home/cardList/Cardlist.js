@@ -47,6 +47,7 @@ class Cardlist extends React.Component {
  async componentDidMount(){
    do
    {
+     console.log('num',this.props.number)
      console.log(`http://localhost:3030/products${this.props.route==='/'?`?page=${this.props.number}`:`${this.props.route}&page=${this.props.number}`}`)
       await Axios.get(`http://localhost:3030/products${this.props.route==='/'?`?page=${this.props.number}`:`${this.props.route}&page=${this.props.number}`}`)
 

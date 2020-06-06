@@ -6,9 +6,9 @@ import CardList from '../components/Home/cardList/Cardlist';
 import Sort from '../components/Product/Sort';
 import cartReducer from '../reducer/cartReducer';
 // import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+// import { createStore } from 'redux';
 
-const store = createStore(cartReducer);
+// const store = createStore(cartReducer);
 
 class Product extends React.Component {
     render() {

@@ -4,8 +4,8 @@ const cartReducer = (state = data, action) => {
     //INSIDE HOME COMPONENT
 
     if (action.type === ADD_TO_CART) {
-        console.log(state)
-        console.log(action)
+        //console.log(state)
+        //console.log(action)
         let addedItem = state.items.find(item => item.id === action.id)
         //check if the action id exists in the addedItems
         let existed_item = state.addedItems.find(item => action.id === item.id)
@@ -17,7 +17,7 @@ const cartReducer = (state = data, action) => {
             }
         }
         else {
-            console.log(action.quantity)
+           // console.log(action.quantity)
             addedItem.quantity = action.quantity || 1;
             //calculating the total
             let newTotal = state.total + parseFloat(addedItem.price* addedItem.quantity)

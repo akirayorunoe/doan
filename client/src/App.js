@@ -23,7 +23,7 @@ function App() {
     if(token)
     {async function fetchUser()
     {
-    console.log('token',token)
+    //console.log('token',token)
     await axios.get('http://localhost:3030/login',{headers:{"auth-token":token}}).then((data)=>{
         return dispatch(usrLogin(data.data))})}
 fetchUser();}

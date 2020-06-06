@@ -7,7 +7,6 @@ import ProductCard from '../Product/ProductCard';
 function ProductInfo({ match }) {
     useEffect(() => {
         fetchItems();
-        console.log(match);
         // console.log(match.params.id);
         // console.log(data);
     }, []);
@@ -20,7 +19,7 @@ function ProductInfo({ match }) {
         )
         const items = await data.json();
         setItems(items);
-        console.log(items);
+        //console.log(items);
     }
 
     // const createProduct= this.items.map((item)=>{

@@ -15,6 +15,14 @@ switch(action.type){
             return {...state,route:'?sort=high_low'}
         case 'low_high':
             return {...state,route:'?sort=low_high'}
+        case 'fruit':
+            return {...state,route:'?filter=fruit'}
+        case 'vegetables':
+            return {...state,route:'?filter=vegetable'}
+        case 'spices':
+            return {...state,route:'?filter=spice'}
+        case 'default':
+            return {...state,route:'/'}
        }
        break;
     default: return state;
