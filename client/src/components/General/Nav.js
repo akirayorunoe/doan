@@ -5,7 +5,7 @@ import {useDispatch} from 'react-redux';
 import cart from '../../assets/cardIcon/cart.png';
 // import Cart from '../General/Cart'; 
 import { Link } from 'react-router-dom';
-import {sortChoose} from '../../action/sort-action';
+import {sortChoose,filterChoose} from '../../action/sort-action';
 import {pageReset} from '../../action/paginate';
 import Axios from 'axios';
 const Nav = () => {
@@ -23,19 +23,27 @@ const Nav = () => {
         // console.log(pathname);
         return pathname === "/";
     }
-    // getList=()=>{
-       
-    // }
+    const getList=(e)=>{
+        if (e.key === 'Enter') {
+        const name=searchInput.toLowerCase();
+       Axios.get(`http://localhost:3030/products?name=${name}`)
+       .then(data=>{
+           console.log('search',data.data);
+           setSearchInput('')
+        })
+        .catch(err=>console.log(err));
+        }
+    }
     return (
         <nav className="nav-bar">
             <ul>
                 <NavLink to='/' isActive={checkActive} activeStyle={styles}><li>Home</li></NavLink>
-                <NavLink to='/Products' activeStyle={styles} onClick={()=>{dispatch(sortChoose('default'));dispatch(pageReset())}}><li>Our product</li></NavLink>
+                <NavLink to='/Products' activeStyle={styles} onClick={()=>{dispatch(sortChoose('default'));dispatch(filterChoose('default'));dispatch(pageReset())}}><li>Our product</li></NavLink>
                 <NavLink to='/Policy' activeStyle={styles}><li>Policy</li></NavLink>
                 <NavLink to='/About' activeStyle={styles}><li>About us</li></NavLink>
             </ul>
             <div id="searchBar">
-                <input type="search" id="searchInput" value={searchInput} onChange={(value)=>{return setSearchInput(value.target.value)}}></input>
+                <input type="search" id="searchInput" value={searchInput} onChange={(value)=>setSearchInput(value.target.value)} onKeyDown={e=>getList(e)}></input>
             </div>
             {/* <div className="img-container"><img src={cart} onClick={()=>{setAppear(!appear)}} alt="cart"></img></div>
             {appear&&<Cart/>} */}

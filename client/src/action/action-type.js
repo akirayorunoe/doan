@@ -5,5 +5,6 @@ export const ADD_QUANTITY = 'ADD_QUANTITY';
 export const USER_LOGIN = 'USER_LOGIN';
 export const USER_LOGOUT = 'USER_LOGOUT';
 export const SORT_TYPE = 'SORT_TYPE';
+export const FILTER_TYPE = 'FILTER_TYPE';
 export const PAGE_NUM ='PAGE_NUM';
 export const PAGE_RESET ='PAGE_RESET';

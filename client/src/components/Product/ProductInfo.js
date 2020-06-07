@@ -22,23 +22,6 @@ function ProductInfo({ match }) {
         //console.log(items);
     }
 
-    // const createProduct= this.items.map((item)=>{
-    //     let result;    
-    //     if(item._id === match.params._id)
-    //         {
-    //             result = 
-    //             <ProductCard
-    //                 key={item._id}
-    //                 img={item.img}
-    //                 name={item.name}
-    //                 description={item.description}
-    //                 status={item.status}
-    //                 price={item.price}
-    //             />
-    //         }            
-    //         return result;
-    //     })
-
     return (
         <div className="productInfo">
             <ProductCard
