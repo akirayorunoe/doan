@@ -3,12 +3,13 @@ import '../../styles/components/General/Nav.css';
 import { NavLink } from 'react-router-dom';
 import {useDispatch} from 'react-redux';
 import cart from '../../assets/cardIcon/cart.png';
-// import Cart from '../General/Cart'; 
-import { Link } from 'react-router-dom';
+import { Link,useHistory } from 'react-router-dom';
 import {sortChoose,filterChoose} from '../../action/sort-action';
 import {pageReset} from '../../action/paginate';
+import {searching} from '../../action/search-field';
 import Axios from 'axios';
 const Nav = () => {
+    const history = useHistory();
     const dispatch = useDispatch();
     const [searchInput,setSearchInput]=useState('')
     const styles = {
@@ -28,7 +29,10 @@ const Nav = () => {
         const name=searchInput.toLowerCase();
        Axios.get(`http://localhost:3030/products?name=${name}`)
        .then(data=>{
-           console.log('search',data.data);
+           const rSearchInput = name;
+           dispatch(searching(rSearchInput,data.data))
+           history.push('/Search');
+           //console.log('search',data.data);
            setSearchInput('')
         })
         .catch(err=>console.log(err));

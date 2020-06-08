@@ -12,7 +12,8 @@ import Policy from "./containers/Policy";
 import Forgot_pass from "./containers/ForgetPass";
 import Products from "./containers/Product";
 import ProductInfo from "./components/Product/ProductInfo";
-import Cart from "./components/General/Cart"
+import Cart from "./components/General/Cart";
+import SearchPage from "./containers/SearchPage";
 import {useDispatch} from 'react-redux';
 import {usrLogin} from './action/user-login'
 import axios from 'axios';
@@ -43,6 +44,7 @@ fetchUser();}
           <Route path="/Products" exact component={Products}/>
           <Route path="/cart" exact component={Cart}/>
           <Route path="/Products/:id" component={ProductInfo}/>
+          <Route path="/Search" component={SearchPage}/>
       </Switch>
           <Footer />
     </div>
