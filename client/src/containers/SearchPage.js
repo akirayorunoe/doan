@@ -5,7 +5,7 @@ const SearchPage =()=>{
         return state.searchReducer.name});
     const searchResult=useSelector(state=>state.searchReducer.data);
         return (<div className="SearchPage">
-            <p>Search Result:{searchInput}</p>
+            <p>Search Result:"{searchInput}"</p>
             {
             searchResult.map(item=>{
                 return <div>

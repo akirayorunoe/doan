@@ -2,7 +2,14 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import '../../styles/components/General/Cart.css'
 class Total extends Component{
-    
+    constructor(props){
+        super(props);
+    }
+    checkLogin(){
+        const lg=localStorage.getItem('auth-token')
+        if(!lg){alert("Bạn chưa đăng nhập. Vui lòng đăng nhập để tiếp tục")}
+        else alert("Buy success")
+    }
     render(){
   
         return(
@@ -11,7 +18,7 @@ class Total extends Component{
                         <li className="collection-item"><b>Total: {this.props.total} $</b></li>
                     </div>
                     <div className="cart_checkout">
-                        <button className="waves-effect waves-light btn">Checkout</button>
+                        <button className="waves-effect waves-light btn" onClick={()=>{this.checkLogin()}}>Checkout</button>
                     </div>
                  </div>
         )
