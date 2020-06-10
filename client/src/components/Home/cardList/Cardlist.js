@@ -83,7 +83,7 @@ class Cardlist extends React.Component {
       <div className="cardlist-container">
         {listCard}
       </div>
-      <Pagination maxPage={this.state.maxPage}/>
+      <Pagination maxPage={this.state.maxPage} currentPage={this.currentPage}/>
       </div>
     )
   }
