@@ -8,6 +8,7 @@
     max-height: fit-content;
     width: auto;
     justify-content: space-between;
+    margin-bottom: 10px;
 }
 
 #searchInput{

@@ -8,13 +8,16 @@ import { connect } from 'react-redux'
 import Axios from 'axios'
 import Carousel from '@brainhubeu/react-carousel';
 import '@brainhubeu/react-carousel/lib/style.css';
-import HotListArray from './HotListArray';
+// import "slick-carousel/slick/slick.css";
+// import "slick-carousel/slick/slick-theme.css";
+// import Slider from "react-slick";
+import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
+import 'pure-react-carousel/dist/react-carousel.es.css';
 class HotList extends React.Component {
   constructor() {
     super();
     this.state = {};
   }
-
 
   async componentDidMount() {
     do {
@@ -41,18 +44,21 @@ class HotList extends React.Component {
           />
         </Link>
       </div>
+      
 }):null)
   }
+  
   render() {
     //console.log(this.state.productsData)
     return (
       <div className="hotList">
-        <Carousel
-          slidesPerPage={4}
-          arrows
-          infinite
+        <Carousel 
+        autoPlay={2000}
+        animationSpeed={1500}
+        slidesPerPage={3}
+        infinite
         >
-        {this.listRender()}
+          {this.listRender()}
         </Carousel>
       </div>
     )
