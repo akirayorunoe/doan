@@ -48,20 +48,19 @@ class Cardlist extends React.Component {
  async componentDidMount(){
    do
    {
-     console.log(`http://localhost:3030/products${this.props.route==='/'?`?page=${this.props.number}`:`${this.props.route}&page=${this.props.number}`}`)
-      await Axios.get(`http://localhost:3030/products${this.props.route==='/'?`?page=${this.props.number}`:`${this.props.route}&page=${this.props.number}`}`)
+     console.log(`http://localhost:3030/products${this.props.routee==='/'?`?page=${this.props.number}`:`${this.props.routee}&page=${this.props.number}`}`)
+      await Axios.get(`http://localhost:3030/products${this.props.routee==='/'?`?page=${this.props.number}`:`${this.props.routee}&page=${this.props.number}`}`)
     .then(data=>data.data)
       .then(data=>this.setState({productsData:data.result,maxPage:data.maxPage})).catch(err=>console.log(err))}
       while(this.state.productsData.length===0);
   }
-
  async componentDidUpdate(prevProps, prevState){
-  console.log(`http://localhost:3030/products${this.props.route==='/'?`?page=${this.props.number}`:`${this.props.route}&page=${this.props.number}`}`)
+  console.log(`http://localhost:3030/products${this.props.routee==='/'?`?page=${this.props.number}`:`${this.props.routee}&page=${this.props.number}`}`)
     if(prevProps.route!==this.props.route||this.props.number!==prevProps.number){
-      console.log(`http://localhost:3030/products${this.props.route==='/'?`?page=${this.props.number}`:`${this.props.route}&page=${this.props.number}`}`)
+      console.log(`http://localhost:3030/products${this.props.routee==='/'?`?page=${this.props.number}`:`${this.props.routee}&page=${this.props.number}`}`)
       do
       { 
-        await Axios.get(`http://localhost:3030/products${this.props.route==='/'?`?page=${this.props.number}`:`${this.props.route}&page=${this.props.number}`}`)
+        await Axios.get(`http://localhost:3030/products${this.props.routee==='/'?`?page=${this.props.number}`:`${this.props.routee}&page=${this.props.number}`}`)
        .then(data=>{
          console.log(data)
         return data.data})
@@ -69,7 +68,15 @@ class Cardlist extends React.Component {
          while(this.state.productsData.length===0);
     }
   }
-
+  // async componentDidMount2(){
+  //   do
+  //   {
+  //     console.log(`http://localhost:3030/products${this.props.routee==='/'?`?page=${this.props.number}`:`${this.props.route}&page=${this.props.number}`}`)
+  //      await Axios.get(`http://localhost:3030/products${this.props.routee==='/'?`?page=${this.props.number}`:`${this.props.route}&page=${this.props.number}`}`)
+  //    .then(data=>data.data)
+  //      .then(data=>this.setState({productsData:data.result,maxPage:data.maxPage})).catch(err=>console.log(err))}
+  //      while(this.state.productsData.length===0);
+  //  }
   handleClick(id) {
     this.props.addToCart(id)
   }
@@ -129,7 +136,9 @@ const mapStateToProps = (state) => {
   return {
     items: state.cartReducer.items,
     route: state.sortReducer.route,
+    routee:state.filterRuducer.routee,
     number:state.paginationReducer.number
+
   }
 }
 const mapDispatchToProps = (dispatch) => {

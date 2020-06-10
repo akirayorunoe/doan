@@ -1,7 +1,8 @@
 import React from "react";
 import '../../styles/components/Product/ProductList.css';
 import { NavLink } from 'react-router-dom';
-
+import {useDispatch} from 'react-redux';
+import {filterChoose} from '../../action/filter-action'
 function ProductList(){
     // const [appear,setAppear]=useState(false);
 
@@ -16,26 +17,24 @@ function ProductList(){
     const styles = {
         backgroundColor: '#B0EACD'
     }
-
+    const dispatch=useDispatch();
+ function selectFunc(e) {
+       // console.log(e.target.value)
+        dispatch(filterChoose(e.target.value))
+    }
     return(
         <nav>
             <ul className="Product-list">
             <li className="Fruit">
-<<<<<<< HEAD
-            <NavLink to='/Products?filter=fruit' isActive={checkActive} activeStyle={styles}><p>Fruits</p></NavLink>
-                <ul>
-                <NavLink to='/Products/Fruits/Viet'activeStyle={styles}><li>Vietnamese Fruits</li></NavLink>
-                <NavLink to='/Products/Fruits/Import'activeStyle={styles}><li>Import Fruits</li></NavLink> 
-                </ul>
-=======
-            <NavLink to='/Products/?filter=fruit' isActive={checkActive} activeStyle={styles}><p>Fruits</p></NavLink>
-            </li>
-            <li>
-            <NavLink to='/Products/?filter=vegetables' activeStyle={styles}><li>Vegetables</li></NavLink>
-            </li>
-            <li>
-            <NavLink to='/Products/?filter=spices' activeStyle={styles}><li>Spices</li></NavLink>
->>>>>>> 8514366d022c67bbe34cbf1003346b9318b1d65e
+            {/* <NavLink to='/Products?filter=fruit' isActive={checkActive} activeStyle={styles}><p>Fruits</p></NavLink>                
+                <NavLink to='/Products/Fruits/Viet'activeStyle={styles}><li>Vegatable</li></NavLink>
+                <NavLink to='/Products/Fruits/Import'activeStyle={styles}><li>Spice</li></NavLink>  */}
+                 <select name="SortBy" id="SortBy" onChange={selectFunc} >
+            <option value="" selected disabled hidden>Choose here</option>
+            <option value="fruit">fruit</option>
+            <option value="vegatable">vegatable</option>
+            <option value="spice">spice</option>
+                </select>
             </li>
             </ul>
         </nav>
