@@ -1,6 +1,12 @@
-import React from 'react';
-import "../../styles/components/ForgetPass/textForgetpass.css"
+import React,{useState} from 'react';
+import "../../styles/components/ForgetPass/textForgetpass.css";
+import Axios from 'axios';
 const Forget_pass = () => {
+    const [email,setEmail]=useState('');
+    const getPass = async()=>{
+        await Axios.get('http://localhost:3030/forgetpassword')
+        .then(data=>alert('Send'+data.data.msg))
+    }
     return (
         <div >
             <div className="forget-pass-text">
@@ -9,11 +15,11 @@ const Forget_pass = () => {
             </div>
 
             <div className="input-mail">
-                <input type="email" placeholder="Email..." />
+                <input type="email" placeholder="Email..." value={email} onChange={(e)=>setEmail(e.target.value)} />
             </div>
 
             <div className="reset-btn">
-                <button className="btn-reset">Reset my password</button>
+                <button className="btn-reset" onClick={()=>{getPass()}}>Reset my password</button>
             </div>
 
       </div>
