@@ -17,6 +17,7 @@ import SearchPage from "./containers/SearchPage";
 import {useDispatch} from 'react-redux';
 import {usrLogin} from './action/user-login'
 import axios from 'axios';
+import UserPage from "./containers/UserPage";
 function App() {
   const dispatch=useDispatch();
   useEffect( ()=>{
@@ -45,6 +46,7 @@ fetchUser();}
           <Route path="/cart" exact component={Cart}/>
           <Route path="/Products/:id" component={ProductInfo}/>
           <Route path="/Search" component={SearchPage}/>
+          <Route path="/User" component={UserPage}/>
       </Switch>
           <Footer />
     </div>
