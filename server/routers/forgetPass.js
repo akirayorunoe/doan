@@ -22,6 +22,7 @@ transporter.verify((error, success) => {
 });
 
 router.post('/',async (req,res)=>{
+ // console.log('a')
     var email = req.body.email;
     var content = generatePassword(10, false);
      //Hash password

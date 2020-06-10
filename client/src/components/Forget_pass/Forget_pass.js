@@ -3,11 +3,16 @@ import "../../styles/components/ForgetPass/textForgetpass.css";
 import Axios from 'axios';
 const Forget_pass = () => {
     const [email,setEmail]=useState('');
+    const [send,setSend]=useState(false);
     const getPass = async()=>{
-        await Axios.get('http://localhost:3030/forgetpassword')
-        .then(data=>alert('Send'+data.data.msg))
+        setSend(true);
+        await Axios.post('http://localhost:3030/forgetpassword',{email:email})
+        .then(data=>{
+            setSend(false)
+            alert('Send'+data.data.msg)})
     }
     return (
+        send?<p>Now sending...</p>:
         <div >
             <div className="forget-pass-text">
                 <h1>FORGOT PASSWORD?</h1>
