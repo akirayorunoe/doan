@@ -2,17 +2,22 @@ import React from 'react';
 import {useSelector} from 'react-redux';
 import { Link } from 'react-router-dom';
 import Card from '../components/Home/cardList/Card';
+import {connect} from 'react-redux';
 import { addToCart } from '../action/cart-action';
-
-const SearchPage =()=>{
+import '../styles/containers/SearchPage.css';
+const SearchPage =(props)=>{
     const searchInput=useSelector(state=>{
         return state.searchReducer.name});
+        const handleClick=(id)=>{
+            props.addToCart(id)
+        }
     const searchResult=useSelector(state=>state.searchReducer.data);
         return (<div className="SearchPage">
             <div style={{marginBottom:'10px'}}>
                 <p>Search Result:{searchInput}</p>
                 <hr></hr>
             </div>
+            <div className="searchResult">
             {
             searchResult.map(item=>{
             //     return <div>
@@ -28,14 +33,27 @@ const SearchPage =()=>{
                 price={Math.round(item.price*100)/100}
                 productName={item.name}
                 id={item.id}
-                // handleClick={this.handleClick}
+                handleClick={handleClick}
               />
             </Link>
             </div>
             })
             }
+            </div>
         </div>
         );
     }
 
-export default SearchPage;
+    const mapStateToProps = (state) => {
+        return {
+          items: state.cartReducer.items,
+        }
+      }
+      const mapDispatchToProps = (dispatch) => {
+      
+        return {
+          addToCart: (id) => { dispatch(addToCart(id)) }
+        }
+      }
+      export default connect(mapStateToProps, mapDispatchToProps)(SearchPage);
+      
