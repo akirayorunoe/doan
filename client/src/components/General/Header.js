@@ -10,6 +10,7 @@ import { NavLink } from 'react-router-dom';
 const Header = ()=>{
     const [appear,setAppear]=useState(false)
     const onLog = useSelector(state => state.loginReducer.username);
+    const id = useSelector(state => state.loginReducer.id);
     const dispatch=useDispatch();
     return (
         <div className="header">
@@ -26,7 +27,7 @@ const Header = ()=>{
                     </Link>
                 </div>
             </div>:<div className="btnLocation">
-                <p className="usr-name">Hi, <Link to='/User'>{onLog}</Link></p>
+                <p className="usr-name">Hi, <Link to={{ pathname: '/User', state: { id: id} }}>{onLog}</Link></p>
                 <Button name='Log out' onClick={()=>{
                     localStorage.removeItem('auth-token')
                     dispatch(usrLogout())}
