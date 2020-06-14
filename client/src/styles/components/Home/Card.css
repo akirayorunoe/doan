@@ -1,17 +1,29 @@
 .card{
     display: flex;
     flex-direction: column;
-    margin-left: 30px;
-    flex: 1;
+    width: fit-content;
+    margin: auto;
+    text-align: left;    
+    /* margin-left: 30px;*/
+    height: fit-content;
 }
 .productImg{
-    width: 100%;
-    height: auto;
+    width: 200px;
+    height: 200px;    
 }
-.text-left{
-    text-align: left;
+.productName{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    /* line-height: 16px;    
+    max-height: 32px;      */
+    -webkit-line-clamp: 1; /* Write the number of 
+                              lines you want to be 
+                              displayed */
+    /* -webkit-box-orient: vertical; */
 }
 .cartIcon{
     display: flex;  
     justify-content: center;
+    margin-top: 20px;
 }

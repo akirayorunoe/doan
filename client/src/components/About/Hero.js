@@ -7,7 +7,7 @@ const Hero = () => {
       <div className="container">
         <div className="hero-wrap">
           {/* Backgroup image */}
-          <img className="hero-wrap__image" src={Image0}></img>
+          <img className="hero-wrap__image" src={Image0} alt="background_about"></img>
 
           {/* text */}
           <div className="hero-wrap__text">

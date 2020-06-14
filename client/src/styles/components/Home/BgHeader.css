@@ -1,4 +1,4 @@
 .header-image{
-    width: 100%;
-    height: auto;
+    height: 500px;
+    max-width: 100%;
 }
