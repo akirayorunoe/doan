@@ -4,6 +4,7 @@ const port = process.env.PORT || 3030;
 const cors = require('cors');
 const authRoute = require('./routers/auth');
 const productRoute = require('./routers/listproduct');
+const forgetPass = require('./routers/forgetPass');
 const mongoose = require('mongoose');
 const dotenv=require('dotenv');
 dotenv.config();
@@ -17,9 +18,10 @@ app.use(function (req, res, next) {
     next();
 });
 //CONNECT TO DATABASE
-mongoose.connect(process.env.DB_CONNECT,{ useNewUrlParser: true, useUnifiedTopology: true }, ()=>{console.log('Connect to DB!')});
+mongoose.connect(process.env.DB_CONNECT,{ useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false  }, ()=>{console.log('Connect to DB!')});
 app.use('/',authRoute);
 app.use('/products',productRoute);//localhost:3030/products
+app.use('/forgetpassword',forgetPass);
 app.listen(port, () => {
     console.log(`Server listening at ${port}`);
 });

@@ -7,7 +7,6 @@ import { addToCart } from '../../../action/cart-action';
 import { connect } from 'react-redux'
 import Axios from 'axios';
 import Pagination from "../../Product/Pagination/Pagination";
-// import Pagination from '../../Product/Pagination/Pagination';
 //use this in product page :v
 class Cardlist extends React.Component {
   constructor(props) {
@@ -20,47 +19,37 @@ class Cardlist extends React.Component {
     maxPage:0,
     currentPage:1
   }
-  //   createList(){
-  //   let content = [];
-  //   let result = [];
-  //   data.map((item)=>{
-  //     if((item.id % 4) == 0){
-  //       result.push(
-  //         <ul className="row">
-  //           {content}
-  //         </ul>
-  //       );
-  //     }
-  //     else{
-  //       content.push(
-  //           <Card 
-  //           key={item.id}
-  //           img={item.img.src}
-  //           price={item.price}
-  //           productName={item.productName}
-  //           />
-  //       )
-  //     }
-  //   })
-  //   console.log(result);
-  //   return result;
-  // }
  async componentDidMount(){
-   do
+  let link='';
+  if(this.props.route){link=`http://localhost:3030/products${this.props.route==='/'?`?page=${this.props.number}`:`${this.props.route}&page=${this.props.number}`}`}
+  if(this.props.filter){link=`http://localhost:3030/products${this.props.filter==='/'?`?page=${this.props.number}`:`?${this.props.filter}&page=${this.props.number}`}`}
+  if(this.props.route&&this.props.filter&& this.props.route!=='/' && this.props.filter!=='/'){link=`http://localhost:3030/products${this.props.route==='/'||this.props.filter==='/'?`?page=${this.props.number}`:`${this.props.route}&page=${this.props.number}&${this.props.filter}`}`}
+  if(this.props.route==='/'&&this.props.filter ==='/'){link=`http://localhost:3030/products?page=${this.props.number}`} 
+  do
    {
-     console.log(`http://localhost:3030/products${this.props.routee==='/'?`?page=${this.props.number}`:`${this.props.routee}&page=${this.props.number}`}`)
-      await Axios.get(`http://localhost:3030/products${this.props.routee==='/'?`?page=${this.props.number}`:`${this.props.routee}&page=${this.props.number}`}`)
+
+    // console.log('num',this.props.number)
+       console.log(link)
+      await Axios.get(link)
+
     .then(data=>data.data)
       .then(data=>this.setState({productsData:data.result,maxPage:data.maxPage})).catch(err=>console.log(err))}
       while(this.state.productsData.length===0);
   }
  async componentDidUpdate(prevProps, prevState){
-  console.log(`http://localhost:3030/products${this.props.routee==='/'?`?page=${this.props.number}`:`${this.props.routee}&page=${this.props.number}`}`)
-    if(prevProps.route!==this.props.route||this.props.number!==prevProps.number){
-      console.log(`http://localhost:3030/products${this.props.routee==='/'?`?page=${this.props.number}`:`${this.props.routee}&page=${this.props.number}`}`)
+
+  // console.log(`http://localhost:3030/products${this.props.route==='/'?`?page=${this.props.number}`:`${this.props.route}&page=${this.props.number}`}`)
+    if(prevProps.filter!==this.props.filter||prevProps.route!==this.props.route||this.props.number!==prevProps.number){
+      let link='';
+    if(this.props.route&&this.props.filter==='/'){link=`http://localhost:3030/products${this.props.route==='/'?`?page=${this.props.number}`:`${this.props.route}&page=${this.props.number}`}`}
+    if(this.props.filter&&this.props.route==='/'){link=`http://localhost:3030/products?${this.props.filter==='/'?`?page=${this.props.number}`:`${this.props.filter}&page=${this.props.number}`}`}
+    if(this.props.route&&this.props.filter && this.props.route!=='/' && this.props.filter!=='/'){link=`http://localhost:3030/products${this.props.route}&page=${this.props.number}&${this.props.filter}`}
+    if(this.props.route==='/'&&this.props.filter ==='/'){link=`http://localhost:3030/products?page=${this.props.number}`} 
+  
       do
       { 
-        await Axios.get(`http://localhost:3030/products${this.props.routee==='/'?`?page=${this.props.number}`:`${this.props.routee}&page=${this.props.number}`}`)
+        console.log(link)
+        await Axios.get(link)
        .then(data=>{
          console.log(data)
         return data.data})
@@ -80,28 +69,6 @@ class Cardlist extends React.Component {
   handleClick(id) {
     this.props.addToCart(id)
   }
-
-  // createList() {
-  //   const result = []
-  //   this.props.items.map(item =>
-  //     result.push(
-  //       <div className="card-container" key={item.id}>
-  //         <Link to={`/Products/${item.id}`}>
-  //           <Card
-  //             key={item.id}
-  //             img={item.img.src}
-  //             price={item.price}
-  //             productName={item.productName}
-  //             id={item.id}
-  //             handleClick={this.handleClick}
-  //           />
-  //         </Link>
-  //       </div>
-  //     )
-  //   )
-  //   return result;
-  // }
-
   render() {
     console.log(this.state);
     const listCard = this.state.productsData.map(item => (
@@ -126,7 +93,7 @@ class Cardlist extends React.Component {
       <div className="cardlist-container">
         {listCard}
       </div>
-      <Pagination maxPage={this.state.maxPage}/>
+      <Pagination maxPage={this.state.maxPage} currentPage={this.currentPage}/>
       </div>
     )
   }
@@ -136,9 +103,9 @@ const mapStateToProps = (state) => {
   return {
     items: state.cartReducer.items,
     route: state.sortReducer.route,
-    routee:state.filterRuducer.routee,
-    number:state.paginationReducer.number
 
+    number:state.paginationReducer.number,
+    filter:state.sortReducer.filter
   }
 }
 const mapDispatchToProps = (dispatch) => {

@@ -1,22 +1,24 @@
 import React from 'react';
 import '../../../styles/components/Home/HotList.css';
+import { Link } from 'react-router-dom'
 import Card from '../cardList/Card';
-// import { data } from '../../../data/data';
 import { addToCart } from '../../../action/cart-action'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
+// import { data } from '../../../data/data';
 import Axios from 'axios'
-import Carousel, { Dots } from '@brainhubeu/react-carousel';
+import Carousel from '@brainhubeu/react-carousel';
 import '@brainhubeu/react-carousel/lib/style.css';
+// import "slick-carousel/slick/slick.css";
+// import "slick-carousel/slick/slick-theme.css";
+// import Slider from "react-slick";
+import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
+import 'pure-react-carousel/dist/react-carousel.es.css';
 class HotList extends React.Component {
   constructor() {
     super();
     this.state = {};
   }
 
-  handleClick = (id) => {
-    this.props.addToCart(id)
-  }
   async componentDidMount() {
     do {
       await Axios.get(`http://localhost:3030/products`)
@@ -25,33 +27,11 @@ class HotList extends React.Component {
     }
     while (this.state.productsData.length === 0);
   }
-
-  async componentDidUpdate(prevProps, prevState) {
-    do {
-      await Axios.get(`http://localhost:3030/products`)
-        .then(data => data.data)
-        .then(data => this.setState({ productsData: data })).catch(err => console.log(err))
-    }
-    while (this.state.productsData.length === 0);
+  handleClick = (id) => {
+    this.props.addToCart(id)
   }
-
-  createHotList() {
-    // let hotContent = [];
-    // hData.map((item) => {
-    //   hotContent.push(
-    //     <li>
-    //       <Card
-    //         key={item.id}
-    //         img={item.img.src}
-    //         price={item.price}
-    //         productName={item.productName}
-    //       />
-    //     </li>
-    //   )
-    // }
-    // );
-    // return hotContent;
-    return this.state.productsData ? this.state.productsData.slice(0, 6).map(item => {
+  listRender(){
+    return (this.state.productsData? this.state.productsData.slice(0, 6).map(item => {
       return <div className="card-container" key={item.id}>
         <Link to={`/Products/${item._id}`}>
           <Card
@@ -64,17 +44,21 @@ class HotList extends React.Component {
           />
         </Link>
       </div>
-    }) : null
+      
+}):null)
   }
+  
   render() {
+    //console.log(this.state.productsData)
     return (
       <div className="hotList">
-        <Carousel
-          slidesPerPage={4}
-          arrows
-          infinite
+        <Carousel 
+        autoPlay={2000}
+        animationSpeed={1500}
+        slidesPerPage={3}
+        infinite
         >
-          {this.createHotList()}
+          {this.listRender()}
         </Carousel>
       </div>
     )
@@ -82,7 +66,7 @@ class HotList extends React.Component {
 }
 const mapStateToProps = (state) => {
   return {
-    items: state.cartReducer
+    items: state.cartReducer.items
   }
 }
 const mapDispatchToProps = (dispatch) => {

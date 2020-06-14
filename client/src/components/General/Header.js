@@ -6,6 +6,7 @@ import '../../styles/components/General/Header.css';
 import {  Link } from 'react-router-dom';
 import {useSelector,useDispatch} from 'react-redux';
 import {usrLogout} from '../../action/user-login'
+import { NavLink } from 'react-router-dom';
 const Header = ()=>{
     const [appear,setAppear]=useState(false)
     const onLog = useSelector(state => state.loginReducer.username);
@@ -25,7 +26,7 @@ const Header = ()=>{
                     </Link>
                 </div>
             </div>:<div className="btnLocation">
-                <p>{onLog}</p>
+                <p className="usr-name">Hi, <Link to='/User'>{onLog}</Link></p>
                 <Button name='Log out' onClick={()=>{
                     localStorage.removeItem('auth-token')
                     dispatch(usrLogout())}

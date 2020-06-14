@@ -1,11 +1,11 @@
-import {FILTER} from '../action/action-type.js';
+import {FILTER_TYPE} from '../action/action-type.js';
 
 const initState={
 routee:'/'
 }
 const filterType = (state=initState,action={})=>{
 switch(action.type){
-    case FILTER:
+    case FILTER_TYPE:
        switch(action.routee){
            case 'fruit':
         return {...state,routee:'?filer=fruit'}

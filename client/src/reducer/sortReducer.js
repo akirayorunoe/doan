@@ -1,7 +1,8 @@
-import {SORT_TYPE} from '../action/action-type.js';
+import {SORT_TYPE,FILTER_TYPE} from '../action/action-type.js';
 
 const initState={
-route:'/'
+route:'/',
+filter:'/'
 }
 const sortType = (state=initState,action={})=>{
 switch(action.type){
@@ -15,6 +16,21 @@ switch(action.type){
             return {...state,route:'?sort=high_low'}
         case 'low_high':
             return {...state,route:'?sort=low_high'}
+        case 'default':
+            return {...state,route:'/'}
+       }
+       break;
+       case FILTER_TYPE:{
+           switch(action.filter){
+            case 'fruit':
+                return {...state,filter:'filter=fruit'}
+            case 'vegetables':
+                return {...state,filter:'filter=vegetable'}
+            case 'spices':
+                return {...state,filter:'filter=spice'}
+            case 'default':
+                return {...state,filter:'/'}
+           }
        }
     default: return state;
 }

@@ -12,10 +12,12 @@ import Policy from "./containers/Policy";
 import Forgot_pass from "./containers/ForgetPass";
 import Products from "./containers/Product";
 import ProductInfo from "./components/Product/ProductInfo";
-import Cart from "./components/General/Cart"
+import Cart from "./components/General/Cart";
+import SearchPage from "./containers/SearchPage";
 import {useDispatch} from 'react-redux';
 import {usrLogin} from './action/user-login'
 import axios from 'axios';
+import UserPage from "./containers/UserPage";
 function App() {
   const dispatch=useDispatch();
   useEffect( ()=>{
@@ -23,7 +25,7 @@ function App() {
     if(token)
     {async function fetchUser()
     {
-    console.log('token',token)
+    //console.log('token',token)
     await axios.get('http://localhost:3030/login',{headers:{"auth-token":token}}).then((data)=>{
         return dispatch(usrLogin(data.data))})}
 fetchUser();}
@@ -43,6 +45,8 @@ fetchUser();}
           <Route path="/Products" exact component={Products}/>
           <Route path="/cart" exact component={Cart}/>
           <Route path="/Products/:id" component={ProductInfo}/>
+          <Route path="/Search" component={SearchPage}/>
+          <Route path="/User" component={UserPage}/>
       </Switch>
           <Footer />
     </div>

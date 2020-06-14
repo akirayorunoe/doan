@@ -38,6 +38,7 @@ class ProductCard extends React.Component {
                             </div>
                             <button title="add" className="addBtn" onClick={() => {
                                 this.handleClickAdd(this.props.id)
+                                alert(`you add ${this.props.name} to cart`)
                             }}>ADD</button>
                         </div>
                     </div>
