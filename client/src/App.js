@@ -52,8 +52,8 @@ fetchUser();}
       </Switch>
       <div>
       <MessengerCustomerChat
-        // pageId="100367225056687"
-        // appId="1148277815539948"
+        pageId="100367225056687"
+        appId="1148277815539948"
       />
       </div>
           <Footer />

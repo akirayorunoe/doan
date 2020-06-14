@@ -71,15 +71,15 @@ const Form =()=>{
             role: 'gmail'
         }
 
-        // axios.post('http://localhost:3030/social', data)
-        // .then(res => {
-        //     console.log(res)
-        //     if (res.data.status == 'success') {
-        //         alert('success')
-        //     } else {
-        //         alert('err')
-        //     }
-        // })
+        axios.post('http://localhost:3030/social', data)
+        .then(res => {
+            console.log(res)
+            if (res.data.status == 'success') {
+                alert('success')
+            } else {
+                alert('err')
+            }
+        })
         return dispatch(usrLogin(data))
     }
 
