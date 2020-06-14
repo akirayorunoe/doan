@@ -62,7 +62,7 @@ router.post('/social',async (req,res)=>{
    //Checking if user already in database
    const emailExist=await Social.findOne({email:req.body.email})
    if(emailExist){return res.status(400).send({message:'Account exist'})}
-   console.log(req.body)
+   //console.log(req.body)
    const social=new Social({
       id: req.body.id,
       name:req.body.name,
