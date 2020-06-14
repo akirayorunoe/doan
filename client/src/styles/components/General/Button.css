@@ -7,8 +7,29 @@
     justify-content: center;
     align-items: center;
     font-style: normal;
-    font-weight: normal;
     font-size: 12px;
     box-sizing: content-box;
+    margin: 8px 10px 8px 10px;
+    border-radius: 20px;
+    background-color: white;
+    background: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    font-weight: bold;
 }
 
+button {	  
+    width: auto;
+    font-family: Fondamento;	  
+    border-radius: 20px;	
+    background-color: white;	
+    background: #FFFFFF;	 
+    border: 1px solid #FFFFFF;	  
+    color: black;	 
+    font-weight: bold;	
+    padding: 10px 14px;	
+    margin: 8px 10px 8px 10px;	
+    border: none;	
+    cursor: pointer;	
+    align-items: center;	  
+    width: 45%;
+}
