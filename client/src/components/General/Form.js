@@ -60,6 +60,8 @@ const Form =()=>{
     }
 
     const responseGoogle = (response) => {
+       // console.log(response.googleId)
+       localStorage.setItem('auth-token',response.googleId)
         const data = {
             email: response.Tt.Du,
             name: response.Tt.Bd,
@@ -69,15 +71,15 @@ const Form =()=>{
             role: 'gmail'
         }
 
-        axios.post('http://localhost:3030/social', data)
-        .then(res => {
-            console.log(res)
-            if (res.data.status == 'success') {
-                alert('success')
-            } else {
-                alert('err')
-            }
-        })
+        // axios.post('http://localhost:3030/social', data)
+        // .then(res => {
+        //     console.log(res)
+        //     if (res.data.status == 'success') {
+        //         alert('success')
+        //     } else {
+        //         alert('err')
+        //     }
+        // })
         return dispatch(usrLogin(data))
     }
 
@@ -117,6 +119,7 @@ const Form =()=>{
                             buttonText="GOOGLE"
                             onSuccess={responseGoogle}
                             onFailure={responseGoogle}
+                            isSignedIn={localStorage.getItem('auth-token')?true:false}
                         />
                     </div>
                 </div>
