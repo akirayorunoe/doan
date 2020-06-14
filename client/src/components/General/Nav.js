@@ -39,12 +39,13 @@ const Nav = () => {
         }
     }
     return (
+        <div className="nav-container">
         <nav className="nav-bar">
             <ul>
-                <NavLink to='/' isActive={checkActive} activeStyle={styles}><li>Home</li></NavLink>
-                <NavLink to='/Products' activeStyle={styles} onClick={()=>{dispatch(sortChoose('default'));dispatch(filterChoose('default'));dispatch(pageReset())}}><li>Our product</li></NavLink>
-                <NavLink to='/Policy' activeStyle={styles}><li>Policy</li></NavLink>
-                <NavLink to='/About' activeStyle={styles}><li>About us</li></NavLink>
+                <li><NavLink to='/' isActive={checkActive} activeStyle={styles}><li>Home</li></NavLink></li>
+                <li><NavLink to='/Products' activeStyle={styles} onClick={()=>{dispatch(sortChoose('default'));dispatch(filterChoose('default'));dispatch(pageReset())}}><li>Our product</li></NavLink></li>
+                <li><NavLink to='/Policy' activeStyle={styles}><li>Policy</li></NavLink></li>
+                <li><NavLink to='/About' activeStyle={styles}><li>About us</li></NavLink></li>
             </ul>
             <div id="searchBar">
                 <input type="search" id="searchInput" value={searchInput} onChange={(value)=>setSearchInput(value.target.value)} onKeyDown={e=>getList(e)}></input>
@@ -53,6 +54,7 @@ const Nav = () => {
             {appear&&<Cart/>} */}
             <Link to ="/cart"><i className="img-container"><img src={cart} alt="cart"></img></i></Link>
         </nav>
+        </div>
        
     );
 }
