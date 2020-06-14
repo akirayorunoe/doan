@@ -1,5 +1,9 @@
+.info {
+  font-family: 'Lobster', cursive;
+}
+
 .info-wrap {
-  margin-top: 60px;
+  margin-top: 50px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -13,8 +17,22 @@
   max-width: 100%;
   width: fit-content;
 }
+
+.info-text h3 {
+  margin-top: 40px;
+}
+
+.info-text p {
+  margin-top: 16px;
+  padding-left: 30px;
+}
+
+.info-image img {
+  border-radius: 10px;
+}
 /*# sourceMappingURL=info.css.map */
-.info-text{
+
+/* .info-text{
     display: flex;
     flex-direction: column;
     max-width: 100%;
@@ -24,4 +42,5 @@
     width: auto;
     height: auto;
     max-width: 100%;
-}
+} */
+

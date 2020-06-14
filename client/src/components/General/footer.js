@@ -5,12 +5,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFacebookSquare,
   faInstagramSquare,
-  faTwitterSquare
+  faTwitterSquare,
 } from "@fortawesome/free-brands-svg-icons";
 import {
   faMapMarkedAlt,
   faEnvelope,
-  faPhoneAlt
+  faPhoneAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import "../../styles/components/General/Footer/Footer.css";
 

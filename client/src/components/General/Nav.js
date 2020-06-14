@@ -8,6 +8,9 @@ import {sortChoose,filterChoose} from '../../action/sort-action';
 import {pageReset} from '../../action/paginate';
 import {searching} from '../../action/search-field';
 import Axios from 'axios';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
+
 const Nav = () => {
     const history = useHistory();
     const dispatch = useDispatch();
@@ -39,6 +42,21 @@ const Nav = () => {
         }
     }
     return (
+          <nav className="nav-bar navbar navbar-expand-lg">
+      <button
+        className="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarTogglerDemo03"
+        aria-controls="navbarTogglerDemo03"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span className="navbar-toggler-icon">
+          <FontAwesomeIcon icon={faBars} />
+        </span>
+      </button>
+      <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
         <nav className="nav-bar">
             <ul>
                 <NavLink to='/' isActive={checkActive} activeStyle={styles}><li>Home</li></NavLink>
@@ -46,6 +64,7 @@ const Nav = () => {
                 <NavLink to='/Policy' activeStyle={styles}><li>Policy</li></NavLink>
                 <NavLink to='/About' activeStyle={styles}><li>About us</li></NavLink>
             </ul>
+       </div>
             <div id="searchBar">
                 <input type="search" id="searchInput" value={searchInput} onChange={(value)=>setSearchInput(value.target.value)} onKeyDown={e=>getList(e)}></input>
             </div>

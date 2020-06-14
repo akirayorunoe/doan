@@ -3,6 +3,9 @@
 }
 .footer {
   background-color: #b0eacd;
+
+  margin-top: 50px;
+
   /* display: flex;
   justify-content: space-between; */
 }
