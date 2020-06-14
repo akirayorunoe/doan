@@ -8,10 +8,12 @@ import {sortChoose,filterChoose} from '../../action/sort-action';
 import {pageReset} from '../../action/paginate';
 import {searching} from '../../action/search-field';
 import Axios from 'axios';
+import Cart from '../General/Cart';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 const Nav = () => {
+    const [appear,setAppear]=useState(false)
     const history = useHistory();
     const dispatch = useDispatch();
     const [searchInput,setSearchInput]=useState('')
@@ -42,7 +44,7 @@ const Nav = () => {
         }
     }
     return (
-          <nav className="nav-bar navbar navbar-expand-lg">
+    <nav className="nav-bar navbar navbar-expand-lg">
       <button
         className="navbar-toggler"
         type="button"
@@ -56,23 +58,36 @@ const Nav = () => {
           <FontAwesomeIcon icon={faBars} />
         </span>
       </button>
-      <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
-        <nav className="nav-bar">
-            <ul>
-                <NavLink to='/' isActive={checkActive} activeStyle={styles}><li>Home</li></NavLink>
-                <NavLink to='/Products' activeStyle={styles} onClick={()=>{dispatch(sortChoose('default'));dispatch(filterChoose('default'));dispatch(pageReset())}}><li>Our product</li></NavLink>
-                <NavLink to='/Policy' activeStyle={styles}><li>Policy</li></NavLink>
-                <NavLink to='/About' activeStyle={styles}><li>About us</li></NavLink>
-            </ul>
-       </div>
-            <div id="searchBar">
-                <input type="search" id="searchInput" value={searchInput} onChange={(value)=>setSearchInput(value.target.value)} onKeyDown={e=>getList(e)}></input>
-            </div>
-            {/* <div className="img-container"><img src={cart} onClick={()=>{setAppear(!appear)}} alt="cart"></img></div>
-            {appear&&<Cart/>} */}
-            <Link to ="/cart"><i className="img-container"><img src={cart} alt="cart"></img></i></Link>
-        </nav>
-       
+
+    <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
+        <ul className="navbar-nav">
+          <NavLink to="/" isActive={checkActive} activeStyle={styles}>
+            <li className="nav-item">Home</li>
+          </NavLink>
+          <NavLink to="/Products" activeStyle={styles}>
+            <li className="nav-item">Our product</li>
+          </NavLink>
+          <NavLink to="/Policy" activeStyle={styles}>
+            <li className="nav-item">Policy</li>
+          </NavLink>
+          <NavLink to="/About" activeStyle={styles}>
+            <li className="nav-item">About us</li>
+          </NavLink>
+        </ul>
+    </div>
+
+      <div id="searchBar">
+        <input type="search" id="searchInput"></input>
+      </div>
+      {/* <div className="img-container"><img src={cart} onClick={()=>{setAppear(!appear)}} alt="cart"></img></div>
+            {appear&&<Cart/>}
+        */}
+        <Link to="/cart">
+        <div className="img-container">
+          <img src={cart} alt="cart"></img>
+        </div>
+      </Link>
+    </nav>
     );
 }
 export default Nav;

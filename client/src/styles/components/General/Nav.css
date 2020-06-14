@@ -139,7 +139,7 @@
     line-height: 21px;
     color: #000;
 }
-
+*/
 .nav-bar .active li{
     /* class active dùng trong react-router*/
     color:#fff;
@@ -151,5 +151,5 @@
     display: flex;
     max-width: 100%;
     justify-content: flex-end;
-} */
+} 
 
