@@ -60,6 +60,8 @@ const Form =()=>{
     }
 
     const responseGoogle = (response) => {
+       // console.log(response.googleId)
+       localStorage.setItem('auth-token',response.googleId)
         const data = {
             email: response.Tt.Du,
             name: response.Tt.Bd,
@@ -117,6 +119,7 @@ const Form =()=>{
                             buttonText="GOOGLE"
                             onSuccess={responseGoogle}
                             onFailure={responseGoogle}
+                            isSignedIn={localStorage.getItem('auth-token')?true:false}
                         />
                     </div>
                 </div>

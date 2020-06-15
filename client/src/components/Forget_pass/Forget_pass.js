@@ -9,7 +9,8 @@ const Forget_pass = () => {
         await Axios.post('http://localhost:3030/forgetpassword',{email:email})
         .then(data=>{
             setSend(false)
-            alert('Send'+data.data.msg)})
+            setEmail('')
+            alert('Send '+data.data.msg)})
     }
     return (
         send?<p>Now sending...</p>:

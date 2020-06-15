@@ -52,9 +52,9 @@ class QuantitiesButton extends React.Component {
   render() {
     return (
       <div className='quantitiesBtn'>
-        <button onClick={this.DecreaseItem}>- </button>
+        <button onClick={this.DecreaseItem}> - </button>
         <input className="inputne" value={this.props.quantity} />
-        <button onClick={this.IncrementItem}>+</button>
+        <button onClick={this.IncrementItem}> + </button>
       </div>
     );
   }

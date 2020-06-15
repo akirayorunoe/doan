@@ -26,26 +26,38 @@ class Cart extends Component{
                 this.props.items.map(item=>{
                     return(
                        
-                        <li className="collection-item_avatar" key={item.id}>
-                                    <div className="item-img"> 
-                                        <img src={item.img} alt={item.name} className=""/>
-                                    </div>
-                                
-                                    <div className="item-desc">
-
-                                        <p>{item.productName}</p>
-                                        <p><b>Price: {Math.round(item.price*100)/100}$</b></p> 
-                                        <p>
-                                        <b>Quantity: {item.quantity}</b>
-                                        </p>
-                                        <div className="add-remove">
-                                            <Link to="/cart"><i className="material-icons" onClick={()=>{this.handleAddQuantity(item.id)}}>arrow_up</i></Link>
-                                            <Link to="/cart"><i className="material-icons" onClick={()=>{this.handleSubtractQuantity(item.id)}}>arrow_down</i></Link>
-                                        </div>
-                                        <button className="waves-effect waves-light btn pink remove" style={{textAlign:"end"}} onClick={()=>{this.handleRemove(item.id)}}>Remove</button>
-                                    </div>
-                                    
-                                </li>
+                        <li className="cart" key={item.id}>
+                            <div className="item-img"> 
+                                <img src={item.img} alt={item.name} className=""/>
+                            </div>
+                        
+                            <div className="item-desc">
+                                <div className="product-name">
+                                    <h2>{item.name}</h2>
+                                </div>
+                                <div className="price">
+                                    <p>Price: {Math.round(item.price*100)/100}$</p> 
+                                </div> 
+                            </div>
+                            <div className="add-remove">
+                                <Link to="/cart">
+                                    <button className="quantity-btn" onClick={()=>{this.handleSubtractQuantity(item.id)}}>
+                                        <span>-</span>
+                                    </button>
+                                </Link>
+                                <p className="quantity">
+                                    <b>Quantity: {item.quantity}</b>
+                                </p>
+                                <Link to="/cart">
+                                    <button className="quantity-btn" onClick={()=>{this.handleAddQuantity(item.id)}}>
+                                        <span>+</span>
+                                    </button>
+                                </Link>
+                            </div>
+                            <div>
+                                <button className="remove-btn"  onClick={()=>{this.handleRemove(item.id)}}>Remove</button>
+                            </div>
+                        </li>
                          
                     )
                 })
@@ -57,11 +69,15 @@ class Cart extends Component{
        return(
             <div className="cart_container">
                 <div className="cart_ordered">
-                    <h2>You have ordered:</h2>
+                    <div>
+                        <h1>You have ordered:</h1>
+                    </div>
+                    <hr></hr>
                     <ul className="cart_collection">
                         {addedItems}
                     </ul>
                 </div>    
+                <hr></hr>
                 <Total></Total>
             </div>
        )
