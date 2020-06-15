@@ -77,7 +77,7 @@ const Nav = () => {
     </div>
 
       <div id="searchBar">
-        <input type="search" id="searchInput"></input>
+      <input type="search" id="searchInput" value={searchInput} onChange={(value)=>setSearchInput(value.target.value)} onKeyDown={e=>getList(e)}></input>
       </div>
       {/* <div className="img-container"><img src={cart} onClick={()=>{setAppear(!appear)}} alt="cart"></img></div>
             {appear&&<Cart/>}
