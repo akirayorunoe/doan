@@ -46,7 +46,7 @@ class Total extends Component{
                    {this.state.appear &&
                    <Paypal 
                    toPay={this.props.total}
-                   onSuccess={this.transactionSuccess.bind(this)}
+                   onSuccess={this.transactionSuccess}
                    transactionError={this.transactionError}
                    transactionCancel={this.transactionCancel}
                    />}
