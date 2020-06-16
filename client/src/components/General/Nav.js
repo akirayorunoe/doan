@@ -61,18 +61,26 @@ const Nav = () => {
 
       <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
         <ul className="navbar-nav">
+        <li className="nav-item">
           <NavLink to="/" isActive={checkActive} activeStyle={styles}>
-            <li className="nav-item">Home</li>
+            Home
           </NavLink>
+        </li>
+        <li className="nav-item">
           <NavLink to="/Products" activeStyle={styles}>
-            <li className="nav-item">Our product</li>
+            Our product
           </NavLink>
+        </li>
+        <li className="nav-item">
           <NavLink to="/Policy" activeStyle={styles}>
-            <li className="nav-item">Policy</li>
+            Policy
           </NavLink>
+        </li>
+        <li className="nav-item">
           <NavLink to="/About" activeStyle={styles}>
-            <li className="nav-item">About us</li>
+            About us
           </NavLink>
+        </li>
         </ul>
       </div>
 
