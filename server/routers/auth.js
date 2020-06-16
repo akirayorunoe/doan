@@ -104,13 +104,11 @@ router.get('/user/:id',async (req,res)=>{
    catch(err){res.status(404).send(err)}
  })
 
-<<<<<<< HEAD
  router.post('/payment',(req,res)=>{
    console.log(req.body);
    res.send('pay success');
  })
 
-=======
 
  router.put('/user/:id',async (req,res)=>{
    user= await Social.findOne({_id:req.params.id})
@@ -135,5 +133,4 @@ router.get('/user/:id',async (req,res)=>{
       })
    })
  })
->>>>>>> a0b584f35b62811bf9c859a6203c6c3198ef796e
 module.exports =router;
