@@ -91,4 +91,9 @@ router.get('/user/:id',async (req,res)=>{
    catch(err){res.status(404).send(err)}
  })
 
+ router.post('/payment',(req,res)=>{
+   console.log(req.body);
+   res.send('pay success');
+ })
+
 module.exports =router;
