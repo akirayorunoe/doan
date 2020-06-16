@@ -21,7 +21,7 @@ function ProductList() {
 
   return (
     <nav>
-      <ul className="Product-list">
+      <ul className="Product-list ">
         <li className="Fruit">
           <NavLink
             to="/Products/?filter=fruit"
