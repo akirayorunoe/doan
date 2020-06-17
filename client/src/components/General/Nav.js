@@ -61,31 +61,37 @@ const Nav = () => {
 
       <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
         <ul className="navbar-nav">
-        <li className="nav-item">
-          <NavLink to="/" isActive={checkActive} activeStyle={styles}>
-            Home
-          </NavLink>
-        </li>
-        <li className="nav-item">
-          <NavLink to="/Products" activeStyle={styles}>
-            Our product
-          </NavLink>
-        </li>
-        <li className="nav-item">
-          <NavLink to="/Policy" activeStyle={styles}>
-            Policy
-          </NavLink>
-        </li>
-        <li className="nav-item">
-          <NavLink to="/About" activeStyle={styles}>
-            About us
-          </NavLink>
-        </li>
+          <li className="nav-item">
+            <NavLink to="/" isActive={checkActive} activeStyle={styles}>
+              Home
+            </NavLink>
+          </li>
+          <li className="nav-item">
+            <NavLink to="/Products" activeStyle={styles}>
+              Our product
+            </NavLink>
+          </li>
+          <li className="nav-item">
+            <NavLink to="/Policy" activeStyle={styles}>
+              Policy
+            </NavLink>
+          </li>
+          <li className="nav-item">
+            <NavLink to="/About" activeStyle={styles}>
+              About us
+            </NavLink>
+          </li>
         </ul>
       </div>
 
       <div id="searchBar">
-      <input type="search" id="searchInput" value={searchInput} onChange={(value)=>setSearchInput(value.target.value)} onKeyDown={e=>getList(e)}></input>
+        <input
+          type="search"
+          id="searchInput"
+          value={searchInput}
+          onChange={(value) => setSearchInput(value.target.value)}
+          onKeyDown={(e) => getList(e)}
+        ></input>
       </div>
       {/* <div className="img-container"><img src={cart} onClick={()=>{setAppear(!appear)}} alt="cart"></img></div>
             {appear&&<Cart/>}
