@@ -1,10 +1,12 @@
 const router = require('express').Router();
 const User=require('../model/User');
 const Social=require('../model/Social');
+const Payment=require('../model/Payment');
 const {registerValidation,loginValidation} =require('../validation.js');
 const jwt=require('jsonwebtoken');
 var bcrypt = require('bcryptjs');
 const verify = require('./verifyToken');
+//const { default: ProductList } = require('../../client/src/components/Product/ProductList');
 //Register
 router.post('/SignUp',async (req,res)=>{
    //Validate
@@ -46,7 +48,7 @@ router.post('/login',async (req,res)=>{
    const validPassword=await bcrypt.compare(req.body.password,user.password);
    if(!validPassword){return res.status(400).send([{'message':'Email or password is wrong!'}])}
    //Create and assign token
-   const token=jwt.sign({name:user.name,id:user._id},process.env.TOKEN_SECRET)
+   const token=jwt.sign({name:user.name,id:user._id,email:user.email,address:user.address,phonenum:user.phonenum,history:user.history},process.env.TOKEN_SECRET)
    res.header('auth-token',token).status(201).send({name:user.name})
 })
 
@@ -104,10 +106,45 @@ router.get('/user/:id',async (req,res)=>{
    catch(err){res.status(404).send(err)}
  })
 
- router.post('/payment',(req,res)=>{
-   console.log(req.body);
-   res.send('pay success');
- })
+ router.post('/payment',verify,(req,res)=>{
+   // console.log(req.body);
+   // res.send('pay success');
+   let history=[];
+   let transactionData={};
+   console.log(req.body)
+   //Put Payment information into User collection
+   req.body.cartDetails.forEach((item)=>{
+      history.push({
+         dateOfPurchase:Date.now(),
+         name:item.name,
+         id:item._id,
+         price:item.price,
+         quantity:item.quantity,
+         patmentId: req.body.paymentData.paymentID
+      })
+   })
+   //Put payment information into paypal collection
+   let user=jwt.decode(req.header("auth-token"));
+   //console.log(user)
+   transactionData.user={
+      id:user.id,
+      name:user.name,
+      email:user.email
+   }
+   transactionData.data=req.body.paymentData;
+   transactionData.product=history;
+   User.findOneAndUpdate({_id:user.id},{$push:{history:history}},{new:true},(err,user)=>{if(err) return res.json({success:false,err});
+   const payment=new Payment(transactionData)
+   payment.save((err,doc)=>{
+      if(err) return res.json({success:false,err});
+      // let product=[];
+      // doc.product.forEach(item=>{
+      //    product.push({id:item.id,quantity:item.quantity})
+      // })
+      res.json({success:true})
+   })
+   })
+})
 
 
  router.put('/user/:id',async (req,res)=>{
