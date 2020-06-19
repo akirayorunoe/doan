@@ -18,6 +18,8 @@ import {useDispatch} from 'react-redux';
 import {usrLogin} from './action/user-login'
 import axios from 'axios';
 import UserPage from "./containers/UserPage";
+import MessengerCustomerChat from 'react-messenger-customer-chat';
+
 function App() {
   const dispatch=useDispatch();
   useEffect( ()=>{
@@ -48,6 +50,12 @@ fetchUser();}
           <Route path="/Search" component={SearchPage}/>
           <Route path="/User" component={UserPage}/>
       </Switch>
+      {/* <div>
+      <MessengerCustomerChat
+        pageId="100367225056687"
+        appId="1148277815539948"
+      />
+      </div> */}
           <Footer />
     </div>
   </Router>

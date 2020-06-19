@@ -15,9 +15,7 @@ import { createStore,combineReducers } from 'redux';
 // import "bootstrap/dist/css/bootstrap.css";
 
 // const store = createStore(cartReducer);
-
 const rootReducer = combineReducers({cartReducer,loginReducer,sortReducer,paginationReducer,searchReducer});
-
 const store = createStore(rootReducer);
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById("root"));
 

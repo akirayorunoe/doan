@@ -17,7 +17,14 @@ const SignUp = props => {
     if(!check){alert('Please accept the term of Use & Privacy Policy'); return;}
     if(!checkPass()){alert('Password and confirm password not match!'); return;}
     axios.post('http://localhost:3030/SignUp',{name,email,password,address,phonenum})
-    .then((user)=>alert(`Sign up success`))
+    .then((user)=>{alert(`Sign up success`)
+  setName('')
+  setEmail('')
+  setPassword('')
+  setPassword2('')
+  setAddress('')
+  setPhonenum('')
+  })
     .catch(err=>{
       const e=err.response.data;
       let s='';

@@ -26,7 +26,7 @@ const Pagination = ({maxPage})=>{
             <ul className="pagination">
             {
                 pageNumbers.map(number=>(
-                    <li key={number}>
+                    <li key={number} >
                         <a href={`#${number}`} onClick={()=>dispatch(pageGet(number))}>{number}</a>
                     </li>
                 ))

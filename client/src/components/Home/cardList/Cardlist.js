@@ -27,17 +27,14 @@ class Cardlist extends React.Component {
   if(this.props.route==='/'&&this.props.filter ==='/'){link=`http://localhost:3030/products?page=${this.props.number}`} 
   do
    {
-
     // console.log('num',this.props.number)
        console.log(link)
       await Axios.get(link)
-
     .then(data=>data.data)
       .then(data=>this.setState({productsData:data.result,maxPage:data.maxPage})).catch(err=>console.log(err))}
       while(this.state.productsData.length===0);
   }
  async componentDidUpdate(prevProps, prevState){
-
   // console.log(`http://localhost:3030/products${this.props.route==='/'?`?page=${this.props.number}`:`${this.props.route}&page=${this.props.number}`}`)
     if(prevProps.filter!==this.props.filter||prevProps.route!==this.props.route||this.props.number!==prevProps.number){
       let link='';
@@ -103,7 +100,6 @@ const mapStateToProps = (state) => {
   return {
     items: state.cartReducer.items,
     route: state.sortReducer.route,
-
     number:state.paginationReducer.number,
     filter:state.sortReducer.filter
   }
