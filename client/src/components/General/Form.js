@@ -21,7 +21,6 @@ const Form =()=>{
             .then((data)=>{
                 //console.log(data.headers['auth-token'])
             localStorage.setItem('auth-token',data.headers['auth-token'])
-            console.log(data)
             alert('Login success')
             return dispatch(usrLogin(data.data))})
             .catch(err=>{
@@ -34,6 +33,7 @@ const Form =()=>{
     }
 
     const responseFacebook = (response) => {
+        localStorage.setItem('auth-token',response.userID)
         const url = 'https://graph.facebook.com/' + response.userID + '?fields=location&access_token=' + response.accessToken
         axios.get(url)
         .then(res => {
@@ -50,12 +50,14 @@ const Form =()=>{
             .then(res2 => {
                 if (res2.data.status == 'success') {
                     alert('success')
+                    const data2 = {
+                        name: data.name,
+                        id: data.id
+                    }
                 } else {
-                    alert('err')
+                    alert(res2.data.message)
                 }
             })
-
-            return dispatch(usrLogin(data))
         })
     }
 
@@ -71,13 +73,12 @@ const Form =()=>{
             role: 'gmail'
         }
 
-        axios.post('http://localhost:3030/social', data)
+        axios.post('http://localhost:3030/social', (data))
         .then(res => {
-            console.log(res)
             if (res.data.status == 'success') {
                 alert('success')
             } else {
-                alert('err')
+                alert(res.data.message)
             }
         })
         return dispatch(usrLogin(data))
@@ -106,6 +107,7 @@ const Form =()=>{
                 <div className="social">
                     <div className="FB_login">
                         <FacebookLogin
+                        appId="583267365905856"//appId="583267365905856" //APP ID NOT CREATED YET
                         appId="583267365905856" //APP ID NOT CREATED YET
                         fields="name,email,picture"
                         scope="public_profile,user_photos,user_location,user_birthday,user_location,user_hometown,email"
