@@ -2,7 +2,7 @@
 
 /* Full-width input fields */
 .login-wrap input[type="text"],
-input[type="password"] {
+.login-wrap input[type="password"] {
   width: 100%;
   padding: 8px 15px;
   margin: auto;

@@ -4,8 +4,20 @@ import { Link } from 'react-router-dom'
 import { removeItem,addQuantity,subtractQuantity} from '../../action/cart-action'
 import '../../styles/components/General/Cart.css';
 import Total from '../General/Total'
-class Cart extends Component{
+import Cookies from 'universal-cookie';
 
+const cookies = new Cookies();
+class Cart extends Component{
+    constructor(props) {
+        super(props)
+        this.state = {
+            cart: []
+        }
+    }
+
+    componentWillUpdate(){
+
+    }
     //to remove the item completely
     handleRemove = (id)=>{
         this.props.removeItem(id);
@@ -19,13 +31,26 @@ class Cart extends Component{
         this.props.subtractQuantity(id);
     }
     render(){
-        console.log(this.props.items)
-              
-        let addedItems = this.props.items.length ?
+        let listCard =  this.props.items
+        // if ( listCard.length ) {
+        //     if (cookies.get('cart').length){
+        //         listCard = listCard.concat(cookies.get('cart'))
+        //     }
+
+        //     cookies.set('cart', listCard, { path: '/' });
+        // } else {
+        //     if (cookies.get('cart').length){
+        //         listCard = listCard.concat(cookies.get('cart'))
+        //         cookies.set('cart', listCard, { path: '/' });
+        //     } else {
+        //         cookies.set('cart', listCard, { path: '/' });
+        //     }
+        // }
+        // console.log(cookies.get('cart'))
+        let addedItems = listCard.length ?
             (  
-                this.props.items.map(item=>{
+                listCard.map(item=>{
                     return(
-                       
                         <li className="cart" key={item.id}>
                             <div className="item-img"> 
                                 <img src={item.img} alt={item.name} className=""/>
