@@ -96,11 +96,13 @@ const Nav = () => {
       {/* <div className="img-container"><img src={cart} onClick={()=>{setAppear(!appear)}} alt="cart"></img></div>
             {appear&&<Cart/>}
         */}
-      <Link to="/cart">
+      
         <div className="img-container">
+        <Link to="/cart">
           <img src={cart} alt="cart"></img>
+          </Link>
         </div>
-      </Link>
+      
     </nav>
   );
 };

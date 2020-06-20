@@ -16,11 +16,11 @@ class Product extends React.Component {
             <div className="product">
                 <ProductImg />
                 <div className="product-shop">
-                    <div>
+                    <div className="filter-zone">
                         <ProductList />
                     </div>
                     <div className="product-main">
-                        <div>
+                        <div className="sortProduct">
                             <Sort />
                         </div>
                         <div className="product-list">

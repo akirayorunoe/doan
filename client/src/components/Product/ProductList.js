@@ -35,6 +35,7 @@ function ProductList() {
             <li>Fruits</li>
           </NavLink>
         </li>
+        
         <li>
           <NavLink
             to="/Products/?filter=vegetables"
