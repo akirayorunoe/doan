@@ -4,7 +4,7 @@ import ProductImg from '../components/Product/ProductImg';
 import ProductList from '../components/Product/ProductList';
 import CardList from '../components/Home/cardList/Cardlist';
 import Sort from '../components/Product/Sort';
-import cartReducer from '../reducer/cartReducer';
+//import cartReducer from '../reducer/cartReducer';
 // import { Provider } from 'react-redux';
 // import { createStore } from 'redux';
 

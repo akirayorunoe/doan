@@ -11,7 +11,7 @@ import GoogleLogin from 'react-google-login';
 
 const Form =()=>{
     const [email,setEmail]=useState('');
-    const [address,setAddress]=useState('ahihu');
+    //const [address,setAddress]=useState('ahihu');
     const [password,setPassword]=useState('');
     const dispatch = useDispatch();
     const loginFunciton=()=>{
