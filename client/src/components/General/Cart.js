@@ -4,8 +4,10 @@ import { Link } from 'react-router-dom'
 import { removeItem,addQuantity,subtractQuantity} from '../../action/cart-action'
 import '../../styles/components/General/Cart.css';
 import Total from '../General/Total'
+import { withCookies } from 'react-cookie';
+import Cookies from 'universal-cookie'
+import { useCookies } from 'react-cookie';
 class Cart extends Component{
-
     //to remove the item completely
     handleRemove = (id)=>{
         this.props.removeItem(id);
@@ -19,8 +21,8 @@ class Cart extends Component{
         this.props.subtractQuantity(id);
     }
     render(){
-        console.log(this.props.items)
-              
+        const cookies=new Cookies();
+        
         let addedItems = this.props.items.length ?
             (  
                 this.props.items.map(item=>{
@@ -61,11 +63,15 @@ class Cart extends Component{
                          
                     )
                 })
+                
             ):
 
              (
                 <p style={{textAlign:"center"}}>Nothing.</p>
              )
+            let a=cookies.get('Cart')
+             if (this.props.items.length){
+        cookies.set('Cart',this.props.items,{path:'/'}) }
        return(
             <div className="cart_container">
                 <div className="cart_ordered">
@@ -75,6 +81,7 @@ class Cart extends Component{
                     <hr></hr>
                     <ul className="cart_collection">
                         {addedItems}
+                        
                     </ul>
                 </div>    
                 <hr></hr>
@@ -88,6 +95,7 @@ class Cart extends Component{
 const mapStateToProps = (state)=>{
     return{
         items: state.cartReducer.addedItems,
+        
         //addedItems: state.addedItems
     }
 }
@@ -99,4 +107,4 @@ const mapDispatchToProps = (dispatch)=>{
         subtractQuantity: (id)=>{dispatch(subtractQuantity(id))}
     }
 }
-export default connect(mapStateToProps,mapDispatchToProps)(Cart)
+export default withCookies(connect(mapStateToProps,mapDispatchToProps)(Cart))

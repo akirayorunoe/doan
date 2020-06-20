@@ -18,10 +18,13 @@ import {useDispatch} from 'react-redux';
 import {usrLogin} from './action/user-login'
 import axios from 'axios';
 import UserPage from "./containers/UserPage";
+import { withCookies } from 'react-cookie';
 import MessengerCustomerChat from 'react-messenger-customer-chat';
+import Cookies from 'universal-cookie'
 
-function App() {
+function App(props) {
   const dispatch=useDispatch();
+  const cookies=new Cookies();
   useEffect( ()=>{
     const token = localStorage.getItem('auth-token')
     if(token)
@@ -41,25 +44,25 @@ fetchUser();}
         <Switch>
           <Route path="/" exact component={Home}/>
           <Route path ="/Policy" component={Policy}/>
-          <Route path="/About" exact component={About} />
+          <Route path="/About" exact component={About}/>
           <Route path="/SignUp" exact component={signUp} /> 
           <Route path="/ForgetPass" exact component={Forgot_pass} />
           <Route path="/Products" exact component={Products}/>
-          <Route path="/cart" exact component={Cart}/>
+          <Route path="/cart" render={() => (<Cart cookies={props.cookies}/>)}/>
           <Route path="/Products/:id" component={ProductInfo}/>
           <Route path="/Search" component={SearchPage}/>
           <Route path="/User" component={UserPage}/>
       </Switch>
-      {/* <div>
+      <div>
       <MessengerCustomerChat
         pageId="100367225056687"
         appId="1148277815539948"
       />
-      </div> */}
+      </div>
           <Footer />
     </div>
   </Router>
   );
 }
 
-export default App;
+export default withCookies(App);

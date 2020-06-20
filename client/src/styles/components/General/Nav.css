@@ -1,4 +1,83 @@
-.nav-bar{
+.nav-bar {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
+
+  background: #b0eacd;
+  height: 47px;
+  max-width: auto;
+  max-height: fit-content;
+  width: auto;
+}
+
+.navbar-nav {
+  width: 100%;
+  background-color: #b0eacd;
+}
+
+.navbar-collapse {
+  flex-flow: column nowrap;
+}
+
+#searchInput {
+  width: 229px;
+  height: 16px;
+  background: #ffffff;
+  border-radius: 20px;
+  border: none;
+  max-width: inherit;
+  display: flex;
+}
+
+#searchBar {
+  display: flex;
+  flex: 5;
+  justify-content: flex-end;
+  margin-right: 30px;
+  width: fit-content;
+  max-width: 100%;
+  padding: 10px;
+}
+#searchBar input {
+  padding: 10px;
+}
+
+.nav-bar ul {
+  display: flex;
+  list-style: none;
+  flex: 5;
+  justify-content: space-around;
+}
+
+.nav-bar a {
+  text-decoration: none;
+  padding: 13px;
+}
+
+.nav-bar li {
+  font-family: Fondamento;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 21px;
+  color: #000;
+}
+
+.nav-bar .active li {
+  /* class active dùng trong react-router*/
+  color: #fff;
+}
+.nav-bar .img-container {
+  width: auto;
+  flex: 1;
+  margin-right: 20px;
+  display: flex;
+  max-width: 100%;
+  justify-content: flex-end;
+}
+/*old master css*/
+/* .nav-bar{
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -51,16 +130,51 @@
     line-height: 21px;
     color: #000;
 }
-
-.nav-bar .active li{
-    /* class active dùng trong react-router*/
-    color:#fff;
+*/
+.nav-bar .active li {
+  /* class active dùng trong react-router*/
+  color: #fff;
 }
-.nav-bar .img-container{
-    width: auto;
-    flex: 1;
-    margin-right: 20px;
+.nav-bar .img-container {
+  width: auto;
+  flex: 1;
+  margin-right: 20px;
+  display: flex;
+  max-width: 100%;
+  justify-content: flex-end;
+}
+
+/* Tablet and Mobile */
+@media only screen and (max-width: 768px) {
+  .nav-bar {
+    position: relative;
+
     display: flex;
-    max-width: 100%;
-    justify-content: flex-end;
+    justify-content: space-around;
+  }
+
+  .navbar-collapse {
+    position: absolute;
+    top: 100%;
+    left: 0;
+
+    width: 100%;
+  }
+
+  #searchBar {
+    margin-right: 0;
+  }
+
+  .img-container {
+    margin-left: 0;
+    padding-left: 0;
+  }
+
+  .navbar-toggler {
+    margin-left: 1rem;
+  }
+
+  .active {
+    display: block;
+  }
 }

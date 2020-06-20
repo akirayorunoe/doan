@@ -8,7 +8,7 @@ import loginReducer from './reducer/loginReducer';
 import sortReducer from './reducer/sortReducer';
 import searchReducer from './reducer/searchReducer';
 import paginationReducer from './reducer/paginationReducer';
-import filterRuducer from './reducer/filterReducer';
+import { CookiesProvider } from 'react-cookie';
 import { Provider } from 'react-redux';
 import { createStore,combineReducers } from 'redux';
 
@@ -17,7 +17,8 @@ import { createStore,combineReducers } from 'redux';
 // const store = createStore(cartReducer);
 const rootReducer = combineReducers({cartReducer,loginReducer,sortReducer,paginationReducer,searchReducer});
 const store = createStore(rootReducer);
-ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById("root"));
+
+ReactDOM.render(<CookiesProvider><Provider store={store}><App /></Provider> </CookiesProvider>, document.getElementById("root"));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

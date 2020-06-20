@@ -11,7 +11,7 @@ import GoogleLogin from 'react-google-login';
 
 const Form =()=>{
     const [email,setEmail]=useState('');
-    const [address,setAddress]=useState('ahihu');
+    // const [address,setAddress]=useState('ahihu');
     const [password,setPassword]=useState('');
     const dispatch = useDispatch();
     const loginFunciton=()=>{
@@ -60,26 +60,26 @@ const Form =()=>{
     }
 
     const responseGoogle = (response) => {
-       // console.log(response.googleId)
+        // console.log(response)
        localStorage.setItem('auth-token',response.googleId)
         const data = {
-            email: response.Tt.Du,
-            name: response.Tt.Bd,
-            avatar:response.Tt.hL,
+            email: response.Qt.VU,
+            name: response.Qt.Bd,
+            avatar:response.Qt.hL,
             id: response.Ea,
             address: 'Trống',
             role: 'gmail'
         }
 
-        // axios.post('http://localhost:3030/social', data)
-        // .then(res => {
-        //     console.log(res)
-        //     if (res.data.status == 'success') {
-        //         alert('success')
-        //     } else {
-        //         alert('err')
-        //     }
-        // })
+        axios.post('http://localhost:3030/social', data)
+        .then(res => {
+            console.log(res)
+            if (res.data.status == 'success') {
+                alert('success')
+            } else {
+                alert('err')
+            }
+        })
         return dispatch(usrLogin(data))
     }
 
@@ -106,7 +106,7 @@ const Form =()=>{
                 <div className="social">
                     <div className="FB_login">
                         <FacebookLogin
-                        appId="583267365905856" //APP ID NOT CREATED YET
+                        appId="1148277815539948"//appId="583267365905856" //APP ID NOT CREATED YET
                         fields="name,email,picture"
                         scope="public_profile,user_photos,user_location,user_birthday,user_location,user_hometown,email"
                         callback={responseFacebook}
