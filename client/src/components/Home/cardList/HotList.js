@@ -54,7 +54,7 @@ class HotList extends React.Component {
         <Carousel
           autoPlay={2000}
           animationSpeed={1500}
-          slidesPerPage={3}
+          slidesPerPage={4}
           infinite
         >
           {this.listRender()}
