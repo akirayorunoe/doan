@@ -115,7 +115,6 @@ class Cardlist extends React.Component {
     this.props.addToCart(id);
   }
   render() {
-    console.log(this.state);
     const listCard = this.state.productsData.map((item) => (
       <div className="card-container col-lg-4 col-md-6 col-sm-6" key={item.id}>
         <Link to={`/Products/${item._id}`}>
