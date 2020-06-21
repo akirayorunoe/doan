@@ -16,7 +16,9 @@ const Header = () => {
     (
       <div className="header">
         <div className="iconImg">
-          <img src={Image} alt="Logo" />
+          <Link to = "/">
+            <img src={Image} alt="Logo" />
+          </Link> 
         </div>
         {!onLog || !auth ? (
           <div className="btnLocation">
