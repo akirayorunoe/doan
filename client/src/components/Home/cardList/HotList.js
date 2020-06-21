@@ -56,6 +56,14 @@ class HotList extends React.Component {
           animationSpeed={1500}
           slidesPerPage={4}
           infinite
+          breakpoints={{
+            640:{
+              slidesPerPage:1,
+            },
+            900:{
+              slidesPerPage:3
+            }
+          }}
         >
           {this.listRender()}
         </Carousel>
