@@ -145,29 +145,26 @@
 
 
 /* Tablet and Mobile */
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 991px) {
   .nav-bar {
     position: relative;
-
     display: flex;
-    /* justify-content: space-around; */
   }
-
+  .nav-item{
+    padding: 13px;
+  }
   .navbar-collapse {
+    display: flex;
     position: absolute;
     top: 100%;
     left: 0;
-
+    width: 100%;
     /* width: 100%; */
   }
-
   #searchBar {
     margin-right: 0;
   }
 
-  .active {
-    display: block;
-  }
 }
 .navbar-toggler{
   margin: 0px;
