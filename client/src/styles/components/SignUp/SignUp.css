@@ -38,13 +38,14 @@
   margin: 30px;
   margin-left: 90px;
 }
-
 .bg-signup {
   display: flex;
   justify-content: center;
   align-items: center;
   height: auto;
   width: 70%;
+
+  z-index: -1;
   /* width: 100%; */
 }
 .bg-image {
@@ -78,6 +79,8 @@
   flex-direction: column;
   width: 30%;
   height: fit-content;
+
+  z-index: -1;
 }
 .signup_box h4 {
   color: #b7b7b7;
