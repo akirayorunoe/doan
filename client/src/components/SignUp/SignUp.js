@@ -37,7 +37,6 @@ const SignUp = (props) => {
       alert("Please accept the term of Use & Privacy Policy");
       return;
     }
-
     if (!checkPass()) {
       alert("Password and confirm password not match!");
       return;
