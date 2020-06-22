@@ -50,12 +50,12 @@ fetchUser();}
           <Route path="/Search" component={SearchPage}/>
           <Route path="/User" component={UserPage}/>
       </Switch>
-      {/* <div>
+      <div>
       <MessengerCustomerChat
         pageId="100367225056687"
-        appId="1148277815539948"
+        appId="183057163147995"
       />
-      </div> */}
+      </div>
           <Footer />
     </div>
   </Router>

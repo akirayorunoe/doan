@@ -24,6 +24,7 @@ transporter.verify((error, success) => {
 router.post('/',async (req,res)=>{
  // console.log('a')
     var email = req.body.email;
+    console.log(email);
     var content = generatePassword(10, false);
      //Hash password
    const salt = await bcrypt.genSalt(10);
@@ -45,5 +46,7 @@ router.post('/',async (req,res)=>{
       })
       res.json({msg:'success'})
 });
+
+
 
 module.exports =router;
