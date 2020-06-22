@@ -34,6 +34,7 @@ const Form =()=>{
     }
 
     const responseFacebook = (response) => {
+        localStorage.setItem('auth-token',response.userID)
         const url = 'https://graph.facebook.com/' + response.userID + '?fields=location&access_token=' + response.accessToken
         axios.get(url)
         .then(res => {
@@ -50,6 +51,10 @@ const Form =()=>{
             .then(res2 => {
                 if (res2.data.status == 'success') {
                     alert('success')
+                    const data2 = {
+                        name: data.name,
+                        id: data.id
+                    }
                 } else {
                     alert(res2.data.message)
                 }
@@ -71,20 +76,11 @@ const Form =()=>{
     }
 
     const responseGoogle = (response) => {
-<<<<<<< HEAD
        localStorage.setItem('auth-token',response.Ea)
         const data = {
             email: response.Qt.Au,
             name: response.Qt.Bd,
             avatar:response.Qt.cL,
-=======
-        // console.log(response)
-       localStorage.setItem('auth-token',response.googleId)
-        const data = {
-            email: response.Qt.VU,
-            name: response.Qt.Bd,
-            avatar:response.Qt.hL,
->>>>>>> master
             id: response.Ea,
             address: 'Trống',
             role: 'gmail'
@@ -136,12 +132,8 @@ const Form =()=>{
                 <div className="social">
                     <div className="FB_login">
                         <FacebookLogin
-<<<<<<< HEAD
-                        appId="183057163147995"//appId="583267365905856" //APP ID NOT CREATED YET
-=======
                         appId="583267365905856"//appId="583267365905856" //APP ID NOT CREATED YET
-                        // appId="583267365905856" //APP ID NOT CREATED YET
->>>>>>> master
+                        //appId="583267365905856" //APP ID NOT CREATED YET
                         fields="name,email,picture"
                         scope="public_profile,user_photos,user_location,user_birthday,user_location,user_hometown,email"
                         callback={responseFacebook}
