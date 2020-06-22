@@ -4,9 +4,6 @@ import { Link } from 'react-router-dom'
 import { removeItem, addQuantity, subtractQuantity,addToCart } from '../../action/cart-action'
 import '../../styles/components/General/Cart.css';
 import Total from '../General/Total'
-import { withCookies } from 'react-cookie';
-import Cookies from 'universal-cookie'
-import { useCookies } from 'react-cookie';
 class Cart extends Component {
     //to remove the item completely
     handleRemove = (id) => {
@@ -126,4 +123,4 @@ const mapDispatchToProps = (dispatch) => {
         addToCart: (id) => {  dispatch(addToCart(id)) }
     }
 }
-export default withCookies(connect(mapStateToProps, mapDispatchToProps)(Cart))
+export default connect(mapStateToProps, mapDispatchToProps)(Cart)

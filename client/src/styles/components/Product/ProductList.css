@@ -2,16 +2,16 @@
     display: flex;
     list-style: none;
     flex-direction: column;
-    width: 200px;
-    max-width: 100%;
+    width: auto;
+    /* max-width: 100%; */
     height: auto;
     max-height: max-content;
-    margin-right: 30px;
+    /* margin-right: 30px; */
     background-color: #B0EACD;    
 }
-.Product-list li{
+/* .Product-list li{
     border-bottom: 2px solid black;
-}
+} */
 .Product-list ul{
     display: flex;
     flex-direction: column;
@@ -20,10 +20,10 @@
     display: flex;
     flex-direction: column;
 }
-.Fruit p{
+/* .Fruit p{
     border-bottom: 2px solid black;
-}
+} */
 .Fruit li{
     display: flex;
-    padding-left: 15px;
+   
 }

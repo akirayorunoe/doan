@@ -9,8 +9,8 @@ function Sort() {
     dispatch(sortChoose(e.target.value));
   }
   return (
-    <div className="sort-zone row">
-      <div className="col-md-12 col-sm-12">
+    <div className="sort-zone">
+      <div >
         <div>
           <p>Sort:</p>
         </div>

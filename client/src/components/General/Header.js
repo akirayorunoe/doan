@@ -13,11 +13,12 @@ const Header = () => {
   const dispatch = useDispatch();
   const auth = localStorage.getItem("auth-token"); //google, facebook auto bat form
   return (
-    console.log(onLog, auth),
     (
       <div className="header">
         <div className="iconImg">
-          <img src={Image} alt="Logo" />
+          <Link to = "/">
+            <img src={Image} alt="Logo" />
+          </Link> 
         </div>
         {!onLog || !auth ? (
           <div className="btnLocation">
@@ -42,13 +43,15 @@ const Header = () => {
               Hi,{" "}
               <Link to={{ pathname: "/User", state: { id: id } }}>{onLog}</Link>
             </p>
-            <Button
-              name="Log out"
-              onClick={() => {
-                localStorage.removeItem("auth-token");
-                dispatch(usrLogout());
-              }}
-            />
+            <Link to="/">
+              <Button
+                name="Log out"
+                onClick={() => {
+                  localStorage.removeItem("auth-token");
+                  dispatch(usrLogout());
+                }}
+              />
+            </Link>
           </div>
         )}
         {!onLog && appear && <Form />}

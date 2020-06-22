@@ -1,10 +1,12 @@
 const router = require('express').Router();
 const User=require('../model/User');
 const Social=require('../model/Social');
+const Payment=require('../model/Payment');
 const {registerValidation,loginValidation} =require('../validation.js');
 const jwt=require('jsonwebtoken');
 var bcrypt = require('bcryptjs');
 const verify = require('./verifyToken');
+//const { default: ProductList } = require('../../client/src/components/Product/ProductList');
 //Register
 router.post('/SignUp',async (req,res)=>{
    //Validate
@@ -46,8 +48,8 @@ router.post('/login',async (req,res)=>{
    const validPassword=await bcrypt.compare(req.body.password,user.password);
    if(!validPassword){return res.status(400).send([{'message':'Email or password is wrong!'}])}
    //Create and assign token
-   const token=jwt.sign({name:user.name,id:user._id},process.env.TOKEN_SECRET)
-   res.header('auth-token',token).status(201).send({name:user.name})
+   const token=jwt.sign({name:user.name,id:user._id,email:user.email,address:user.address,phonenum:user.phonenum,history:user.history},process.env.TOKEN_SECRET)
+   res.header('auth-token',token).status(201).send({name:user.name, id:user._id})
 })
 
 router.get('/login',async(req,res)=>{
@@ -61,7 +63,6 @@ router.post('/social',async (req,res)=>{
    //Checking if user already in database
    const emailExist=await Social.findOne({email:req.body.email})
    if(emailExist){return res.status(400).send({message:'Account exist'})}
-   console.log(req.body)
    const social=new Social({
       id: req.body.id,
       name:req.body.name,
@@ -98,20 +99,60 @@ router.get('/user',async (req,res)=>{
 router.get('/user/:id',async (req,res)=>{
    const id= req.params.id;
    try{
-     const user= await Social.findOne({id:id})
-     res.status(201).send(user);
+      user= await Social.findOne({id:req.params.id})
+
+      if (!user) {
+         user= await User.findOne({_id:req.params.id})
+      }
+
+      res.status(201).send(user);
    }
    catch(err){res.status(404).send(err)}
  })
 
- router.post('/payment',(req,res)=>{
-   console.log(req.body);
-   res.send('pay success');
- })
+ router.post('/payment',verify,(req,res)=>{
+   // console.log(req.body);
+   // res.send('pay success');
+   let history=[];
+   let transactionData={};
+   console.log(req.body)
+   //Put Payment information into User collection
+   req.body.cartDetails.forEach((item)=>{
+      history.push({
+         dateOfPurchase:Date.now(),
+         name:item.name,
+         id:item._id,
+         price:item.price,
+         quantity:item.quantity,
+         patmentId: req.body.paymentData.paymentID
+      })
+   })
+   //Put payment information into paypal collection
+   let user=jwt.decode(req.header("auth-token"));
+   //console.log(user)
+   transactionData.user={
+      id:user.id,
+      name:user.name,
+      email:user.email
+   }
+   transactionData.data=req.body.paymentData;
+   transactionData.product=history;
+   User.findOneAndUpdate({_id:user.id},{$push:{history:history}},{new:true},(err,user)=>{if(err) return res.json({success:false,err});
+   const payment=new Payment(transactionData)
+   payment.save((err,doc)=>{
+      if(err) return res.json({success:false,err});
+      // let product=[];
+      // doc.product.forEach(item=>{
+      //    product.push({id:item.id,quantity:item.quantity})
+      // })
+      res.json({success:true})
+   })
+   })
+})
 
 
  router.put('/user/:id',async (req,res)=>{
-   user= await Social.findOne({_id:req.params.id})
+   user= await Social.findOne({id:req.params.id})
 
    if (!user) {
       user= await User.findOne({_id:req.params.id})
@@ -120,15 +161,19 @@ router.get('/user/:id',async (req,res)=>{
    if (typeof req.body.name !== 'undefined') {
       user.name = req.body.name;
    }
-
    if (typeof req.body.address !== 'undefined') {
-      social.address = req.body.address;
+      user.address = req.body.address;
    }
-
+   if (typeof req.body.phonenum !== 'undefined') {
+      user.phonenum = req.body.phonenum;
+   }
+   // if (typeof req.body.phonenum !== 'undefined') {
+   //    user.phonenum = req.body.phonenum;
+   // }
    user.save(function (err) {
       if (err) return res.json(err);
       res.json({
-         message: 'Update succes',
+         status: 'succes',
          data: user
       })
    })

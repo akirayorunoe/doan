@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 3030;
 const cors = require('cors');
+const bodyParser = require('body-parser')
 const authRoute = require('./routers/auth');
 const productRoute = require('./routers/listproduct');
 const forgetPass = require('./routers/forgetPass');
@@ -19,6 +20,8 @@ app.use(function (req, res, next) {
 });
 //CONNECT TO DATABASE
 mongoose.connect(process.env.DB_CONNECT,{ useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false  }, ()=>{console.log('Connect to DB!')});
+app.use(bodyParser())
+app.use(bodyParser.json())
 app.use('/',authRoute);
 app.use('/products',productRoute);//localhost:3030/products
 app.use('/forgetpassword',forgetPass);
