@@ -38,20 +38,27 @@ router.post('/SignUp',async (req,res)=>{
 
 //Login
 router.post('/login',async (req,res)=>{
-   //Validate
-   const {error} = loginValidation(req.body);
-   if(error) {return res.status(400).send(error.details);}
-   //Checking if user already in database
-   const user=await User.findOne({email:req.body.email})
-   if(!user){return res.status(400).send([{'message':'Email or password is wrong!'}])}
-   //Check password
-   const validPassword=await bcrypt.compare(req.body.password,user.password);
-   if(!validPassword){return res.status(400).send([{'message':'Email or password is wrong!'}])}
-   //Create and assign token
 
-   const token=jwt.sign({name:user.name,id:user._id,email:user.email,address:user.address,phonenum:user.phonenum,history:user.history},process.env.TOKEN_SECRET)
-   res.header('auth-token',token).status(201).send({name:user.name, id:user._id})
+   if (req.body.role == 'signup'){
+      //Validate
+      const {error} = loginValidation(req.body.data);
+      if(error) {return res.status(400).send(error.details);}
+      //Checking if user already in database
+      const user=await User.findOne({email:req.body.data.email})
+      if(!user){return res.status(400).send([{'message':'Email or password is wrong!'}])}
+      //Check password
+      const validPassword=await bcrypt.compare(req.body.data.password,user.password);
+      if(!validPassword){return res.status(400).send([{'message':'Email or password is wrong!'}])}
+      //Create and assign token
 
+      const token=jwt.sign({name:user.name,id:user._id,email:user.email,address:user.address,phonenum:user.phonenum,history:user.history},process.env.TOKEN_SECRET)
+      res.header('auth-token',token).status(201).send({name:user.name, id:user._id})
+   } else {
+      const user=await Social.findOne({id:req.body.id})
+      console.log(user)
+      const token=jwt.sign({name:user.name,id:user._id,email:user.email,address:user.address,phonenum:user.phonenum,history:user.history},process.env.TOKEN_SECRET)
+      res.header('auth-token',token).status(201).send({name:user.name, id:user._id})
+   }
 })
 
 router.get('/login',async(req,res)=>{
@@ -63,8 +70,9 @@ router.get('/login',async(req,res)=>{
 
 router.post('/social',async (req,res)=>{
    //Checking if user already in database
-   const emailExist=await Social.findOne({email:req.body.email})
-   if(emailExist){return res.status(400).send({message:'Account exist'})}
+   const userExist=await Social.find({id:req.body.id})
+
+   if(userExist){return res.status(400).json({message:'Account exist'})}
    const social=new Social({
       id: req.body.id,
       name:req.body.name,
@@ -76,7 +84,7 @@ router.post('/social',async (req,res)=>{
    try {
       const saveSocial=await social.save();
       res.send({
-         social:social._id,
+         social:social.id,
          status: 'success'
       });
    } catch (error) {
@@ -117,7 +125,6 @@ router.get('/user/:id',async (req,res)=>{
    // res.send('pay success');
    let history=[];
    let transactionData={};
-   console.log(req.body)
    //Put Payment information into User collection
    req.body.cartDetails.forEach((item)=>{
       history.push({
@@ -139,17 +146,32 @@ router.get('/user/:id',async (req,res)=>{
    }
    transactionData.data=req.body.paymentData;
    transactionData.product=history;
-   User.findOneAndUpdate({_id:user.id},{$push:{history:history}},{new:true},(err,user)=>{if(err) return res.json({success:false,err});
-   const payment=new Payment(transactionData)
-   payment.save((err,doc)=>{
-      if(err) return res.json({success:false,err});
-      // let product=[];
-      // doc.product.forEach(item=>{
-      //    product.push({id:item.id,quantity:item.quantity})
-      // })
-      res.json({success:true})
-   })
-   })
+   user2= Social.findOne({_id:user.id})
+   if (user2) {
+      Social.findOneAndUpdate({_id:user.id},{$push:{history:history}},{new:true},(err,user)=>{if(err) return res.json({success:false,err});
+      const payment=new Payment(transactionData)
+      payment.save((err,doc)=>{
+         if(err) return res.json({success:false,err});
+         // let product=[];
+         // doc.product.forEach(item=>{
+         //    product.push({id:item.id,quantity:item.quantity})
+         // })
+         res.json({success:true})
+      })
+      })
+   } else {
+      User.findOneAndUpdate({_id:user.id},{$push:{history:history}},{new:true},(err,user)=>{if(err) return res.json({success:false,err});
+      const payment=new Payment(transactionData)
+      payment.save((err,doc)=>{
+         if(err) return res.json({success:false,err});
+         // let product=[];
+         // doc.product.forEach(item=>{
+         //    product.push({id:item.id,quantity:item.quantity})
+         // })
+         res.json({success:true})
+      })
+      })
+   }
 })
 
 

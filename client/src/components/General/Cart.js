@@ -32,8 +32,6 @@ class Cart extends Component{
     }
     render(){
         let listCard =  this.props.items
-        listCard = listCard.concat(cookies.get('cart'))
-        cookies.set('cart', listCard, { path: '/' });
 
         let addedItems = listCard.length ?
             (  
