@@ -69,9 +69,7 @@ router.get('/login',async(req,res)=>{
 
 
 router.post('/social',async (req,res)=>{
-   //Checking if user already in database
    const userExist=await Social.find({id:req.body.id})
-
    if(userExist){return res.status(400).json({message:'Account exist'})}
    const social=new Social({
       id: req.body.id,
@@ -107,7 +105,6 @@ router.get('/user',async (req,res)=>{
 
 
 router.get('/user/:id',async (req,res)=>{
-   const id= req.params.id;
    try{
       user= await Social.findOne({id:req.params.id})
 

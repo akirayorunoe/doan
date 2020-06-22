@@ -32,6 +32,7 @@ class UserPage extends React.Component {
     componentDidMount(){
         axios.get('http://localhost:3030/user/' + this.state.id)
        .then(data=>{
+           console.log(data)
             this.setState({
                 name: data.data.name,
                 address: data.data.address,
@@ -70,7 +71,6 @@ class UserPage extends React.Component {
     }
 
     render(){
-        {console.log(this.state.id)}
         // return(
         //     <div className="signup_box_container row">
         //         <div><img src={this.state.user.avatar}></img></div>
