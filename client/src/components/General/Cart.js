@@ -32,21 +32,9 @@ class Cart extends Component{
     }
     render(){
         let listCard =  this.props.items
-        // if ( listCard.length ) {
-        //     if (cookies.get('cart').length){
-        //         listCard = listCard.concat(cookies.get('cart'))
-        //     }
+        listCard = listCard.concat(cookies.get('cart'))
+        cookies.set('cart', listCard, { path: '/' });
 
-        //     cookies.set('cart', listCard, { path: '/' });
-        // } else {
-        //     if (cookies.get('cart').length){
-        //         listCard = listCard.concat(cookies.get('cart'))
-        //         cookies.set('cart', listCard, { path: '/' });
-        //     } else {
-        //         cookies.set('cart', listCard, { path: '/' });
-        //     }
-        // }
-        // console.log(cookies.get('cart'))
         let addedItems = listCard.length ?
             (  
                 listCard.map(item=>{
