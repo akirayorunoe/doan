@@ -32,6 +32,7 @@ class UserPage extends React.Component {
     componentDidMount(){
         axios.get('http://localhost:3030/user/' + this.state.id)
        .then(data=>{
+           console.log(data)
             this.setState({
                 name: data.data.name,
                 address: data.data.address,
