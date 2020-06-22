@@ -7,7 +7,8 @@
     height: auto;
     max-height: max-content;
     /* margin-right: 30px; */
-    background-color: #B0EACD;    
+    background-color: #B0EACD;  
+    margin-bottom: 0px;  
 }
 /* .Product-list li{
     border-bottom: 2px solid black;
@@ -15,15 +16,16 @@
 .Product-list ul{
     display: flex;
     flex-direction: column;
+    margin-bottom:0px;
 }
-.Fruit{
+/* .Fruit{
     display: flex;
     flex-direction: column;
 }
-/* .Fruit p{
+.Fruit p{
     border-bottom: 2px solid black;
-} */
+}
 .Fruit li{
     display: flex;
    
-}
+} */
