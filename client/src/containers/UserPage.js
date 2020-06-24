@@ -12,7 +12,7 @@ import {
   faLocationArrow
 } from "@fortawesome/free-solid-svg-icons";
 import axios from 'axios';
-
+import Swal from 'sweetalert2';
 class UserPage extends React.Component {
     constructor(props) {
         super(props)
@@ -65,7 +65,11 @@ class UserPage extends React.Component {
                     email: res2.data.email
                 })
             } else {
-                alert(res2.data.message)
+                Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    title: res2.data.message
+                  })
             }
         })
     }
