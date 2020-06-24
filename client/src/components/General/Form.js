@@ -13,23 +13,24 @@ const Form =()=>{
     const [email,setEmail]=useState('');
     //const [address,setAddress]=useState('ahihu');
     const [password,setPassword]=useState('');
+    const [role,setRole]=useState('signup');
     const dispatch = useDispatch();
     const loginFunciton=()=>{
         //e.preventDefault();
-        
-        axios.post('http://localhost:3030/login',{email,password})
-            .then((data)=>{
-                //console.log(data.headers['auth-token'])
-            localStorage.setItem('auth-token',data.headers['auth-token'])
-            alert('Login success')
-            return dispatch(usrLogin(data.data))})
-            .catch(err=>{
-                console.log(err)
-                const e=err.response.data;
-                let s='';
-                for(let i of e){s+=i.message;}
-                 alert(s);
-            });
+    
+    axios.post('http://localhost:3030/login',{role, data : {email, password}})
+        .then((data)=>{
+        //console.log(data.data)
+        localStorage.setItem('auth-token',data.headers['auth-token'])
+        alert('Login success')
+        return dispatch(usrLogin(data.data))})
+        .catch(err=>{
+            console.log(err)
+            const e=err.response.data;
+            let s='';
+            for(let i of e){s+=i.message;}
+                alert(s);
+        });
     }
 
     const responseFacebook = (response) => {
@@ -59,15 +60,27 @@ const Form =()=>{
                 }
             })
         })
+
+        axios.post('http://localhost:3030/login',{id : response.userID })
+        .then((data)=>{
+        localStorage.setItem('auth-token',data.headers['auth-token'])
+        alert('Login success')
+        return dispatch(usrLogin(data.data))})
+        .catch(err=>{
+            console.log(err)
+            const e=err.response.data;
+            let s='';
+            for(let i of e){s+=i.message;}
+                alert(s);
+        });
     }
 
     const responseGoogle = (response) => {
-       // console.log(response.googleId)
-       localStorage.setItem('auth-token',response.googleId)
+       localStorage.setItem('auth-token',response.Ea)
         const data = {
-            email: response.Tt.Du,
-            name: response.Tt.Bd,
-            avatar:response.Tt.hL,
+            email: response.Qt.Au,
+            name: response.Qt.Bd,
+            avatar:response.Qt.cL,
             id: response.Ea,
             address: 'Trống',
             role: 'gmail'
@@ -76,12 +89,24 @@ const Form =()=>{
         axios.post('http://localhost:3030/social', (data))
         .then(res => {
             if (res.data.status == 'success') {
-                alert('success')
+                alert('Post Social success')
             } else {
                 alert(res.data.message)
             }
         })
-        return dispatch(usrLogin(data))
+
+        axios.post('http://localhost:3030/login',{id : response.Ea })
+        .then((data)=>{
+        localStorage.setItem('auth-token',data.headers['auth-token'])
+        alert('Login success')
+        return dispatch(usrLogin(data.data))})
+        .catch(err=>{
+            console.log(err)
+            const e=err.response.data;
+            let s='';
+            for(let i of e){s+=i.message;}
+                alert(s);
+        });
     }
 
     return (
@@ -108,7 +133,7 @@ const Form =()=>{
                     <div className="FB_login">
                         <FacebookLogin
                         appId="583267365905856"//appId="583267365905856" //APP ID NOT CREATED YET
-                        appId="583267365905856" //APP ID NOT CREATED YET
+                        //appId="583267365905856" //APP ID NOT CREATED YET
                         fields="name,email,picture"
                         scope="public_profile,user_photos,user_location,user_birthday,user_location,user_hometown,email"
                         callback={responseFacebook}

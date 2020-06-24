@@ -8,8 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { usrLogout } from "../../action/user-login";
 const Header = () => {
   const [appear, setAppear] = useState(false);
-  const onLog = useSelector((state) => state.loginReducer.username);
-  const id = useSelector((state) => state.loginReducer.id);
+  const onLog = useSelector((state) => state.loginReducer);
   const dispatch = useDispatch();
   const auth = localStorage.getItem("auth-token"); //google, facebook auto bat form
   return (
@@ -20,7 +19,7 @@ const Header = () => {
             <img src={Image} alt="Logo" />
           </Link> 
         </div>
-        {!onLog || !auth ? (
+        {!onLog.username || !auth ? (
           <div className="btnLocation">
             <div id="btn1">
               <Button
@@ -39,10 +38,12 @@ const Header = () => {
           </div>
         ) : (
           <div className="btnLocation">
-            <p className="usr-name">
+            <div className="usr-name">
+            <p>
               Hi,{" "}
-              <Link to={{ pathname: "/User", state: { id: id } }}>{onLog}</Link>
+              <Link to={{ pathname: "/User", state: { id: onLog.id } }}>{onLog.username}</Link>
             </p>
+            </div>
             <Link to="/">
               <Button
                 name="Log out"
@@ -54,7 +55,7 @@ const Header = () => {
             </Link>
           </div>
         )}
-        {!onLog && appear && <Form />}
+        {!onLog.username && appear && <Form />}
       </div>
     )
   );

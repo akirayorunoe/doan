@@ -16,6 +16,10 @@ flex-wrap: wrap;
     align-items: center;
 }
 
+.usr-name p{
+    margin-bottom: 0px;
+}
+
 .iconImg{
     display: flex;
     width: 70%;
