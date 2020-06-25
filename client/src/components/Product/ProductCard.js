@@ -5,7 +5,7 @@ import { addToCart } from '../../action/cart-action'
 import QuantitiesButton from './QuantitiesButton';
 import { connect } from 'react-redux'
 import Swal from 'sweetalert2';
-class ProductCard extends React.Component {
+class ProductCard extends React.PureComponent {
     constructor(props) {
         super(props)
         this.state = {

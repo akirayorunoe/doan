@@ -8,7 +8,7 @@ import { connect } from "react-redux";
 import Axios from "axios";
 import Pagination from "../../Product/Pagination/Pagination";
 //use this in product page :v
-class Cardlist extends React.Component {
+class Cardlist extends React.PureComponent {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);

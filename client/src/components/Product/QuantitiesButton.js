@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../styles/components/Product/QuantitiesButton.css';
 
-class QuantitiesButton extends React.Component {
+class QuantitiesButton extends React.PureComponent {
   // constructor(props) {
   //   super(props);
   //   this.state = {

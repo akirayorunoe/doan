@@ -1,8 +1,8 @@
-import React,{Component} from 'react';
+import React from 'react';
 import '../../../styles/components/Home/Card.css';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
-class Card extends Component{
+class Card extends React.PureComponent{
     render() {
         // console.log(this.props)
         return (

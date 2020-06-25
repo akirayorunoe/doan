@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { removeItem, addQuantity, subtractQuantity,addToCart } from '../../action/cart-action'
 import '../../styles/components/General/Cart.css';
 import Total from '../General/Total'
-class Cart extends Component {
+class Cart extends PureComponent {
     //to remove the item completely
     handleRemove = (id) => {
         this.props.removeItem(id);

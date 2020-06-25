@@ -1,16 +1,6 @@
 import React, {useState, useEffect }  from 'react';
 import "../styles/components/SignUp/SignUp.css";
-import {useSelector} from 'react-redux';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faMapMarkedAlt,
-  faEnvelope,
-  faKey,
-  faPhoneAlt,
-  faUser,
-  faPhone,
-  faLocationArrow
-} from "@fortawesome/free-solid-svg-icons";
+
 import axios from 'axios';
 import Swal from 'sweetalert2';
 class UserPage extends React.Component {
