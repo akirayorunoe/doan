@@ -6,11 +6,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useHistory } from "react-router-dom";
 import Swal from 'sweetalert2';
 import {
-  faFacebookSquare,
-  faInstagramSquare,
-  faTwitterSquare,
-} from "@fortawesome/free-brands-svg-icons";
-import {
   faMapMarkedAlt,
   faEnvelope,
   faKey,
