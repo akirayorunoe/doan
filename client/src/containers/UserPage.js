@@ -1,18 +1,7 @@
 import React, {useState, useEffect }  from 'react';
-import "../styles/components/SignUp/SignUp.css";
-import {useSelector} from 'react-redux';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faMapMarkedAlt,
-  faEnvelope,
-  faKey,
-  faPhoneAlt,
-  faUser,
-  faPhone,
-  faLocationArrow
-} from "@fortawesome/free-solid-svg-icons";
+import '../styles/containers/User.css';
 import axios from 'axios';
-
+import Swal from 'sweetalert2';
 class UserPage extends React.Component {
     constructor(props) {
         super(props)
@@ -32,12 +21,13 @@ class UserPage extends React.Component {
     componentDidMount(){
         axios.get('http://localhost:3030/user/' + this.state.id)
        .then(data=>{
-           console.log(data)
+           console.log(data.data.history)
             this.setState({
                 name: data.data.name,
                 address: data.data.address,
                 phonenum: data.data.phonenum,
-                email: data.data.email
+                email: data.data.email,
+                history:data.data.history
             })
         })
         .catch(err=>console.log(err));
@@ -54,7 +44,7 @@ class UserPage extends React.Component {
             name : this.state.name,
             email : this.state.email,
             phonenum: this.state.phonenum,
-            address: this.state.address
+            address: this.state.address,
         })
         .then(res2 => {
             if (res2.data.status == 'success') {
@@ -62,10 +52,15 @@ class UserPage extends React.Component {
                     name: res2.data.name,
                     address: res2.data.address,
                     phonenum: res2.data.phonenum,
-                    email: res2.data.email
+                    email: res2.data.email,
+                    history:res2.data.history
                 })
             } else {
-                alert(res2.data.message)
+                Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    title: res2.data.message
+                  })
             }
         })
     }
@@ -140,32 +135,61 @@ class UserPage extends React.Component {
         //     </div>
 
         return(Object.keys(this.state.user).length!==0?
-            (<div>
-                <div><img src={this.state.user.avatar}></img></div>
-                <div><h1>ID : {this.state.id}</h1></div>
-                <div><h1>Name : {this.state.user.name}</h1></div>
-                <div><h1>Email : {this.state.user.email}</h1></div>
-                <div><h1>Role : {this.state.user.role}</h1></div>
-                <div><h1>Address : {this.state.user.address}</h1></div>
+            (<div className="profile-container">
+                <div className="user-img">
+                    {/* <img src={this.state.user.avatar}/> */}
+                    <img src="https://i.pinimg.com/564x/fd/0c/55/fd0c559856ca991e9e28937dc802f0b0.jpg"/>
+                </div>
+                <div className="user-profile">
+                <div className="u-id">
+                    <h1>ID : {this.state.id}</h1>
+                </div>
+                <div className="uname">
+                    <h1>Name : {this.state.user.name}</h1>
+                </div>
+                <div className="user-contact">
+                <div className="u-mail">
+                    <h1>Email : {this.state.user.email}</h1>
+                </div>
+                <div className="u-role">
+                    <h1>Role : {this.state.user.role}</h1>
+                </div>
+                </div>
+                <div className="u-address">
+                    <h1>Address : {this.state.user.address}</h1>
+                </div>
+            </div>
             </div>):
-            (<div>
-                <div><h1>ID : {this.state.norUser.id}</h1></div>
-                <div><h1>Name : {this.state.norUser.name}</h1></div>
-                <div><h1>Email : {this.state.norUser.email}</h1></div>
-                <div><h1>Phone number : {this.state.norUser.phonenum}</h1></div>
-                <div><h1>Address : {this.state.norUser.address}</h1></div>
-                <h1>Order history: 
+            (<div className="profile-container">
+                <div className="user-img">
+                    {/* <img src={this.state.user.avatar}/> */}
+                    <img src="https://i.pinimg.com/564x/fd/0c/55/fd0c559856ca991e9e28937dc802f0b0.jpg"/>
+                </div>
+                <div className="user-profile">
+                <div className="u-id">
+                    <p>ID : {this.state.norUser.id}</p>
+                </div>
+                <div className="uname">
+                    <p>Name : {this.state.norUser.name}</p>
+                </div>
+                <div className="user-contact">
+                    <div className="u-mail"><p>Email : {this.state.norUser.email}</p></div>
+                    <div className="u-phone"><p>Phone number : {this.state.norUser.phonenum}</p></div>
+                </div>   
+                <div className="u-address"><p>Address : {this.state.norUser.address}</p></div>
+                <div className="orderHis"><h1>Order history:</h1> 
     {
-        this.state.norUser.history?this.state.norUser.history.map((x,key)=>{
+
+        this.state.history?this.state.history.map((x,key)=>{
                         let cdate = (new Date(x.dateOfPurchase)).toString();
                        return (
-                       <ul key={key} style={{marginLeft:100,fontSize:25}}>
+                       <ul key={key}>
                         <li>Product name: {x.name}</li>
                         <li>Price: {x.price}</li>
                         <li>Quantity: {x.quantity}</li>
                         <li>Purchase time: {cdate}</li>
-                    </ul>)}):null}</h1>
-                
+                    </ul>)}):null}</div>
+                </div>
             </div>)
         )
     }
