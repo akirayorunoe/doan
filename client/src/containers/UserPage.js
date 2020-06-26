@@ -21,12 +21,13 @@ class UserPage extends React.Component {
     componentDidMount(){
         axios.get('http://localhost:3030/user/' + this.state.id)
        .then(data=>{
-           console.log(data)
+           console.log(data.data.history)
             this.setState({
                 name: data.data.name,
                 address: data.data.address,
                 phonenum: data.data.phonenum,
-                email: data.data.email
+                email: data.data.email,
+                history:data.data.history
             })
         })
         .catch(err=>console.log(err));
@@ -43,7 +44,7 @@ class UserPage extends React.Component {
             name : this.state.name,
             email : this.state.email,
             phonenum: this.state.phonenum,
-            address: this.state.address
+            address: this.state.address,
         })
         .then(res2 => {
             if (res2.data.status == 'success') {
@@ -51,7 +52,8 @@ class UserPage extends React.Component {
                     name: res2.data.name,
                     address: res2.data.address,
                     phonenum: res2.data.phonenum,
-                    email: res2.data.email
+                    email: res2.data.email,
+                    history:res2.data.history
                 })
             } else {
                 Swal.fire({
@@ -177,7 +179,8 @@ class UserPage extends React.Component {
                 <div className="u-address"><p>Address : {this.state.norUser.address}</p></div>
                 <div className="orderHis"><h1>Order history:</h1> 
     {
-        this.state.norUser.history?this.state.norUser.history.map((x,key)=>{
+
+        this.state.history?this.state.history.map((x,key)=>{
                         let cdate = (new Date(x.dateOfPurchase)).toString();
                        return (
                        <ul key={key}>
