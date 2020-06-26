@@ -1,11 +1,12 @@
 .hotList{
-    display: flex;
+    max-width: 100%;
     /* width: 100%; */
-    margin: 30px;
+    padding: 30px;
+    justify-content: center;
 }
-.BrainhubCarouselItem li{
+/* .BrainhubCarouselItem li{
     margin: 10px;
-}
+} */
 /* .hotList ul{
     width: 100%;
     display: flex;

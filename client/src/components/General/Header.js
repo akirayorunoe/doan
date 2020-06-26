@@ -38,10 +38,12 @@ const Header = () => {
           </div>
         ) : (
           <div className="btnLocation">
-            <p className="usr-name">
+            <div className="usr-name">
+            <p>
               Hi,{" "}
               <Link to={{ pathname: "/User", state: { id: onLog.id } }}>{onLog.username}</Link>
             </p>
+            </div>
             <Link to="/">
               <Button
                 name="Log out"

@@ -8,7 +8,7 @@ import {useDispatch} from 'react-redux';
 import {usrLogin} from '../../action/user-login'
 import FacebookLogin from 'react-facebook-login';
 import GoogleLogin from 'react-google-login';
-
+import Swal from 'sweetalert2';
 const Form =()=>{
     const [email,setEmail]=useState('');
     //const [address,setAddress]=useState('ahihu');
@@ -22,18 +22,31 @@ const Form =()=>{
         .then((data)=>{
         //console.log(data.data)
         localStorage.setItem('auth-token',data.headers['auth-token'])
-        alert('Login success')
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Login success',
+            showConfirmButton: false,
+            timer: 1500
+          })
         return dispatch(usrLogin(data.data))})
         .catch(err=>{
             console.log(err)
             const e=err.response.data;
             let s='';
             for(let i of e){s+=i.message;}
-                alert(s);
+            Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: s,
+                showConfirmButton: false,
+                timer: 2000
+              })
         });
     }
 
     const responseFacebook = (response) => {
+        localStorage.setItem('auth-token',response.userID)
         const url = 'https://graph.facebook.com/' + response.userID + '?fields=location&access_token=' + response.accessToken
         axios.get(url)
         .then(res => {
@@ -49,9 +62,25 @@ const Form =()=>{
             axios.post('http://localhost:3030/social', data)
             .then(res2 => {
                 if (res2.data.status == 'success') {
-                    alert('success')
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Login success',
+                        showConfirmButton: false,
+                        timer: 2000
+                      })
+                    const data2 = {
+                        name: data.name,
+                        id: data.id
+                    }
                 } else {
-                    alert(res2.data.message)
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'error',
+                        title: res2.data.message,
+                        showConfirmButton: false,
+                        timer: 2000
+                      })
                 }
             })
         })
@@ -59,18 +88,31 @@ const Form =()=>{
         axios.post('http://localhost:3030/login',{id : response.userID })
         .then((data)=>{
         localStorage.setItem('auth-token',data.headers['auth-token'])
-        alert('Login success')
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Login success',
+            showConfirmButton: false,
+            timer: 2000
+          })
         return dispatch(usrLogin(data.data))})
         .catch(err=>{
             console.log(err)
             const e=err.response.data;
             let s='';
             for(let i of e){s+=i.message;}
-                alert(s);
+            Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: s,
+                showConfirmButton: false,
+                timer: 2000
+              })
         });
     }
 
     const responseGoogle = (response) => {
+<<<<<<< HEAD
 
         // console.log(response)
        localStorage.setItem('auth-token',response.googleId)
@@ -78,6 +120,13 @@ const Form =()=>{
             email: response.Qt.VU,
             name: response.Qt.Bd,
             avatar:response.Qt.hL,
+=======
+       localStorage.setItem('auth-token',response.Ea)
+        const data = {
+            email: response.Qt.Au,
+            name: response.Qt.Bd,
+            avatar:response.Qt.cL,
+>>>>>>> c9cb0d9023b79dc8e520583e494f7e9b809f5b74
             id: response.Ea,
             address: 'Trống',
             role: 'gmail'
@@ -86,23 +135,47 @@ const Form =()=>{
         axios.post('http://localhost:3030/social', (data))
         .then(res => {
             if (res.data.status == 'success') {
-                alert('Post Social success')
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Success',
+                    showConfirmButton: false,
+                    timer: 2000
+                  })
             } else {
-                alert(res.data.message)
+                Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    title: res.data.message,
+                    showConfirmButton: false,
+                    timer: 2000
+                  })
             }
         })
 
         axios.post('http://localhost:3030/login',{id : response.Ea })
         .then((data)=>{
         localStorage.setItem('auth-token',data.headers['auth-token'])
-        alert('Login success')
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Login success',
+            showConfirmButton: false,
+            timer: 2000
+          })
         return dispatch(usrLogin(data.data))})
         .catch(err=>{
             console.log(err)
             const e=err.response.data;
             let s='';
             for(let i of e){s+=i.message;}
-                alert(s);
+            Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: s,
+                showConfirmButton: false,
+                timer: 2000
+              })
         });
     }
 
@@ -129,7 +202,12 @@ const Form =()=>{
                 <div className="social">
                     <div className="FB_login">
                         <FacebookLogin
+<<<<<<< HEAD
                         appId="183057163147995"//appId="583267365905856" //APP ID NOT CREATED YET
+=======
+                        appId="583267365905856"//appId="583267365905856" //APP ID NOT CREATED YET
+                        //appId="583267365905856" //APP ID NOT CREATED YET
+>>>>>>> c9cb0d9023b79dc8e520583e494f7e9b809f5b74
                         fields="name,email,picture"
                         scope="public_profile,user_photos,user_location,user_birthday,user_location,user_hometown,email"
                         callback={responseFacebook}

@@ -9,7 +9,7 @@ import Axios from "axios";
 import Carousel from "@brainhubeu/react-carousel";
 import "@brainhubeu/react-carousel/lib/style.css";
 
-class HotList extends React.Component {
+class HotList extends React.PureComponent {
   constructor() {
     super();
     this.state = {};

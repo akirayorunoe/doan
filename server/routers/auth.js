@@ -55,8 +55,13 @@ router.post('/login',async (req,res)=>{
       res.header('auth-token',token).status(201).send({name:user.name, id:user._id})
    } else {
       const user=await Social.findOne({id:req.body.id})
+<<<<<<< HEAD
       //console.log(user)
       const token=jwt.sign({name:user.name,id:user._id,email:user.email,address:user.address,phonenum:user.phonenum,history:user.history},process.env.TOKEN_SECRET)
+=======
+      console.log(user)
+      const token=jwt.sign({name:user.name,role:user.role,id:user._id,email:user.email,address:user.address,phonenum:user.phonenum,history:user.history},process.env.TOKEN_SECRET)
+>>>>>>> c9cb0d9023b79dc8e520583e494f7e9b809f5b74
       res.header('auth-token',token).status(201).send({name:user.name, id:user._id})
    }
 })
@@ -106,8 +111,7 @@ router.get('/user',async (req,res)=>{
 
 router.get('/user/:id',async (req,res)=>{
    try{
-      user= await Social.findOne({id:req.params.id})
-
+      user= await Social.findOne({_id:req.params.id})
       if (!user) {
          user= await User.findOne({_id:req.params.id})
       }
@@ -142,10 +146,15 @@ router.get('/user/:id',async (req,res)=>{
    }
    transactionData.data=req.body.paymentData;
    transactionData.product=history;
+<<<<<<< HEAD
    user2= Social.findOne({_id:user.id})
    console.log(user2)
    if (user2) {
       console.log('no co chay')
+=======
+   if (user.role) {
+      console.log('social')
+>>>>>>> c9cb0d9023b79dc8e520583e494f7e9b809f5b74
       Social.findOneAndUpdate({_id:user.id},{$push:{history:history}},{new:true},(err,user)=>{if(err) return res.json({success:false,err});
       const payment=new Payment(transactionData)
       payment.save((err,doc)=>{
@@ -158,6 +167,7 @@ router.get('/user/:id',async (req,res)=>{
       })
       })
    } else {
+      console.log('web')
       User.findOneAndUpdate({_id:user.id},{$push:{history:history}},{new:true},(err,user)=>{if(err) return res.json({success:false,err});
       const payment=new Payment(transactionData)
       payment.save((err,doc)=>{
@@ -189,13 +199,16 @@ router.get('/user/:id',async (req,res)=>{
    if (typeof req.body.phonenum !== 'undefined') {
       user.phonenum = req.body.phonenum;
    }
+   if (typeof req.body.history !== 'undefined') {
+      user.history = req.body.history;
+   }
    // if (typeof req.body.phonenum !== 'undefined') {
    //    user.phonenum = req.body.phonenum;
    // }
    user.save(function (err) {
       if (err) return res.json(err);
       res.json({
-         status: 'succes',
+         status: 'success',
          data: user
       })
    })
