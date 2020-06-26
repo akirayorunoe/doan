@@ -55,7 +55,7 @@ router.post('/login',async (req,res)=>{
       res.header('auth-token',token).status(201).send({name:user.name, id:user._id})
    } else {
       const user=await Social.findOne({id:req.body.id})
-      console.log(user)
+      //console.log(user)
       const token=jwt.sign({name:user.name,id:user._id,email:user.email,address:user.address,phonenum:user.phonenum,history:user.history},process.env.TOKEN_SECRET)
       res.header('auth-token',token).status(201).send({name:user.name, id:user._id})
    }
@@ -135,7 +135,6 @@ router.get('/user/:id',async (req,res)=>{
    })
    //Put payment information into paypal collection
    let user=jwt.decode(req.header("auth-token"));
-   //console.log(user)
    transactionData.user={
       id:user.id,
       name:user.name,
@@ -144,7 +143,9 @@ router.get('/user/:id',async (req,res)=>{
    transactionData.data=req.body.paymentData;
    transactionData.product=history;
    user2= Social.findOne({_id:user.id})
+   console.log(user2)
    if (user2) {
+      console.log('no co chay')
       Social.findOneAndUpdate({_id:user.id},{$push:{history:history}},{new:true},(err,user)=>{if(err) return res.json({success:false,err});
       const payment=new Payment(transactionData)
       payment.save((err,doc)=>{

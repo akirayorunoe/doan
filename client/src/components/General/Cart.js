@@ -17,15 +17,6 @@ class Cart extends Component {
     handleSubtractQuantity = (id) => {
         this.props.subtractQuantity(id);
     }
-<<<<<<< HEAD
-    render(){
-        let listCard =  this.props.items
-
-        let addedItems = listCard.length ?
-            (  
-                listCard.map(item=>{
-                    return(
-=======
     
     render() {
 
@@ -47,8 +38,6 @@ class Cart extends Component {
             (
                 this.props.addedItems.map(item => {
                     return (
-
->>>>>>> master
                         <li className="cart" key={item.id}>
                             <div className="item-img">
                                 <img src={item.img} alt={item.name} className="" />
