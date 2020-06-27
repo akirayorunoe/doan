@@ -1,8 +1,8 @@
 .bar-wrapper{
-    background-color: #fd7777;
+    background-color: #61ebc6;
     display: flex;
     max-width: 100%;
-    height:60px;
+    height:auto;
     justify-content: space-between;
     align-items: center;
     margin: 30px;
@@ -17,16 +17,22 @@
     text-size-adjust: 30px;
     flex: auto;
     padding-left: 70px;
+    max-width: 100%;
+    height: auto;
 }
 .watchmore{
-    margin-top:5px;
+    /* margin-top:5px; */
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 40px;
-    height: 100%;
+    margin-right: 20px;
+    height: auto;
+    max-width: 100%;
 }
 .watchmore a{
     color: white;
-    text-decoration: underline;
+    text-transform: uppercase;
+}
+.watchmore p{
+    color: black;
 }

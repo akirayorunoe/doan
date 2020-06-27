@@ -1,4 +1,4 @@
-import React, {useState, useEffect }  from 'react';
+import React  from 'react';
 import '../styles/containers/User.css';
 import axios from 'axios';
 import Swal from 'sweetalert2';
@@ -58,8 +58,8 @@ class UserPage extends React.Component {
             address: this.state.address,
         })
         .then(res2 => {
-            if (res2.data.status == 'success') {
-                alert('thanh xong')
+            if (res2.data.status === 'success') {
+                alert('thành công')
                 this.setState({
                     name: res2.data.name,
                     address: res2.data.address,
@@ -279,19 +279,47 @@ class UserPage extends React.Component {
                 <div className="orderHis"><h1>Order history:</h1> 
     {
 
-        this.state.history?this.state.history.map((x,key)=>{
-                        let cdate = (new Date(x.dateOfPurchase)).toString();
-                       return (
-                       <ul key={key}>
-                        <li>Product name: {x.name}</li>
-                        <li>Price: {x.price}</li>
-                        <li>Quantity: {x.quantity}</li>
-                        <li>Purchase time: {cdate}</li>
-                    </ul>)}):null}</div>
-                </div>
-            </div>)
-        )
-    }
+
+ this.state.history?this.state.history.map((x,key)=>{
+                 let cdate = (new Date(x.dateOfPurchase)).toString();
+                return (
+                <ul key={key}>
+                 <li>Product name: {x.name}</li>
+                 <li>Price: {x.price}</li>
+                 <li>Quantity: {x.quantity}</li>
+                 <li>Purchase time: {cdate}</li>
+             </ul>)}):null}</div>
+         </div>
+     </div>)
+        //(Object.keys(this.state.user).length!==0?
+        //     (<div className="profile-container">
+        //         <div className="user-img">
+        //             {/* <img src={this.state.user.avatar}/> */}
+        //             <img src="https://i.pinimg.com/564x/fd/0c/55/fd0c559856ca991e9e28937dc802f0b0.jpg"/>
+        //         </div>
+        //         <div className="user-profile">
+        //         <div className="u-id">
+        //             <h1>ID : {this.state.id}</h1>
+        //         </div>
+        //         <div className="uname">
+        //             <h1>Name : {this.state.user.name}</h1>
+        //         </div>
+        //         <div className="user-contact">
+        //         <div className="u-mail">
+        //             <h1>Email : {this.state.user.email}</h1>
+        //         </div>
+        //         <div className="u-role">
+        //             <h1>Role : {this.state.user.role}</h1>
+        //         </div>
+        //         </div>
+        //         <div className="u-address">
+        //             <h1>Address : {this.state.user.address}</h1>
+        //         </div>
+        //     </div>
+        //     </div>):
+            
+        //)
+        )}
 }
 
 export default UserPage;

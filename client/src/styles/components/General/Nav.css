@@ -59,18 +59,24 @@
   padding: 13px;
 }
 
-.nav-bar li {
+.nav-bar li a{
   /* font-family: Fondamento; */
   font-style: normal;
   font-weight: normal;
   font-size: 15px;
   line-height: 21px;
-  color: #000;
+  color: #000; 
+}
+
+.nav-bar li a:hover{
+  background-color: #00DD75;
+  color: #fff; 
+  border-radius: 10px;
 }
 
 .nav-bar .active li {
   /* class active dùng trong react-router*/
-  color: #fff;
+  color: #fff; 
 }
 .nav-bar .img-container {
   width: fit-content;

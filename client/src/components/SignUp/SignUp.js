@@ -6,10 +6,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useHistory } from "react-router-dom";
 import Swal from 'sweetalert2';
 import {
-  faMapMarkedAlt,
   faEnvelope,
   faKey,
-  faPhoneAlt,
   faUser,
   faPhone,
   faLocationArrow

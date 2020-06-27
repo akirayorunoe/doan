@@ -1,4 +1,4 @@
-import React,{useEffect,useState} from "react";
+import React,{useEffect} from "react";
 import Home from "./containers/Home";
 import "./App.css";
 import Header from "./components/General/Header";
