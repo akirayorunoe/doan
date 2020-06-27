@@ -38,10 +38,6 @@ class Cart extends PureComponent {
             (
                 this.props.addedItems.map(item => {
                     return (
-<<<<<<< HEAD
-=======
-
->>>>>>> c9cb0d9023b79dc8e520583e494f7e9b809f5b74
                         <li className="cart" key={item.id}>
                             <div className="item-img">
                                 <img src={item.img} alt={item.name} className="" />

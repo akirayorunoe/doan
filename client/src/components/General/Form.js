@@ -112,21 +112,11 @@ const Form =()=>{
     }
 
     const responseGoogle = (response) => {
-<<<<<<< HEAD
-
-        // console.log(response)
-       localStorage.setItem('auth-token',response.googleId)
-        const data = {
-            email: response.Qt.VU,
-            name: response.Qt.Bd,
-            avatar:response.Qt.hL,
-=======
        localStorage.setItem('auth-token',response.Ea)
         const data = {
             email: response.Qt.Au,
             name: response.Qt.Bd,
             avatar:response.Qt.cL,
->>>>>>> c9cb0d9023b79dc8e520583e494f7e9b809f5b74
             id: response.Ea,
             address: 'Trống',
             role: 'gmail'
@@ -202,12 +192,7 @@ const Form =()=>{
                 <div className="social">
                     <div className="FB_login">
                         <FacebookLogin
-<<<<<<< HEAD
                         appId="183057163147995"//appId="583267365905856" //APP ID NOT CREATED YET
-=======
-                        appId="583267365905856"//appId="583267365905856" //APP ID NOT CREATED YET
-                        //appId="583267365905856" //APP ID NOT CREATED YET
->>>>>>> c9cb0d9023b79dc8e520583e494f7e9b809f5b74
                         fields="name,email,picture"
                         scope="public_profile,user_photos,user_location,user_birthday,user_location,user_hometown,email"
                         callback={responseFacebook}
