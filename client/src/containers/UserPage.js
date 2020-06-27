@@ -2,6 +2,8 @@ import React  from 'react';
 import '../styles/containers/User.css';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { Link } from "react-router-dom";
+import Button from "../components/General/Button";
 class UserPage extends React.Component {
     constructor(props) {
         super(props)
@@ -24,9 +26,9 @@ class UserPage extends React.Component {
     componentDidMount(){
         axios.get('http://localhost:3030/user/' + this.state.id)
        .then(data=>{
-           console.log(data.data.history)
+           console.log(data.data)
             this.setState({
-                id : data.data.id,
+                id : data.data._id,
                 name: data.data.name,
                 address: data.data.address,
                 phonenum: data.data.phonenum,
@@ -58,6 +60,7 @@ class UserPage extends React.Component {
             address: this.state.address,
         })
         .then(res2 => {
+            console.log(res2)
             if (res2.data.status === 'success') {
                 alert('thành công')
                 this.setState({
@@ -145,7 +148,6 @@ class UserPage extends React.Component {
         //             </div>
         //         </div>
         //     </div>
-
         return(Object.keys(this.state.user).length!==0?
             (<div className="profile-container">
             <div className="user-img">
@@ -276,6 +278,11 @@ class UserPage extends React.Component {
                 <div className="update_btn">
                     <button className="btn-ok" onClick={this.update}>Update</button>
                 </div>
+                <Link to={{ pathname: "/ChangePass", state: { id: this.state.id }}}>
+                <Button
+                    name="Change Password"
+                />
+                </Link>
                 <div className="orderHis"><h1>Order history:</h1> 
     {
 

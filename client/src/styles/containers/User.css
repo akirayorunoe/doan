@@ -24,7 +24,7 @@
   font-family: Poppins;
   box-sizing: border-box; }
   input:focus {
-    border: 10px solid green; 
+    border: 2px solid green; 
   }
 
 .user-profile{
