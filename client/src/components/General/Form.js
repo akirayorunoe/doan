@@ -13,7 +13,7 @@ const Form =()=>{
     const [email,setEmail]=useState('');
     //const [address,setAddress]=useState('ahihu');
     const [password,setPassword]=useState('');
-    const [role,setRole]=useState('signup');
+    const [role,]=useState('signup');
     const dispatch = useDispatch();
     const loginFunciton=()=>{
         //e.preventDefault();
@@ -61,7 +61,7 @@ const Form =()=>{
 
             axios.post('http://localhost:3030/social', data)
             .then(res2 => {
-                if (res2.data.status == 'success') {
+                if (res2.data.status === 'success') {
                     Swal.fire({
                         position: 'center',
                         icon: 'success',
@@ -124,7 +124,7 @@ const Form =()=>{
 
         axios.post('http://localhost:3030/social', (data))
         .then(res => {
-            if (res.data.status == 'success') {
+            if (res.data.status === 'success') {
                 Swal.fire({
                     position: 'center',
                     icon: 'success',

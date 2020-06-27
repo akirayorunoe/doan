@@ -20,6 +20,7 @@ const Nav = () => {
   const styles = {
     borderRadius: 10,
     backgroundColor: "#00DD75",
+    color:"#fff"
   };
   //https://stackoverflow.com/questions/47879663/root-navlink-always-get-active-class-react-router-dom
   const checkActive = (match, location) => {

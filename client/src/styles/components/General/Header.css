@@ -24,6 +24,8 @@ justify-content: space-between;
     display: flex;
     width: 40%;
     height: auto;
+    justify-content: center;
+    align-items: center;
     /* max-width: 100%;
     margin-left:35px; */
 }
