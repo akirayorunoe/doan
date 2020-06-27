@@ -1,5 +1,5 @@
 import React from "react";
-import Image from '../../assets/organic.png';
+import Image from '../../assets/organic.jpg';
 import '../../styles/components/Home/BgHeader.css';
 const BgHeader=(props)=>{
     return(

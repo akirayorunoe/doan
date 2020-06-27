@@ -2,6 +2,8 @@ import React from 'react';
 import '../../../styles/components/Home/Card.css';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
 class Card extends React.PureComponent{
     render() {
         // console.log(this.props)
@@ -19,7 +21,7 @@ class Card extends React.PureComponent{
                 
                 <div className="cartIcon">
                 <Link>
-                    <img src="https://img.icons8.com/bubbles/50/000000/buy.png" alt="cart-icon"  onClick={()=>{
+                <FontAwesomeIcon icon={faCartPlus} size="2x" color="#00C991" onClick={()=>{
                         this.props.handleClick(this.props.id)
                         Swal.fire({
                             position: 'center',
