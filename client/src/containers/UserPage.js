@@ -8,6 +8,7 @@ class UserPage extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
+            showHis:false,
             id: this.props.location.state.id,
             role:'',
             user: {},
@@ -23,6 +24,19 @@ class UserPage extends React.Component {
         }
 
         this.update = this.update.bind(this)
+    }
+
+    clickShowHis(){
+        if(this.state.showHis === true){
+            this.setState({
+                showHis:false
+            })
+        }
+        else{
+            this.setState({
+                showHis:true
+            })
+        }
     }
 
     componentDidMount(){
@@ -154,18 +168,20 @@ class UserPage extends React.Component {
                 </div>
                 
                 <div className="orderHis"><h1>Order history:</h1> 
+                <button className="hisBtn" onClick={()=>this.clickShowHis()}>Click me to show</button>
     {
 
 
- this.state.history?this.state.history.map((x,key)=>{
+this.state.history?this.state.history.map((x,key)=>{
                  let cdate = (new Date(x.dateOfPurchase)).toString();
                 return (
+                    this.state.showHis?
                 <ul key={key}>
                  <li>Product name: {x.name}</li>
                  <li>Price: {x.price}</li>
                  <li>Quantity: {x.quantity}</li>
                  <li>Purchase time: {cdate}</li>
-             </ul>)}):null}</div>
+             </ul>:null)}):null}</div>
          </div>
      </div>)
         )}
