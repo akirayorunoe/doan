@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // import "./fonts/Roboto-Regular.ttf";
 import About from "./containers/About";
 import signUp from "./containers/signUp";
-import Footer from "./components/General/footer";
+import Footer from "./components/General/Footer";
 import Policy from "./containers/Policy";
 import Forgot_pass from "./containers/ForgetPass";
 import ChangePass from './containers/ChangePass'
