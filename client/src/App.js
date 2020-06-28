@@ -1,3 +1,4 @@
+
 import React,{useEffect, Suspense, lazy} from "react";
 // import Home from "./containers/Home";
 import "./App.css";
@@ -34,7 +35,6 @@ const Cart = lazy(()=>import("./components/General/Cart"));
 const SearchPage = lazy(()=>import ("./containers/SearchPage"));
 const UserPage = lazy(()=>import ("./containers/UserPage"));
 const MessengerCustomerChat = lazy(()=>import('react-messenger-customer-chat'));
-
 function App() {
   const dispatch=useDispatch();
   useEffect( ()=>{

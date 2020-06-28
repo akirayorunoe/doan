@@ -116,18 +116,28 @@ router.get('/user/:id',async (req,res)=>{
    catch(err){res.status(404).send(err)}
  })
 
- router.delete('/user/:id',async (req,res)=>{
+ router.delete('/user',async (req,res)=>{
    try{
-      user= await Social.findOne({_id:req.params.id})
+      user= await Social.findOne({_id:req.body.id})
       if (!user) {
-         User.remove({_id:req.params.id})
+         User.findByIdAndDelete({_id:req.body.id}, (err, result) => {
+            if (err) return res.send(500, err)
+            console.log('got deleted');
+            return res.status(200).json({
+               status : 'success',
+               user : 'signup'
+            });
+            });
       } else {
-         Social.remove({_id:req.params.id})
+         Social.findByIdAndDelete({_id:req.body.id}, (err, result) => {
+            if (err) return res.send(500, err)
+            console.log('got deleted');
+            return res.status(200).json({
+               status : 'success',
+               user : 'social'
+            });
+            });
       }
-
-      res.status(200).json({
-         status : 'success',
-      });
    }
    catch(err){res.status(404).send(err)}
  })
