@@ -192,8 +192,7 @@ const Form =()=>{
                 <div className="social">
                     <div className="FB_login">
                         <FacebookLogin
-                        appId="583267365905856"//appId="583267365905856" //APP ID NOT CREATED YET
-                        //appId="583267365905856" //APP ID NOT CREATED YET
+                        appId="183057163147995"//appId="583267365905856" //APP ID NOT CREATED YET
                         fields="name,email,picture"
                         scope="public_profile,user_photos,user_location,user_birthday,user_location,user_hometown,email"
                         callback={responseFacebook}

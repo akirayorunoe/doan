@@ -10,6 +10,7 @@ import signUp from "./containers/signUp";
 import Footer from "./components/General/Footer";
 import Policy from "./containers/Policy";
 import Forgot_pass from "./containers/ForgetPass";
+import ChangePass from './containers/ChangePass'
 import Products from "./containers/Product";
 import ProductInfo from "./components/Product/ProductInfo";
 import Cart from "./components/General/Cart";
@@ -49,6 +50,7 @@ fetchUser();}
           <Route path="/Products/:id" component={ProductInfo}/>
           <Route path="/Search" component={SearchPage}/>
           <Route path="/User" component={UserPage}/>
+          <Route path="/ChangePass" component={ChangePass}/>
       </Switch>
       <div>
       <MessengerCustomerChat
