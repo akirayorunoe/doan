@@ -9,6 +9,7 @@ const forgetPass = require('./routers/forgetPass');
 const mongoose = require('mongoose');
 const dotenv=require('dotenv');
 dotenv.config();
+app.use(express.static('build'));
 const path = require('path')
 // Serve static files from the React frontend app
 //quan trong de deploy
