@@ -4,11 +4,6 @@
     /* margin: 30px; */
     /* background-color:rgb(212, 212, 212); */
     /* border-radius: 10px; */
-    max-width: 100%;
-    height: auto;
-    justify-content: center;
-    width: max-content;
-    padding: 10px;
 }
 
 .profile-container input[type="text"],
@@ -29,6 +24,7 @@
 
 .user-profile{
     /* display: flex; */
+    flex:1;
     flex-direction: column;
     width: 60%;
     max-width: 100%;
@@ -48,9 +44,17 @@
     height: fit-content;
     justify-content: center;
 } */
+.user-img {
+display:flex;
+flex-direction: column;
+flex:1;
+align-items: center;
+padding-top: 100px;
+}
 .user-img img{
-    width: 50%;
-    height: auto;
+    width: 250px;
+    border-radius: 250px;
+    height: 250px;
     max-width: 100%;
     min-width: 30%;
 }

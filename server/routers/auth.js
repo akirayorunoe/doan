@@ -229,9 +229,9 @@ router.post('/user/changepass',async (req,res)=>{
    if (typeof req.body.phonenum !== 'undefined') {
       user.phonenum = req.body.phonenum;
    }
-   // if (typeof req.body.phonenum !== 'undefined') {
-   //    user.phonenum = req.body.phonenum;
-   // }
+   if (req.body.avatar) {
+      user.avatar = req.body.avatar;
+   }
    user.save(function (err) {
       if (err) return res.json(err);
       res.json({

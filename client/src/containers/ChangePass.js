@@ -1,8 +1,8 @@
 import React  from 'react';
 import '../styles/containers/ChangPass.css';
-import Button from "../components/General/Button";
-import { Link } from "react-router-dom";
 import axios from 'axios';
+import {  withRouter } from 'react-router-dom';
+import Swal from 'sweetalert2';
 class ChangePass extends React.Component {
     constructor(props) {
         super(props)
@@ -14,6 +14,7 @@ class ChangePass extends React.Component {
             new_pass2 : ''
 
         }
+        
         this.check = this.check.bind(this)
         this.change = this.change.bind(this)
     }
@@ -30,21 +31,35 @@ class ChangePass extends React.Component {
         .then(res => {
             console.log(res)
             if (res.data.status == 'success') {
-                alert('thành công')
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: "Success"
+                  })
                 this.setState({
                     check: true
                 })
-            } else {
-                alert('that bai')
-            }
-        }).catch(
-            alert('sai mat khau')
+            } 
+        }).catch( err=>
+           { 
+            this.setState({password:''})   
+            Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: "Wrong password"
+          })}
         )
     }
 
     change() {
-        if ( this.state.new_pass != this.state.new_pass2) return alert('AHUHU')
-
+        const {history} = this.props;
+        if ( this.state.new_pass != this.state.new_pass2) {
+            return Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: "Password not match"
+              })
+}
         axios.post('http://localhost:3030/user/changepass', {
             id : this.state.id,
             password : this.state.new_pass
@@ -52,9 +67,18 @@ class ChangePass extends React.Component {
         .then(res => {
             console.log(res)
             if (res.data.status == 'success') {
-                alert('thành công')
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: "Password changed"
+                  })
+                  history.push("/");
             } else {
-                alert('that bai')
+                Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    title: "Cannot change"
+                  })
             }
         })
     }
