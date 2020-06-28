@@ -116,6 +116,23 @@ router.get('/user/:id',async (req,res)=>{
    catch(err){res.status(404).send(err)}
  })
 
+ router.delete('/user/:id',async (req,res)=>{
+   try{
+      user= await Social.findOne({_id:req.params.id})
+      if (!user) {
+         User.remove({_id:req.params.id})
+      } else {
+         Social.remove({_id:req.params.id})
+      }
+
+      res.status(200).json({
+         status : 'success',
+      });
+   }
+   catch(err){res.status(404).send(err)}
+ })
+
+
  router.post('/payment',verify,(req,res)=>{
    // console.log(req.body);
    // res.send('pay success');
@@ -134,7 +151,6 @@ router.get('/user/:id',async (req,res)=>{
    })
    //Put payment information into paypal collection
    let user=jwt.decode(req.header("auth-token"));
-   //console.log(user)
    transactionData.user={
       id:user.id,
       name:user.name,
@@ -142,6 +158,7 @@ router.get('/user/:id',async (req,res)=>{
    }
    transactionData.data=req.body.paymentData;
    transactionData.product=history;
+
    if (user.role) {
       console.log('social')
       Social.findOneAndUpdate({_id:user.id},{$push:{history:history}},{new:true},(err,user)=>{if(err) return res.json({success:false,err});
@@ -171,9 +188,33 @@ router.get('/user/:id',async (req,res)=>{
    }
 })
 
+router.post('/user/checkpass',async (req,res)=>{
+   const user=await User.findOne({_id:req.body.id})
+
+   const validPassword=await bcrypt.compare(req.body.password,user.password);
+   if(!validPassword){return res.status(400).send([{'message':'Password is wrong!'}])}
+
+   res.json({status: 'success'})
+})
+
+router.post('/user/changepass',async (req,res)=>{
+   const user=await User.findOne({_id:req.body.id})
+
+   const salt = await bcrypt.genSalt(10);
+   const hashPassword= await bcrypt.hash(req.body.password,salt);
+
+   user.password = hashPassword;
+   user.save(function (err) {
+      if (err) return res.json(err);
+      res.json({
+         status: 'success',
+      })
+   })
+})
+
 
  router.put('/user/:id',async (req,res)=>{
-   user= await Social.findOne({id:req.params.id})
+   user= await Social.findOne({_id :req.params.id })
 
    if (!user) {
       user= await User.findOne({_id:req.params.id})
@@ -188,12 +229,9 @@ router.get('/user/:id',async (req,res)=>{
    if (typeof req.body.phonenum !== 'undefined') {
       user.phonenum = req.body.phonenum;
    }
-   if (typeof req.body.history !== 'undefined') {
-      user.history = req.body.history;
+   if (req.body.avatar) {
+      user.avatar = req.body.avatar;
    }
-   // if (typeof req.body.phonenum !== 'undefined') {
-   //    user.phonenum = req.body.phonenum;
-   // }
    user.save(function (err) {
       if (err) return res.json(err);
       res.json({
