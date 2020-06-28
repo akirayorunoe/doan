@@ -20,6 +20,9 @@
     max-width: 100%;
     height: auto;
 }
+.hot-text h1{
+    font-size: 5vw 5vh;
+}
 .watchmore{
     /* margin-top:5px; */
     display: flex;
@@ -28,6 +31,7 @@
     margin-right: 20px;
     height: auto;
     max-width: 100%;
+    font-size: 1vw 2vh;
 }
 .watchmore a{
     color: white;

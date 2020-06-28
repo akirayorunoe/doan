@@ -1,7 +1,8 @@
-@font-face {
+/* @font-face {
     font-family: 'Roboto';
     src: local('Roboto'), url('./fonts/Roboto-Regular.ttf') format('truetype');
-}
+    font-display: swap;
+} */
 
 body{
     /* margin:0;
