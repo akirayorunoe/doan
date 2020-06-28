@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import "../../../styles/components/Home/HotList.css";
 import { Link } from "react-router-dom";
 import Card from "../cardList/Card";
@@ -6,8 +6,11 @@ import { addToCart } from "../../../action/cart-action";
 import { connect } from "react-redux";
 // import { data } from '../../../data/data';
 import Axios from "axios";
-import Carousel from "@brainhubeu/react-carousel";
+// import Carousel from "@brainhubeu/react-carousel";
 import "@brainhubeu/react-carousel/lib/style.css";
+
+
+const Carousel = lazy(()=>import('@brainhubeu/react-carousel'));
 
 class HotList extends React.PureComponent {
   constructor() {
@@ -51,6 +54,7 @@ class HotList extends React.PureComponent {
     //console.log(this.state.productsData)
     return (
       <div className="hotList">
+        <Suspense fallback={<div/>}>
         <Carousel
           autoPlay={2000}
           animationSpeed={1500}
@@ -67,6 +71,7 @@ class HotList extends React.PureComponent {
         >
           {this.listRender()}
         </Carousel>
+        </Suspense>
       </div>
     );
   }
