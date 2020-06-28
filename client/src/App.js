@@ -3,7 +3,7 @@ import React,{useEffect, Suspense, lazy} from "react";
 import "./App.css";
 // import Nav from "./components/General/Nav";
 // import Footer from "./components/General/Footer";
-import Nav from './components/General/Nav';
+// import Nav from './components/General/Nav';
 import Header from './components/General/Header';
 // import About from './containers/About';
 // import signUp from './containers/signUp';
@@ -21,7 +21,7 @@ import axios from 'axios';
 // import MessengerCustomerChat from 'react-messenger-customer-chat';
 
 const Home = lazy (()=>import('./containers/Home'));
-// const Nav = lazy (()=>import('./components/General/Nav'));
+const Nav = lazy (()=>import('./components/General/Nav'));
 // const Header = lazy(()=>import('./components/General/Header'));
 const About = lazy(()=> import('./containers/About')) ;
 const signUp = lazy(()=> import('./containers/signUp'));
@@ -49,29 +49,28 @@ fetchUser();}
 }
   ,[]);
   return (
-    
     <Router>
       <div className="App">
         <Header />
-        
-          <Nav />
-        
+        <Suspense fallback={<div/>}>
+          <Nav /> 
+        </Suspense>   
         <Suspense fallback='loading....'>
         <Switch>
           <Route path="/" exact component={Home}/>
-          <Route path ="/Policy" component={Policy}/>
-          <Route path="/About" exact component={About} />
-          <Route path="/SignUp" exact component={signUp} /> 
-          <Route path="/ForgetPass" exact component={Forgot_pass} />
-          <Route path="/Products" exact component={Products}/>
-          <Route path="/cart" exact component={Cart}/>
-          <Route path="/Products/:id" component={ProductInfo}/>
-          <Route path="/Search" component={SearchPage}/>
-          <Route path="/User" component={UserPage}/>
+          <Route path ="/Policy" component={WaitingComponent(Policy)}/>
+          <Route path="/About" exact component={WaitingComponent(About)} />
+          <Route path="/SignUp" exact component={WaitingComponent(signUp)} /> 
+          <Route path="/ForgetPass" exact component={WaitingComponent(Forgot_pass)} />
+          <Route path="/Products" exact component={WaitingComponent(Products)}/>
+          <Route path="/cart" exact component={WaitingComponent(Cart)}/>
+          <Route path="/Products/:id" component={WaitingComponent(ProductInfo)}/>
+          <Route path="/Search" component={WaitingComponent(SearchPage)}/>
+          <Route path="/User" component={WaitingComponent(UserPage)}/>
       </Switch>
       </Suspense>
       <div>
-      <Suspense fallback='loading...'>
+      <Suspense fallback='...'>
       <MessengerCustomerChat
         pageId="100367225056687"
         appId="183057163147995"
@@ -83,6 +82,14 @@ fetchUser();}
       </Suspense>
     </div>
   </Router>
+  );
+}
+
+function WaitingComponent(Component) {
+  return props => (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Component {...props} />
+    </Suspense>
   );
 }
 
