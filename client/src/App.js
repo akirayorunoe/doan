@@ -1,7 +1,5 @@
-import React,{useEffect} from "react";
-import Home from "./containers/Home";
+import React,{useEffect, lazy, Suspense} from "react";
 import "./App.css";
-import Header from "./components/General/Header";
 import Nav from "./components/General/Nav";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // import "./fonts/Roboto-Regular.ttf";
@@ -20,7 +18,8 @@ import {usrLogin} from './action/user-login'
 import axios from 'axios';
 import UserPage from "./containers/UserPage";
 import MessengerCustomerChat from 'react-messenger-customer-chat';
-
+const Header = lazy(() => import('./components/General/Header'));
+const Home = lazy(() => import('./containers/Home'));
 function App() {
   const dispatch=useDispatch();
   useEffect( ()=>{
@@ -37,7 +36,8 @@ fetchUser();}
   return (
     <Router>
       <div className="App">
-        <Header />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Header/>
         <Nav />
         <Switch>
           <Route path="/" exact component={Home}/>
@@ -52,6 +52,7 @@ fetchUser();}
           <Route path="/User" component={UserPage}/>
           <Route path="/ChangePass" component={ChangePass}/>
       </Switch>
+      </Suspense>
       <div>
       <MessengerCustomerChat
         pageId="100367225056687"
