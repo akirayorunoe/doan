@@ -55,9 +55,15 @@ router.post('/login',async (req,res)=>{
       res.header('auth-token',token).status(201).send({name:user.name, id:user._id})
    } else {
       const user=await Social.findOne({id:req.body.id})
-      console.log(user)
-      const token=jwt.sign({name:user.name,role:user.role,id:user._id,email:user.email,address:user.address,phonenum:user.phonenum,history:user.history},process.env.TOKEN_SECRET)
-      res.header('auth-token',token).status(201).send({name:user.name, id:user._id})
+      .then(data=> 
+         {
+            //console.log(data,'data')
+            const token=jwt.sign({name:data.name,role:data.role,id:data._id,email:data.email,address:data.address,phonenum:data.phonenum,history:data.history},process.env.TOKEN_SECRET)
+             res.header('auth-token',token).status(201).send({name:data.name, id:data._id})
+            })
+      .catch(err=>console.log(err))
+     
+      
    }
 })
 
@@ -70,7 +76,7 @@ router.get('/login',async(req,res)=>{
 
 router.post('/social',async (req,res)=>{
    const userExist=await Social.find({id:req.body.id})
-   if(userExist){return res.status(400).json({message:'Account exist'})}
+   if(userExist.length!==0){return res.json({message:'Account exist'})}
    const social=new Social({
       id: req.body.id,
       name:req.body.name,
@@ -79,6 +85,7 @@ router.post('/social',async (req,res)=>{
       avatar:req.body.avatar,
       role:req.body.role
    })
+   //console.log(social)
    try {
       const saveSocial=await social.save();
       res.send({

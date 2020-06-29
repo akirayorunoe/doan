@@ -74,7 +74,7 @@ fetchUser();}
       {/* <Suspense fallback={<div/>}> */}
       <MessengerCustomerChat
         pageId="100367225056687"
-        appId="183057163147995"
+        appId="2687294444826178"
       />
       {/* </Suspense> */}
       </div>
