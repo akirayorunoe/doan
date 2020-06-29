@@ -3,7 +3,7 @@ import Image from "../../assets/Logo.svg";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faFacebookSquare,
+  // faFacebookSquare,
   faInstagramSquare,
   faTwitterSquare,
 } from "@fortawesome/free-brands-svg-icons";
