@@ -19,7 +19,7 @@ const Header = () => {
             <img src={Image} alt="Logo" />
           </Link> 
         </div>
-        {!onLog.username || !auth ? (
+        {!onLog.username? (
           <div className="btnLocation">
             <div id="btn1">
               <Button

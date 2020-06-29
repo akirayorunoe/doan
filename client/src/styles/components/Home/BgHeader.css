@@ -2,4 +2,6 @@
     display: flex;
     width: 80%;
     align-self: center;
+    max-width: 100%;
+    height: auto;
 }
