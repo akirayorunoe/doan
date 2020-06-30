@@ -4,8 +4,8 @@ import Nav from "./components/General/Nav";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // import "./fonts/Roboto-Regular.ttf";
 import About from "./containers/About";
+import Home from "./containers/Home";
 import signUp from "./containers/signUp";
-import Footer from "./components/General/Footer";
 import Policy from "./containers/Policy";
 import Forgot_pass from "./containers/ForgetPass";
 import ChangePass from './containers/ChangePass'
@@ -19,7 +19,7 @@ import axios from 'axios';
 import UserPage from "./containers/UserPage";
 import MessengerCustomerChat from 'react-messenger-customer-chat';
 const Header = lazy(() => import('./components/General/Header'));
-const Home = lazy(() => import('./containers/Home'));
+const Footer = lazy(() => import('./components/General/footer'));
 function App() {
   const dispatch=useDispatch();
   useEffect( ()=>{
@@ -37,8 +37,10 @@ fetchUser();}
     <Router>
       <div className="App">
       <Suspense fallback={<div>Loading...</div>}>
-        <Header/>
-        <Nav />
+      <Header/>
+      </Suspense>
+      <Nav />
+      <Suspense fallback={<div>Loading...</div>}>
         <Switch>
           <Route path="/" exact component={Home}/>
           <Route path ="/Policy" component={Policy}/>
@@ -52,14 +54,16 @@ fetchUser();}
           <Route path="/User" component={UserPage}/>
           <Route path="/ChangePass" component={ChangePass}/>
       </Switch>
-      </Suspense>
+      </Suspense>      
       <div>
       <MessengerCustomerChat
         pageId="100367225056687"
         appId="183057163147995"
       />
       </div>
-          <Footer />
+      <Suspense fallback={<div>Loading...</div>}>
+      <Footer />
+      </Suspense>
     </div>
   </Router>
   );
