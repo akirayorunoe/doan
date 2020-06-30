@@ -11,7 +11,7 @@ import BgHeader from '../components/Home/BgHeader';
 const HotList =lazy(()=>import('../components/Home/cardList/HotList'));
 const CircleWrapper = lazy(()=>import( '../components/Home/CircleWrapper'));
 const HotBar = lazy (()=>import('../components/Home/HotBar'));
-const BgHeader = lazy(()=>import('../components/Home/BgHeader'));
+// const BgHeader = lazy(()=>import('../components/Home/BgHeader'));
 const Home =()=>{
         return (
            <div className="home">
