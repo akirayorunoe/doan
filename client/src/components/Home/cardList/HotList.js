@@ -55,10 +55,10 @@ class HotList extends React.PureComponent {
       <div className="hotList">
         <Suspense fallback={<div/>}>
         <Carousel
-          autoPlay={2000}
-          animationSpeed={1500}
+          // autoPlay={2000}
+          // animationSpeed={1500}
           slidesPerPage={4}
-          infinite
+          // infinite
           breakpoints={{
             640:{
               slidesPerPage:1,
