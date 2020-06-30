@@ -3,11 +3,14 @@ import "../../styles/components/Policy/Text.css"
 
 const Policy = () => {
     return (
+
       <div className="Policy">
-          <div className="policyInfo">
+        <div className="container" >
+        <div className="policyInfo">
           <h1>Our Policy</h1>
         
           <h2> Privacy Policy for Company Name</h2>
+          
           <p> At Website Name, accessible at Website. com, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by Website Name and how we use it.</p>
             <br/>
             <p>If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us through email at Email@Website.com</p>
@@ -162,6 +165,8 @@ const Policy = () => {
 </tbody>
 </table>
           </div>
+        </div>
+          
       </div>
     );
   };
