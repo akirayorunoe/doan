@@ -58,7 +58,7 @@ class HotList extends React.PureComponent {
           // autoPlay={2000}
           // animationSpeed={1500}
           slidesPerPage={4}
-          // infinite
+          infinite
           breakpoints={{
             640:{
               slidesPerPage:1,
