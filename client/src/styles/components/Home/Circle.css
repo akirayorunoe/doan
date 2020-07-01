@@ -5,9 +5,13 @@ border:10px solid #ffffff;
 border-radius: 150px;
 display: flex;
 max-width: 100%;
+align-self: center;
+}
+.circle-cpn img {
+    width: min-content;
 }
 .circle-text{
-    font-family: Fondamento;
+    /* font-family: Fondamento; */
     text-align: center;
 }
 .circle-cpn:hover{
@@ -15,6 +19,26 @@ max-width: 100%;
 }
 
 @media only screen and (max-width: 640px) {
+    .circle-cpn .img-wrapper{
+        width: 100px;
+        height: 100px;
+        border:10px solid #ffffff;
+        border-radius: 150px;
+        display: flex;
+        max-width: 100%;
+        }
+  }
+  @media only screen and (max-width: 583px) {
+    .circle-cpn .img-wrapper{
+        width: 50px;
+        height: 50px;
+        border:10px solid #ffffff;
+        border-radius: 150px;
+        display: flex;
+        max-width: 100%;
+        }
+  }
+  @media only screen and (max-width: 838px) {
     .circle-cpn .img-wrapper{
         width: 200px;
         height: 200px;
@@ -24,5 +48,15 @@ max-width: 100%;
         max-width: 100%;
         }
   }
+  @media only screen and (max-width: 573px) {
+    .circle-cpn .img-wrapper{
+        width: 120px;
+        height: 120px;
+        border:10px solid #ffffff;
+        border-radius: 150px;
+        display: flex;
+        max-width: 100%;
+        }
+  } 
 
   
