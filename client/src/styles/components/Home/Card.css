@@ -8,7 +8,7 @@
     min-width:150px;
     flex-wrap:wrap;
     height:350px;
-    z-index: -500;
+    /* max-width: 100%; */
 }
 .productImg{
     min-width:150px;
@@ -25,4 +25,5 @@
     height:60px;
     -webkit-line-clamp:1
 }
-.productName h4{overflow:hidden;text-overflow:ellipsis;min-width:150px;line-height:normal}.cartIcon{display:flex;justify-content:center;margin-bottom:10px}
+.productName h4{overflow:hidden;text-overflow:ellipsis;min-width:150px;line-height:normal}
+.cartIcon{display:flex;justify-content:center;margin-bottom:10px}
