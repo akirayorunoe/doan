@@ -8,13 +8,13 @@
     min-width:150px;
     flex-wrap:wrap;
     height:350px;
-    /* max-width: 100%; */
+    max-width: 100%;
 }
 .productImg{
     min-width:150px;
     min-height:150px;
     width:200px;
-    height:200px
+    height:200px;
 }
 .productImg img{
     width:100%
