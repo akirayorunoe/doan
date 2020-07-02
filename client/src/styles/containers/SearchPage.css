@@ -3,12 +3,16 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    position: relative;
 }
 .SearchPage .searchResult{
     width: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+}
+.searchText{
+    z-index: -500;
 }
 /* .SearchPage .card-container{
     width: 40%;

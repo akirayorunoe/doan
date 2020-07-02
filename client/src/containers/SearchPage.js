@@ -13,7 +13,7 @@ const SearchPage =(props)=>{
         }
     const searchResult=useSelector(state=>state.searchReducer.data);
         return (<div className="SearchPage">
-            <div style={{marginBottom:'10px'}}>
+            <div className="searchText">
                 <p>Search Result:{searchInput}</p>
                 <hr></hr>
             </div>

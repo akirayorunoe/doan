@@ -9,7 +9,6 @@ import Axios from "axios";
 // import Carousel from "@brainhubeu/react-carousel";
 import "@brainhubeu/react-carousel/lib/style.css";
 
-
 const Carousel = lazy(()=>import('@brainhubeu/react-carousel'));
 
 class HotList extends React.PureComponent {
@@ -56,8 +55,8 @@ class HotList extends React.PureComponent {
       <div className="hotList">
         <Suspense fallback={<div/>}>
         <Carousel
-          autoPlay={2000}
-          animationSpeed={1500}
+          // autoPlay={2000}
+          // animationSpeed={1500}
           slidesPerPage={4}
           infinite
           breakpoints={{
@@ -71,7 +70,7 @@ class HotList extends React.PureComponent {
         >
           {this.listRender()}
         </Carousel>
-        </Suspense>
+      </Suspense>  
       </div>
     );
   }

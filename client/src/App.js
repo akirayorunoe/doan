@@ -4,7 +4,7 @@ import React,{useEffect, Suspense, lazy} from "react";
 import "./App.css";
 // import Nav from "./components/General/Nav";
 // import Footer from "./components/General/Footer";
-// import Nav from './components/General/Nav';
+import Nav from './components/General/Nav';
 import Header from './components/General/Header';
 // import About from './containers/About';
 // import signUp from './containers/signUp';
@@ -19,10 +19,11 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import {useDispatch} from 'react-redux';
 import {usrLogin} from './action/user-login'
 import axios from 'axios';
+
 // import MessengerCustomerChat from 'react-messenger-customer-chat';
 
 const Home = lazy (()=>import('./containers/Home'));
-const Nav = lazy (()=>import('./components/General/Nav'));
+// const Nav = lazy (()=>import('./components/General/Nav'));
 // const Header = lazy(()=>import('./components/General/Header'));
 const About = lazy(()=> import('./containers/About')) ;
 const signUp = lazy(()=> import('./containers/signUp'));
@@ -35,6 +36,7 @@ const Cart = lazy(()=>import("./components/General/Cart"));
 const SearchPage = lazy(()=>import ("./containers/SearchPage"));
 const UserPage = lazy(()=>import ("./containers/UserPage"));
 const MessengerCustomerChat = lazy(()=>import('react-messenger-customer-chat'));
+
 function App() {
   const dispatch=useDispatch();
   useEffect( ()=>{
@@ -49,13 +51,14 @@ fetchUser();}
 }
   ,[]);
   return (
+    <div className="App">
+      <Suspense fallback='loading...'>
     <Router>
-      <div className="App">
-        <Header />
-        <Suspense fallback={<div/>}>
+        <Header/>
+        {/* <Suspense fallback={<div/>}> */}
           <Nav /> 
-        </Suspense>   
-        <Suspense fallback='loading....'>
+        {/* </Suspense>    */}
+        
         <Switch>
           <Route path="/" exact component={Home}/>
           <Route path ="/Policy" component={WaitingComponent(Policy)}/>
@@ -68,9 +71,9 @@ fetchUser();}
           <Route path="/Search" component={WaitingComponent(SearchPage)}/>
           <Route path="/User" component={WaitingComponent(UserPage)}/>
       </Switch>
-      </Suspense>
+      
       <div>
-      <Suspense fallback='...'>
+      <Suspense fallback={<div/>}>
       <MessengerCustomerChat
         pageId="100367225056687"
         appId="2687294444826178"
@@ -80,8 +83,9 @@ fetchUser();}
       <Suspense fallback={<div/>}>
           <Footer />
       </Suspense>
+    </Router>
+    </Suspense>
     </div>
-  </Router>
   );
 }
 
