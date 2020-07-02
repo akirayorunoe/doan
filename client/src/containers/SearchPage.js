@@ -21,7 +21,7 @@ const SearchPage =(props)=>{
             <div className="searchResult">
             {
             searchResult.map(item=>{
-            return <div className="card-container" key={item.id}>
+            return <div className="card-container col-lg-4 col-md-6 col-sm-6" key={item.id}>
             <Link to={`/Products/${item._id}`}>
               <Card
                 key={item._id}
