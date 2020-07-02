@@ -5,6 +5,7 @@ import Card from '../components/Home/cardList/Card';
 import {connect} from 'react-redux';
 import { addToCart } from '../action/cart-action';
 import '../styles/containers/SearchPage.css';
+import '../styles/components/Home/Cardlist.css';
 const SearchPage =(props)=>{
     const searchInput=useSelector(state=>{
         return state.searchReducer.name});
