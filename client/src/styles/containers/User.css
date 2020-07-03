@@ -4,6 +4,8 @@
     /* margin: 30px; */
     /* background-color:rgb(212, 212, 212); */
     /* border-radius: 10px; */
+    max-width: 100%;
+    flex-wrap: wrap;
 }
 
 .profile-container input[type="text"],
