@@ -15,14 +15,10 @@ const HotBar = lazy (()=>import('../components/Home/HotBar'));
 const Home =()=>{
         return (
            <div className="home">
+               <Suspense fallback={<div/>}>
                 <BgHeader/>
-            <Suspense fallback={<div/>}>
                 <CircleWrapper />
-            </Suspense>
-            <Suspense fallback={<div/>}>
                 <HotBar/>
-            </Suspense>
-            <Suspense fallback={<div/>}> 
                 <HotList/>
             </Suspense>
             {/* <CardList/> */}

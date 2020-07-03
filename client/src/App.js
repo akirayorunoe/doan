@@ -6,6 +6,7 @@ import "./App.css";
 // import Footer from "./components/General/Footer";
 import Nav from './components/General/Nav';
 import Header from './components/General/Header';
+import NotFound from './containers/404';
 // import About from './containers/About';
 // import signUp from './containers/signUp';
 // import Policy from "./containers/Policy";
@@ -52,8 +53,9 @@ fetchUser();}
   ,[]);
   return (
     <div className="App">
-      <Suspense fallback='loading...'>
+
     <Router>
+    <Suspense fallback='loading...'>
         <Header/>
         {/* <Suspense fallback={<div/>}> */}
           <Nav /> 
@@ -70,21 +72,18 @@ fetchUser();}
           <Route path="/Products/:id" component={WaitingComponent(ProductInfo)}/>
           <Route path="/Search" component={WaitingComponent(SearchPage)}/>
           <Route path="/User" component={WaitingComponent(UserPage)}/>
+          <Route path="/" component={NotFound}/>
       </Switch>
       
       <div>
-      <Suspense fallback={<div/>}>
       <MessengerCustomerChat
         pageId="100367225056687"
         appId="2687294444826178"
       />
-      </Suspense>
       </div>
-      <Suspense fallback={<div/>}>
           <Footer />
       </Suspense>
     </Router>
-    </Suspense>
     </div>
   );
 }
