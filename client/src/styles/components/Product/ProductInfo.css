@@ -1,11 +1,13 @@
 .productInfo{
     display: flex;
-    width: fit-content;
+    max-width: 100%;
+    flex-wrap: wrap;
 }
 .productInfoImg{
     display: flex;
     width: 300px;
     height: auto;
+    /* max-width: 100%; */
 }
 .productDetail{
     display: flex;

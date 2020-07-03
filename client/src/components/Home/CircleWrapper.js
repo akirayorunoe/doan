@@ -12,15 +12,21 @@ const CircleWrapper=()=>{
 
     return(
         <div className="circle-wrapper">
+            <div className="fruit-cate">
         <NavLink to='/Products/?filter=fruit' onClick={()=>{dispatch(filterChoose('fruit'));}}>
-             <Circle image={ofruit} name="ORGANIC FRUITS"/>
+             <Circle image='https://res.cloudinary.com/testuncleveggieimg/image/upload/c_scale,w_300/v1593613737/ofruits_pqhba5.webp' name="ORGANIC FRUITS"/>
         </NavLink>
+            </div>
+            <div className="veg-cate">
         <NavLink to='/Products/?filter=vegetables' onClick={()=>{dispatch(filterChoose('vegetables'));}}>
-            <Circle image={ovegets} name="ORGANIC VEGETABLES"/>
+            <Circle image='https://res.cloudinary.com/testuncleveggieimg/image/upload/c_scale,w_300/v1593613732/ovegets_lannqf.webp' name="ORGANIC VEGETABLES"/>
         </NavLink>
+        </div>
+        <div className="spi-cate">
         <NavLink to='/Products/?filter=spices' onClick={()=>{dispatch(filterChoose('spices'));}}>
-            <Circle image={ospices} name="ORGANIC SPICES"/>
+            <Circle image='https://res.cloudinary.com/testuncleveggieimg/image/upload/c_scale,w_300/v1593613740/ospices_smuuse.webp' name="ORGANIC SPICES"/>
         </NavLink>
+        </div>
         </div>
     );
 }
