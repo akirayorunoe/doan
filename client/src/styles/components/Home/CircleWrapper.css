@@ -1,51 +1,10 @@
-/* .circle-wrapper{
-    display: flex;
-    justify-content: space-around;
-    margin-top: -150px;
-    max-width: 100%;
-    height: auto;
-    
-    flex-direction: row;
-}
-.fruit-cate{
-    display: flex;
-    justify-content: center;
-    flex: 1;
-}
-.veg-cate{
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    justify-content: center;
-    align-items: center;
-    align-self: center;
-    justify-self: center;
-}
-.spi-cate{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    align-self: center;
-    justify-self: center;
-    flex: 1;
-}
-@media only screen and (max-width: 640px) {
-    .circle-wrapper{
-        margin-top: 0px;
-    }
-}
-
-@media only screen and (max-width: 573px) {
-    .circle-wrapper{
-        margin-top: 0px;
-    }
-} */
-
 .circle-wrapper {
     padding: 68px 0 60px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    width: 100%;
+    max-width: 100%;
 }
 @media only screen and (max-width: 991px) and (min-width: 768px){
     .circle-wrapper {

@@ -9,18 +9,19 @@ class Card extends React.PureComponent{
         // console.log(this.props)
         return (
             <div className="card" >
-                <div>
+                <Link to={`/Products/${this.props.id}`}>
+                <div className="product_thump">
                     <img className="productImg" src={this.props.img} alt={this.props.productName} />
                 </div>
-                <div className="productName">
-                    <h4>{this.props.productName}</h4>
+                <div className='product_content'>
+                    <h4 className="product_name">{this.props.productName}</h4>
+                    <div className="price_box">
+                        <span className="current_price">{this.props.price}$</span>
+                        <span className="old_price">133$</span>
+                    </div>
                 </div>
-                <div>
-                    <p>Giá: {this.props.price} $</p>
-                </div>
-                
+                </Link>
                 <div className="cartIcon">
-                <Link>
                 <FontAwesomeIcon icon={faCartPlus} size="2x" color="#00C991" onClick={()=>{
                         this.props.handleClick(this.props.id)
                         Swal.fire({
@@ -31,7 +32,6 @@ class Card extends React.PureComponent{
                             timer: 1500
                           })
                     }}/>
-                </Link>
                 </div>
                 
             </div>

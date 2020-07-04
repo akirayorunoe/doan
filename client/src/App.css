@@ -2,6 +2,8 @@
     font-family: 'Galada';
     src: local('Galada'), url('./fonts/Galada-Regular.ttf') format('truetype');
     font-display: swap;
+    font-family: 'Lobster';
+    src: local('Lobster'),url('./fonts/Lobster-Regular.ttf') format('truetype');
 }
 
 body{

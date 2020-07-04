@@ -33,7 +33,6 @@ class HotList extends React.PureComponent {
       ? this.state.productsData.slice(0, 6).map((item) => {
           return (
             <div className="card-container" key={item.id}>
-              <Link to={`/Products/${item._id}`}>
                 <Card
                   key={item.id}
                   img={item.img}
@@ -42,7 +41,6 @@ class HotList extends React.PureComponent {
                   id={item.id}
                   handleClick={this.handleClick}
                 />
-              </Link>
             </div>
           );
         })

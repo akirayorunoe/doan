@@ -125,7 +125,7 @@ class Cardlist extends React.PureComponent {
   render() {
     const listCard = this.state.productsData.map((item) => (
       <div className="card-container col-lg-4 col-md-6 col-sm-6" key={item.id}>
-        <Link to={`/Products/${item._id}`}>
+        {/* <Link to={`/Products/${item._id}`}> */}
           <Card
             key={item._id}
             img={item.img}
@@ -134,7 +134,7 @@ class Cardlist extends React.PureComponent {
             id={item.id}
             handleClick={this.handleClick}
           />
-        </Link>
+        {/* </Link> */}
         {/* <Pagination
 
         /> */}
