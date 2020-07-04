@@ -131,7 +131,7 @@ class Cardlist extends React.PureComponent {
             img={item.img}
             price={Math.round(item.price * 100) / 100}
             productName={item.name}
-            id={item.id}
+            id={item._id}
             handleClick={this.handleClick}
           />
         {/* </Link> */}

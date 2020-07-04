@@ -10,7 +10,7 @@
     list-style: none;
 }
 .wallpaper{
-    max-width: fit-content;
+    max-width: 100%;
     position: absolute;
     height: fit-content
 }
