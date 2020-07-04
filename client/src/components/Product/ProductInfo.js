@@ -29,9 +29,7 @@ function ProductInfo({ match }) {
                     <div class="row">
                         <div class="col-12">
                             <div class="breadcrumb_content">
-                                <ul>
-                                    <li>product details</li>
-                                </ul>
+                                <h3>Product info</h3>
                             </div>
                         </div>
                     </div>

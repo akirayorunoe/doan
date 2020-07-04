@@ -12,6 +12,7 @@
 .product-info-container{
     max-width: 100%;
     width: 100%;
+    flex-wrap: wrap;
 }
 .breadcrumb_content {
     text-align: center;
@@ -125,4 +126,16 @@
     margin-top: 20px;
     border-radius: 5px;
     font-size: 13px;
+}
+.product_d_inner {
+    padding: 20px 30px 27px;
+    border: 1px solid #ededed;
+}
+.preview-container{
+    max-width: 100%;
+    width: 100%;
+}
+.row{
+    margin-left: 0px;
+    margin-right: 0px;
 }
