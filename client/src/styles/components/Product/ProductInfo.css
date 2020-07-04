@@ -1,4 +1,8 @@
 .productInfo{
+    max-width: 100%;
+    width: 100%;
+}
+/* .productInfo{
     display: flex;
     max-width: 100%;
     flex-wrap: wrap;
@@ -7,7 +11,7 @@
     display: flex;
     width: 300px;
     height: auto;
-    /* max-width: 100%; */
+    max-width: 100%;
 }
 .productDetail{
     display: flex;
@@ -18,4 +22,4 @@
 .productDetail p{
     padding: 10px 10px 0 0;
     
-}
+} */

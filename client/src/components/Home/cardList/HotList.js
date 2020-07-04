@@ -38,7 +38,7 @@ class HotList extends React.PureComponent {
                   img={item.img}
                   price={item.price}
                   productName={item.name}
-                  id={item.id}
+                  id={item._id}
                   handleClick={this.handleClick}
                 />
             </div>
