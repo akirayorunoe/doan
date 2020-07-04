@@ -1,12 +1,14 @@
 .circle-cpn{
-    display: flex;
+    /* display: flex; */
     flex-direction: column;
     text-align: center;
-    width: 210px;
-    flex-wrap: wrap;
+    /* width: 210px; */
+    max-width: 100%;
 }
 .circle-cpn p{
-    font-size: 2vh 2vw;
+    /* font-size: 1vh 1vw; */
+    font-family: 'Lobster';
+    font-size: 2vw 2vh;
 }
 .circle-img{
     text-align: center;
@@ -20,6 +22,8 @@ display: flex;
 max-width: 100%;
 justify-content: center;
 justify-self: center;
+margin-left: auto;
+margin-right: auto;
 }
 .circle-cpn:hover{
     opacity: 0.8;
@@ -32,10 +36,7 @@ justify-self: center;
         /* border-radius: 150px; */
         display: flex;
         max-width: 100%;
-        }
-        .circle-cpn{
-            width: 110px;
-        }
+        }    
   }
   @media only screen and (max-width: 583px) {
     .circle-cpn .img-wrapper{
@@ -44,9 +45,6 @@ justify-self: center;
         /* border-radius: 150px; */
         display: flex;
         max-width: 100%;
-        }
-        .circle-cpn{
-            width: 60px;
         }
   }
   
