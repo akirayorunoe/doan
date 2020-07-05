@@ -11,16 +11,15 @@ If you have additional questions or require more information about our Privacy P
 This privacy policy applies only to our online activities and is valid for visitors to our website with regards to the information that they shared and/or collect in Website Name. This policy is not applicable to any information collected offline or via channels other than this website.
 <br/>
 
-
-Consent
+<h3>Consent</h3>
 <br/>
 
 
 By using our website, you hereby consent to our Privacy Policy and agree to its terms.
 <br/>
 
+<h3>Information we collect</h3>
 
-Information we collect
 <br/>
 
 
@@ -35,8 +34,8 @@ If you contact us directly, we may receive additional information about you such
 When you register for an Account, we may ask for your contact information, including items such as name, company name, address, email address, and telephone number.
 <br/>
 
+<h3>How we use your information</h3>
 
-How we use your information
 <br/>
 
 
@@ -62,13 +61,14 @@ Log Files
 <br/>
 Website Name follows a standard procedure of using log files. These files log visitors when they visit websites. All hosting companies do this and a part of hosting services' analytics. The information collected by log files include internet protocol (IP) addresses, browser type, Internet Service Provider (ISP), date and time stamp, referring/exit pages, and possibly the number of clicks. These are not linked to any information that is personally identifiable. The purpose of the information is for analyzing trends, administering the site, tracking users' movement on the website, and gathering demographic information.
 <br/>
-Cookies and Web Beacons
+<h3>Cookies and Web Beacons</h3>
+
 <br/>
 Like any other website, Website Name uses ‘cookies'. These cookies are used to store information including visitors' preferences, and the pages on the website that the visitor accessed or visited. The information is used to optimize the users' experience by customizing our web page content based on visitors' browser type and/or other information.
 <br/>
 
+<h3>DoubleClick DART Cookie</h3>
 
-DoubleClick DART Cookie
 <br/>
 Google is one of a third-party vendor on our site. It also uses cookies, known as DART cookies, to serve ads to our site visitors based upon their visit to www.website.com and other sites on the internet. However, visitors may choose to decline the use of DART cookies by visiting the Google ad and content network Privacy Policy at the following URL – https://policies.google.com/technologies/ads.
 <br/>
@@ -85,8 +85,8 @@ Google
 https://policies.google.com/technologies/ads
 <br/>
 
+<h3>Advertising Partners Privacy Policies</h3>
 
-Advertising Partners Privacy Policies
 <br/>
 
 
@@ -101,8 +101,8 @@ Third-party ad servers or ad networks uses technologies like cookies, JavaScript
 Note that Website Name has no access to or control over these cookies that are used by third-party advertisers.
 <br/>
 
+<h3>Third-Party Privacy Policies</h3>
 
-Third-Party Privacy Policies
 <br/>
 
 
@@ -113,8 +113,8 @@ Website Name's Privacy Policy does not apply to other advertisers or websites. T
 You can choose to disable cookies through your individual browser options. To know more detailed information about cookie management with specific web browsers, it can be found at the browsers' respective websites. What Are Cookies?
 <br/>
 
+<h3>CCPA Privacy Policy (Do Not Sell My Personal Information)</h3>
 
-CCPA Privacy Policy (Do Not Sell My Personal Information)
 <br/>
 
 
@@ -137,8 +137,8 @@ Request that a business that sells a consumer's personal data, not sell the cons
 If you make a request, we have one month to respond to you. If you would like to exercise any of these rights, please contact us.
 <br/>
 
+<h3>GDPR Privacy Policy (Data Protection Rights)</h3>
 
-GDPR Privacy Policy (Data Protection Rights)
 <br/>
 
 
@@ -173,8 +173,8 @@ The right to data portability – You have the right to request that we transfer
 If you make a request, we have one month to respond to you. If you would like to exercise any of these rights, please contact us.
 <br/>
 
+<h3>Children's Information</h3>
 
-Children's Information
 <br/>
 
 
