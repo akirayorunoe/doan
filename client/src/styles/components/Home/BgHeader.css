@@ -31,6 +31,7 @@
     height: 280px;
     }
 }
+
 @media only screen and (max-width: 1199px) and (min-width: 992px){
     .bg-contain {
     height: 350px;
@@ -55,6 +56,7 @@
     margin-right: auto;
     margin-left: auto;
 }
+
 .bg-text a{
     font-size: 15px;
     font-weight: 400;
