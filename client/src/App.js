@@ -73,6 +73,7 @@ fetchUser();}
           <Route path="/Search" component={WaitingComponent(SearchPage)}/>
           <Route path="/User" component={WaitingComponent(UserPage)}/>
           <Route path="/" component={NotFound}/>
+          <Route component={NotFound}/>
       </Switch>
       
       <div>
