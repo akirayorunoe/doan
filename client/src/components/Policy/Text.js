@@ -9,6 +9,7 @@ const Policy = () => {
           <h2> Privacy Policy for Company Name</h2>
          <Content/>
 <h2> Shipping policy</h2>
+<br/>
 <table id="shippingPrice">
 <thead>
 <tr id="row-head">
