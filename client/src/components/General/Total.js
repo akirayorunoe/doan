@@ -62,7 +62,7 @@ class Total extends Component{
     }
     render(){   
         return(
-            <div className="cart_container">
+            <div className="total_container">
                 <div className="cart_collection">                 
                         <li className="collection-item"><b>Total: {this.props.total} $</b></li>
                     </div>

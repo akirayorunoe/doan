@@ -11,7 +11,7 @@ import "@brainhubeu/react-carousel/lib/style.css";
 
 const Carousel = lazy(()=>import('@brainhubeu/react-carousel'));
 
-class HotList extends React.PureComponent {
+class HotList extends React.Component {
   constructor() {
     super();
     this.state = {};
