@@ -2,13 +2,12 @@ import React from "react";
 import "../../../styles/components/Home/Cardlist.css";
 import Card from "../cardList/Card";
 // import { data } from '../../../data/data';
-import { Link } from "react-router-dom";
 import { addToCart } from "../../../action/cart-action";
 import { connect } from "react-redux";
 import Axios from "axios";
 import Pagination from "../../Product/Pagination/Pagination";
 //use this in product page :v
-class Cardlist extends React.Component {
+class Cardlist extends React.PureComponent {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
@@ -115,25 +114,18 @@ class Cardlist extends React.Component {
     this.props.addToCart(id);
   }
   render() {
-    console.log(this.state);
     const listCard = this.state.productsData.map((item) => (
       <div className="card-container col-lg-4 col-md-6 col-sm-6" key={item.id}>
-        <Link to={`/Products/${item._id}`}>
           <Card
             key={item._id}
             img={item.img}
             price={Math.round(item.price * 100) / 100}
             productName={item.name}
-            id={item.id}
+            id={item._id}
             handleClick={this.handleClick}
           />
-        </Link>
-        {/* <Pagination
-
-        /> */}
       </div>
     ));
-    //console.log(this.state.maxPage);
     return (
       <div className="cardlist-wrapper">
         <div className="cardlist-container row ">{listCard}</div>

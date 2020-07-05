@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import '../../styles/components/General/Cart.css'
+import { removeItem} from '../../action/cart-action';
 import Paypal from './Paypal';
 import Axios from 'axios';
+import Swal from 'sweetalert2';
 class Total extends Component{
     constructor(props){
         super(props);
@@ -12,22 +14,45 @@ class Total extends Component{
     }
     checkLogin(){
         const lg=localStorage.getItem('auth-token')
-        if(!lg){alert("Bạn chưa đăng nhập. Vui lòng đăng nhập để tiếp tục");return;}
+        if(!lg){ 
+            Swal.fire("Oops! You haven't sign in yet", "Please log in to continue","warning");return;}
         else
         {
             this.setState({appear:!this.state.appear})
-            console.log("Add items at func: " + 'checklogin',this.props.addedItems)
+           // console.log("Add items at func: " + 'checklogin',this.props.addedItems)
         }
     }
     transactionSuccess(data){
-        console.log('a');
-        console.log("Add items at func: " + 'transaction success',this.props.addedItems)//
+        //console.log("Add items at func: " + 'transaction success',this.props.addedItems)//
         let variables={
             cartDetails:this.props.addedItems,
             paymentData:data
         }
-        console.log(variables);
-        Axios.post('http://localhost:3030/payment',variables).then(data=>console.log(data))
+        const token = localStorage.getItem('auth-token');
+        Axios.post('http://localhost:3030/payment',variables,{headers:{"auth-token":token}}).then(data=>
+       { if(data.data.success){
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Buy success!!!',
+            showConfirmButton: false,
+            timer: 1500
+          })
+            this.props.addedItems.forEach(element => {
+                this.props.removeItem(element.id)
+            });
+            return;
+        }
+        else 
+        Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'Buy fail...',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        }
+        )
     }
     transactionError(){
         console.log("Paypal error");
@@ -37,7 +62,7 @@ class Total extends Component{
     }
     render(){   
         return(
-            <div className="cart_container">
+            <div className="total_container">
                 <div className="cart_collection">                 
                         <li className="collection-item"><b>Total: {this.props.total} $</b></li>
                     </div>
@@ -46,7 +71,7 @@ class Total extends Component{
                    {this.state.appear &&
                    <Paypal 
                    toPay={this.props.total}
-                   onSuccess={this.transactionSuccess}
+                   onSuccess={this.transactionSuccess.bind(this)}
                    transactionError={this.transactionError}
                    transactionCancel={this.transactionCancel}
                    />}
@@ -65,6 +90,7 @@ const mapStateToProps = (state)=>{
 //shipping neu muon xai
 const mapDispatchToProps = (dispatch)=>{
     return{
+        removeItem: (id)=>{dispatch(removeItem(id))},
         addShipping: ()=>{dispatch({type: 'ADD_SHIPPING'})},
         substractShipping: ()=>{dispatch({type: 'SUB_SHIPPING'})}
     }

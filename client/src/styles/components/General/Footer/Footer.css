@@ -1,3 +1,6 @@
+.container{
+  margin-top: 40px;
+}
 .footer {
   background-color: #b0eacd;
   margin-top: 50px;
@@ -82,5 +85,9 @@
 
 .footer-about__icon li {
   font-size: 40px;
+}
+
+.footer .container li{
+  list-style: none;
 }
 /*# sourceMappingURL=Footer.css.map */

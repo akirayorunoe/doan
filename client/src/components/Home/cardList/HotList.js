@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import "../../../styles/components/Home/HotList.css";
 import { Link } from "react-router-dom";
 import Card from "../cardList/Card";
@@ -6,8 +6,10 @@ import { addToCart } from "../../../action/cart-action";
 import { connect } from "react-redux";
 // import { data } from '../../../data/data';
 import Axios from "axios";
-import Carousel from "@brainhubeu/react-carousel";
+// import Carousel from "@brainhubeu/react-carousel";
 import "@brainhubeu/react-carousel/lib/style.css";
+
+const Carousel = lazy(()=>import('@brainhubeu/react-carousel'));
 
 class HotList extends React.Component {
   constructor() {
@@ -31,16 +33,14 @@ class HotList extends React.Component {
       ? this.state.productsData.slice(0, 6).map((item) => {
           return (
             <div className="card-container" key={item.id}>
-              <Link to={`/Products/${item._id}`}>
                 <Card
                   key={item.id}
                   img={item.img}
                   price={item.price}
                   productName={item.name}
-                  id={item.id}
+                  id={item._id}
                   handleClick={this.handleClick}
                 />
-              </Link>
             </div>
           );
         })
@@ -51,14 +51,25 @@ class HotList extends React.Component {
     //console.log(this.state.productsData)
     return (
       <div className="hotList">
+        <Suspense fallback={<div/>}>
         <Carousel
           autoPlay={2000}
           animationSpeed={1500}
-          slidesPerPage={3}
+          slidesPerPage={4}
+          
           infinite
+          breakpoints={{
+            640:{
+              slidesPerPage:1,
+            },
+            900:{
+              slidesPerPage:3
+            }
+          }}
         >
           {this.listRender()}
         </Carousel>
+      </Suspense>  
       </div>
     );
   }

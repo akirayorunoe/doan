@@ -33,6 +33,13 @@ phonenum:{
     type: Number,
     required:true,
     min:7
+},
+history:{
+    type:Array,
+    default:[]
+},
+avatar:{
+    type:String
 }
 })
 
