@@ -29,6 +29,13 @@
   margin: 0 0 30px;
   /* background-color: ; */
 }
+
+@media only screen and (max-width: 768px) {
+  .sortProduct {
+    justify-content: center;
+  }
+}
+
 .filter-zone {
   display: block;
   /* justify-content: center;
