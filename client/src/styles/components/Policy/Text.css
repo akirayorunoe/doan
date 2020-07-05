@@ -32,3 +32,7 @@ pre{
 #shippingPrice thead {
     font-weight: bold;
 }
+
+.policyInfo p {
+    text-indent: 30px;
+}
