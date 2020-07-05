@@ -8,18 +8,18 @@ const Content=()=>{
             <div id="policy_toc_container">
 <p class="policy_toc_title">Contents</p>
 <ul class="policy_toc_list">
-<li><a href="#phead1">Privacy Policy for Company Name</a></li>
-<li><a href="#phead2">Consent</a></li>
-<li><a href="#phead3">Information we collect</a></li>
-<li><a href="#phead4">How we use your information</a></li>
-<li><a href="#phead5">Cookies and Web Beacons</a></li>
-<li><a href="#phead6">DoubleClick DART Cookie</a></li>
-<li><a href="#phead7">Advertising Partners Privacy Policies</a></li>
-<li><a href="#phead8">Third-Party Privacy Policies</a></li>
-<li><a href="#phead9">CCPA Privacy Policy (Do Not Sell My Personal Information)</a></li>
-<li><a href="#phead10">GDPR Privacy Policy (Data Protection Rights)</a></li>
-<li><a href="#phead11">Children's Information</a></li>
-<li><a href="#phead12">Shipping policy</a></li>
+<li><a href="#phead1">1. Privacy Policy for Company Name</a></li>
+<li><a href="#phead2">2. Consent</a></li>
+<li><a href="#phead3">3. Information we collect</a></li>
+<li><a href="#phead4">4. How we use your information</a></li>
+<li><a href="#phead5">5. Cookies and Web Beacons</a></li>
+<li><a href="#phead6">6. DoubleClick DART Cookie</a></li>
+<li><a href="#phead7">7. Advertising Partners Privacy Policies</a></li>
+<li><a href="#phead8">8. Third-Party Privacy Policies</a></li>
+<li><a href="#phead9">9. CCPA Privacy Policy (Do Not Sell My Personal Information)</a></li>
+<li><a href="#phead10">10. GDPR Privacy Policy (Data Protection Rights)</a></li>
+<li><a href="#phead11">11. Children's Information</a></li>
+<li><a href="#phead12">12. Shipping policy</a></li>
 </ul>
 </div>
 
