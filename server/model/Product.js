@@ -53,6 +53,10 @@ rating:{
 numRate:{
     type:Number,
     default:0
+},
+review:{
+    type:Array,
+    default:[]
 }
 })
 

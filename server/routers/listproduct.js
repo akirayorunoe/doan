@@ -228,6 +228,26 @@ router.post('/rate',async (req,res)=>{
   catch(err){res.status(404).send(err)}
 })
 
+router.post('/review',async (req,res)=>{
+  const id= req.body.id;
+  const content=req.body.review;
+  const username=req.body.username;
+  console.log(id,content,username)
+  try{
+    await Product.findOneAndUpdate({_id:id},{},(err,product)=>{
+        if (err) console.log(err);
+        product.review.push({username:username,review:content,time:Date.now()})
+        product.save((err, data) => {
+          //console.log(data)
+          if (err) console.log(err);
+          return res.send({status:'success',review:data.review});
+        }
+      )},{new: true}
+        )
+        
+  }
+  catch(err){res.status(404).send(err)}
+})
 
  router.get('/:id',async (req,res)=>{
   const id= req.params.id;
