@@ -6,22 +6,20 @@ import '../../styles/components/Product/ProductInfo.css';
 import ProductCard from '../Product/ProductCard';
 function ProductInfo({ match }) {
     useEffect(() => {
+        const fetchItems = async () => {
+            const data = await fetch(
+                `http://localhost:3030/products/${match.params.id}`
+            )
+            const items = await data.json();
+            setItems(items);
+            //console.log(items);
+        }
         fetchItems();
         // console.log(match.params.id);
         // console.log(data);
-    }, []);
+    }, [match.params.id]);
 
     const [items, setItems] = useState([]);
-
-    const fetchItems = async () => {
-        const data = await fetch(
-            `http://localhost:3030/products/${match.params.id}`
-        )
-        const items = await data.json();
-        setItems(items);
-        //console.log(items);
-    }
-
     return (
         <div className='product-info-container'>
             <div class="breadcrumbs_area">
@@ -63,7 +61,7 @@ function ProductInfo({ match }) {
                                         </div>
                                         <div class="comment_text">
                                             <div class="reviews_meta">
-                                                <div class="star_rating">
+                                                {/* <div class="star_rating">
                                                     <ul>
                                                         <li><a href="#"><i class="icon-star"></i></a></li>
                                                        <li><a href="#"><i class="icon-star"></i></a></li>
@@ -71,7 +69,7 @@ function ProductInfo({ match }) {
                                                        <li><a href="#"><i class="icon-star"></i></a></li>
                                                        <li><a href="#"><i class="icon-star"></i></a></li>
                                                     </ul>   
-                                                </div>
+                                                </div> */}
                                                 <p><strong>admin </strong>- September 12, 2018</p>
                                                 <span>roadthemes</span>
                                             </div>
@@ -84,13 +82,13 @@ function ProductInfo({ match }) {
                                     </div>
                                     <div class="product_ratting mb-10">
                                        <h3>Your rating</h3>
-                                        <ul>
+                                        {/* <ul>
                                             <li><a href="#"><i class="icon-star"></i></a></li>
                                                <li><a href="#"><i class="icon-star"></i></a></li>
                                                <li><a href="#"><i class="icon-star"></i></a></li>
                                                <li><a href="#"><i class="icon-star"></i></a></li>
                                                <li><a href="#"><i class="icon-star"></i></a></li>
-                                        </ul>
+                                        </ul> */}
                                     </div>
                                     <div class="product_review_form">
                                         <form action="#">
