@@ -1,6 +1,5 @@
 import React, { Suspense, lazy } from "react";
 import "../../../styles/components/Home/HotList.css";
-import { Link } from "react-router-dom";
 import Card from "../cardList/Card";
 import { addToCart } from "../../../action/cart-action";
 import { connect } from "react-redux";
