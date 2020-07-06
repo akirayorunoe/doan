@@ -36,13 +36,15 @@ function ProductInfo({ match }) {
             <div className="productInfo">
                 <ProductCard
                     key={items._id}
+                    _id={items._id}
                     img={items.img}
                     name={items.name}
                     description={items.description}
                     status={items.status}
                     price={items.price}
                     id={items.id}  
-
+                    rating={items.rating}
+                    numRate={items.numRate}
                 />
             </div>
             <div className='preview-container'>
