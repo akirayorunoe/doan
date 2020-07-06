@@ -18,6 +18,5 @@
 @media only screen and (max-width: 767px) {
   .circle-wrapper {
     padding: 58px 0 24px;
-    flex-flow: column wrap;
   }
 }
