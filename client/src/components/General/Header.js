@@ -12,7 +12,7 @@ const Header = () => {
   const [appear, setAppear] = useState(false);
   const onLog = useSelector((state) => state.loginReducer);
   const dispatch = useDispatch();
-  const auth = localStorage.getItem("auth-token"); //google, facebook auto bat form
+  //const auth = localStorage.getItem("auth-token"); //google, facebook auto bat form
   return (
     (
       <div className="header">
