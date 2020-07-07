@@ -55,7 +55,7 @@ class ProductCard extends React.PureComponent {
                         </div>
                         <div class="price_box">
                                 <span class="current_price">Price: {this.props.price} $</span>
-                                <span class="old_price">133$</span>
+                         {this.props.oldPrice!=="0"?<span class="old_price">{this.props.oldPrice}$</span>:null}
                         </div>
                         <div className="description">
                             <h3>Description</h3>
@@ -64,7 +64,7 @@ class ProductCard extends React.PureComponent {
                         <div className="numberOfProducts">
                             <QuantitiesButton quantity={this.state.quantity} changeQuantity={this.changeQuantity}/>
                             <div className="addBtn-container"><button title="add" className="addBtn" onClick={() => {
-                                this.handleClickAdd(this.props.id)
+                                this.handleClickAdd(this.props._id)
                                 Swal.fire({
                                     position: 'center',
                                     icon: 'success',
