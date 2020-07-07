@@ -44,11 +44,12 @@ pre{
     font-size: 95%;
     margin-bottom: 1em;
     padding: 20px;
-    width: 45%;
+    width: 80%;
 }
 
 .policy_toc_title {
     font-weight: 700;
+    font-size: large;
     text-align: center;
 }
 
