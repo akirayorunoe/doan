@@ -13,13 +13,13 @@ const CircleWrapper=()=>{
     return(
         <div className="circle-wrapper">
         <NavLink to='/Products/?filter=fruit' onClick={()=>{dispatch(filterChoose('fruit'));}}>
-             <Circle image={ofruit} name="ORGANIC FRUITS"/>
+             <Circle image='https://res.cloudinary.com/tutor-app/image/upload/c_scale,q_80,w_200/v1593531702/ofruits_mj7buj.webp' name="ORGANIC FRUITS"/>
         </NavLink>
         <NavLink to='/Products/?filter=vegetables' onClick={()=>{dispatch(filterChoose('vegetables'));}}>
-            <Circle image={ovegets} name="ORGANIC VEGETABLES"/>
+            <Circle image='https://res.cloudinary.com/tutor-app/image/upload/c_scale,w_200/v1593531717/ospices_huoqsk.webp' name="ORGANIC VEGETABLES"/>
         </NavLink>
         <NavLink to='/Products/?filter=spices' onClick={()=>{dispatch(filterChoose('spices'));}}>
-            <Circle image={ospices} name="ORGANIC SPICES"/>
+            <Circle image='https://res.cloudinary.com/tutor-app/image/upload/c_scale,w_200/v1593531719/ovegets_piun3f.webp' name="ORGANIC SPICES"/>
         </NavLink>
         </div>
     );
