@@ -10,7 +10,7 @@ import axios from 'axios';
 const Home = lazy (()=>import('./containers/Home'));
 const About = lazy(()=> import('./containers/About')) ;
 const signUp = lazy(()=> import('./containers/signUp'));
-const Footer = lazy(()=> import('./components/General/Footer'));
+const Footer = lazy(()=> import('./components/General/footer'));
 const Policy = lazy(()=> import ("./containers/Policy"));
 const Forgot_pass = lazy(()=> import("./containers/ForgetPass"));
 const Products = lazy(()=>import("./containers/Product"));
