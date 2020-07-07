@@ -1,6 +1,6 @@
 import React from "react";
 import "../../../styles/components/Home/Card.css";
-import { Link, NavLink } from "react-router-dom";
+import { Link} from "react-router-dom";
 import Swal from "sweetalert2";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartPlus, faEye } from "@fortawesome/free-solid-svg-icons";
