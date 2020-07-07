@@ -23,14 +23,7 @@ class ProductCard extends React.PureComponent {
     changeQuantity=(quantity)=>{
         this.setState({quantity})
     }
-    //to add the quantity
-    handleAddQuantity = (id) => {
-        this.props.addQuantity(id);
-    }
-    //to substruct from the quantity
-    handleSubtractQuantity = (id) => {
-        this.props.subtractQuantity(id);
-    }
+   
     rating(rate){
         
         Axios.post('http://localhost:3030/products/rate',{id:this.props._id,rating:rate}).then(res=>
