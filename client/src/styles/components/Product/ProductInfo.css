@@ -3,7 +3,7 @@
     width: 100%;
 }
 .breadcrumbs_area {
-    background: url('https://demo.hasthemes.com/safira-preview/safira/assets/img/bg/banner18.jpg') no-repeat 0 0;
+    background: url('../../../assets/banner18_wmw1rs.webp') no-repeat 0 0;
     background-size: cover;
     height: 200px;
     display: flex;
@@ -38,6 +38,7 @@
 }
 .reviews_comment_box {
     display: flex;
+    flex-direction: column;
     margin-bottom: 22px;
 }
 .comment_tmb img {
@@ -49,6 +50,7 @@
     border: 1px solid #ededed;
     position: relative;
     margin-left: 21px;
+    margin-bottom: 30px;
     padding: 12px;
     border-radius: 3px;
 }

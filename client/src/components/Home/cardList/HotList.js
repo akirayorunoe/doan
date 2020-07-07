@@ -1,6 +1,5 @@
 import React, { Suspense, lazy } from "react";
 import "../../../styles/components/Home/HotList.css";
-import { Link } from "react-router-dom";
 import Card from "../cardList/Card";
 import { addToCart } from "../../../action/cart-action";
 import { connect } from "react-redux";
@@ -11,7 +10,7 @@ import "@brainhubeu/react-carousel/lib/style.css";
 
 const Carousel = lazy(()=>import('@brainhubeu/react-carousel'));
 
-class HotList extends React.PureComponent {
+class HotList extends React.Component {
   constructor() {
     super();
     this.state = {};

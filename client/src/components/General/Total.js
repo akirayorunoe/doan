@@ -6,9 +6,6 @@ import Paypal from './Paypal';
 import Axios from 'axios';
 import Swal from 'sweetalert2';
 class Total extends Component{
-    constructor(props){
-        super(props);
-    }
     state={
         appear:false,
     }
@@ -62,7 +59,7 @@ class Total extends Component{
     }
     render(){   
         return(
-            <div className="cart_container">
+            <div className="total_container">
                 <div className="cart_collection">                 
                         <li className="collection-item"><b>Total: {this.props.total} $</b></li>
                     </div>
