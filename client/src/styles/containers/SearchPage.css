@@ -3,15 +3,19 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    position: relative;
 }
 .SearchPage .searchResult{
     width: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
+    position: relative;
 }
-/* .SearchPage .card-container{
-    width: 40%;
-    height: 200px;
-    margin: 10px;
-} */
+.searchText{
+    z-index: -500;
+}
+.SearchPage .card-container{
+    max-width: 100%;
+}

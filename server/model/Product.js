@@ -43,8 +43,21 @@ description:{
 },
 price:{
     type:String,
-    min:2,
-    max:255
+},
+rating:{
+    type:Number,
+    default:0
+},
+numRate:{
+    type:Number,
+    default:0
+},
+review:{
+    type:Array,
+    default:[]
+},
+oldPrice:{
+    type:String
 }
 })
 

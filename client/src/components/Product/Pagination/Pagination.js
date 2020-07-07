@@ -24,11 +24,10 @@ const Pagination = ({ maxPage }) => {
     }
 
     const paging = pageNumbers.map((number, index) => (
-        <li key={number}>
-            <a href={`#${number}`} className={number===pageActive ? 'Pactive' : ''} onClick={() => {
+        <li key={number} className={number===pageActive ? 'Pactive' : ''} onClick={() => {
                 setPageActive(index+1)
                 dispatch(pageGet(number))
-            }}>{number}</a>
+            }}>{number}
         </li>
     ))
 console.log(paging)

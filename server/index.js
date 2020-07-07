@@ -10,7 +10,11 @@ const forgetPass = require('./routers/forgetPass');
 const mongoose = require('mongoose');
 const dotenv=require('dotenv');
 dotenv.config();
+app.use(express.static('build'));
 const path = require('path')
+//check limit payload
+app.use(bodyParser.json({ limit: '50mb' }));
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 // Serve static files from the React frontend app
 //quan trong de deploy
 app.use(express.static(path.join(__dirname, 'client/build')))

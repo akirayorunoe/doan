@@ -23,7 +23,7 @@
 
 .hero-wrap__text {
   position: absolute;
-  top: 40%;
+  top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
@@ -36,14 +36,3 @@
   margin-top: 100px;
 }
 /*# sourceMappingURL=hero.css.map */
-@media screen and (min-width: 601px) {
-  div.hero-wrap__text {
-    font-size: 40px;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  div.hero-wrap__text {
-    font-size: 10px;
-  }
-}

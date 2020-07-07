@@ -45,11 +45,11 @@ const Form =()=>{
         });
     }
 
-    const responseFacebook = (response) => {
+    const responseFacebook = async (response) => {
         localStorage.setItem('auth-token',response.userID)
         const url = 'https://graph.facebook.com/' + response.userID + '?fields=location&access_token=' + response.accessToken
-        axios.get(url)
-        .then(res => {
+        await axios.get(url)
+        .then(async res => {
             const data = {
                 email: response.email,
                 name: response.name,
@@ -59,7 +59,7 @@ const Form =()=>{
                 role: 'facebook',
             }
 
-            axios.post('http://localhost:3030/social', data)
+            await axios.post('http://localhost:3030/social', data)
             .then(res2 => {
                 if (res2.data.status === 'success') {
                     Swal.fire({
@@ -69,23 +69,24 @@ const Form =()=>{
                         showConfirmButton: false,
                         timer: 2000
                       })
-                    const data2 = {
-                        name: data.name,
-                        id: data.id
-                    }
-                } else {
-                    Swal.fire({
-                        position: 'center',
-                        icon: 'error',
-                        title: res2.data.message,
-                        showConfirmButton: false,
-                        timer: 2000
-                      })
-                }
+                    // const data2 = {
+                    //     name: data.name,
+                    //     id: data.id
+                    // }
+                } 
+                // else {
+                //     Swal.fire({
+                //         position: 'center',
+                //         icon: 'error',
+                //         title: res2.data.message,
+                //         showConfirmButton: false,
+                //         timer: 2000
+                //       })
+                // }
             })
         })
-
-        axios.post('http://localhost:3030/login',{id : response.userID })
+        
+        await axios.post('http://localhost:3030/login',{id : response.userID })
         .then((data)=>{
         localStorage.setItem('auth-token',data.headers['auth-token'])
         Swal.fire({
@@ -192,7 +193,8 @@ const Form =()=>{
                 <div className="social">
                     <div className="FB_login">
                         <FacebookLogin
-                        appId="183057163147995"//appId="583267365905856" //APP ID NOT CREATED YET
+                        appId="2687294444826178"//appId="583267365905856" //APP ID NOT CREATED YET
+                        //appId="583267365905856" //APP ID NOT CREATED YET
                         fields="name,email,picture"
                         scope="public_profile,user_photos,user_location,user_birthday,user_location,user_hometown,email"
                         callback={responseFacebook}

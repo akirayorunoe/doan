@@ -1,26 +1,41 @@
 import React from 'react';
 import Circle from '../Home/Circle';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {useDispatch} from 'react-redux';
 import {filterChoose} from '../../action/sort-action';
-import ofruit from '../../assets/ofruits.jpeg';
-import ovegets from '../../assets/ovegets.jpeg';
-import ospices from '../../assets/ospices.jpeg';
+import ofruit from '../../assets/fruit-cate_gbwcsb.webp';
+import ovegets from '../../assets/veg-cate_nynblo.webp';
+import ospices from '../../assets/spice-cate_so4g9g.webp';
 import '../../styles/components/Home/CircleWrapper.css';
+import {faApple} from '@fortawesome/free-brands-svg-icons';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 const CircleWrapper=()=>{
     const dispatch=useDispatch();
 
     return(
-        <div className="circle-wrapper">
-        <NavLink to='/Products/?filter=fruit' onClick={()=>{dispatch(filterChoose('fruit'));}}>
-             <Circle image='https://res.cloudinary.com/tutor-app/image/upload/c_scale,q_80,w_200/v1593531702/ofruits_mj7buj.webp' name="ORGANIC FRUITS"/>
-        </NavLink>
-        <NavLink to='/Products/?filter=vegetables' onClick={()=>{dispatch(filterChoose('vegetables'));}}>
-            <Circle image='https://res.cloudinary.com/tutor-app/image/upload/c_scale,w_200/v1593531717/ospices_huoqsk.webp' name="ORGANIC VEGETABLES"/>
-        </NavLink>
-        <NavLink to='/Products/?filter=spices' onClick={()=>{dispatch(filterChoose('spices'));}}>
-            <Circle image='https://res.cloudinary.com/tutor-app/image/upload/c_scale,w_200/v1593531719/ovegets_piun3f.webp' name="ORGANIC SPICES"/>
-        </NavLink>
+        <div className="home-cate">
+            <div className="text-cate">
+                <FontAwesomeIcon icon={faApple}/>
+                <h1>Category</h1>
+            </div>
+            <div className="circle-wrapper">
+            <Link to='/Products/?filter=fruit' onClick={()=>{dispatch(filterChoose('fruit'));}}>
+                <div className="fruit-cate">
+                <Circle image={ofruit} name="ORGANIC FRUITS"/>
+                </div>
+            </Link>
+
+            <Link to='/Products/?filter=vegetables' onClick={()=>{dispatch(filterChoose('vegetables'));}}>
+                <div className="veg-cate">
+                <Circle image={ovegets} name="ORGANIC VEGETABLES"/>
+            </div>
+            </Link>
+            <Link to='/Products/?filter=spices' onClick={()=>{dispatch(filterChoose('spices'));}}>
+            <div className="spi-cate">
+                <Circle image={ospices} name="ORGANIC SPICES"/>
+            </div>
+            </Link>
+            </div>
         </div>
     );
 }
