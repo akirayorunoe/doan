@@ -23,6 +23,14 @@ class ProductCard extends React.PureComponent {
     changeQuantity=(quantity)=>{
         this.setState({quantity})
     }
+    //to add the quantity
+    handleAddQuantity = (id) => {
+        this.props.addQuantity(id);
+    }
+    //to substruct from the quantity
+    handleSubtractQuantity = (id) => {
+        this.props.subtractQuantity(id);
+    }
     rating(rate){
         
         Axios.post('http://localhost:3030/products/rate',{id:this.props._id,rating:rate}).then(res=>
@@ -62,7 +70,7 @@ class ProductCard extends React.PureComponent {
                             <p>{this.props.description}</p>
                         </div>
                         <div className="numberOfProducts">
-                            <QuantitiesButton quantity={this.state.quantity} changeQuantity={this.changeQuantity}/>
+                            <QuantitiesButton quantity={this.state.quantity} changeQuantity={this.changeQuantity} />
                             <div className="addBtn-container"><button title="add" className="addBtn" onClick={() => {
                                 this.handleClickAdd(this.props._id)
                                 Swal.fire({
@@ -87,9 +95,8 @@ const mapStateToProps = (state) => {
     }
 }
 const mapDispatchToProps = (dispatch) => {
-
     return {
-        addToCart: (id, quantity) => { dispatch(addToCart(id, quantity)) }
+        addToCart: (id, quantity) => { dispatch(addToCart(id, quantity)) },
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(ProductCard);
