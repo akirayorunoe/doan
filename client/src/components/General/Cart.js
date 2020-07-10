@@ -39,6 +39,78 @@ class Cart extends PureComponent {
     // }
     console.log(this.props.items);
     console.log(this.props.addedItems);
+    // const cookies = new Cookies();
+    // console.log('state')
+    // console.log(this.props.items)
+    // console.log(this.props.addedItems)
+    // console.log(this.props.total)
+    // console.log('--------')
+    // if (this.props.items.length) {
+    //     cookies.set('items', this.props.items, { path: '/' })
+    //     cookies.set('addedItems', this.props.addedItems, { path: '/' })
+    //     cookies.set('total', this.props.total, { path: '/' })
+    // }
+    console.log(this.props.items);
+    console.log(this.props.addedItems);
+
+    let addedItems = this.props.addedItems.length ? (
+      this.props.addedItems.map((item) => {
+        return (
+          <tr key={item.id}>
+            <td className="product_remove">
+              <li>
+                <FontAwesomeIcon
+                  icon={faTrash}
+                  onClick={() => {
+                    this.handleRemove(item.id);
+                  }}
+                />
+              </li>
+            </td>
+            <td className="product_thumb">
+              <img src={item.img} alt={item.name} className="" />
+            </td>
+            <td className="product_name">
+              <h4>{item.name}</h4>
+            </td>
+            <td className="product-price">
+              <p>{Math.round(item.price * 100) / 100}$</p>
+            </td>
+            <td className="product_quantity">
+              <div className="add-remove">
+                <Link to="/cart">
+                  <button
+                    className="quantity-btn"
+                    onClick={() => {
+                      this.handleSubtractQuantity(item.id);
+                    }}
+                  >
+                    <span>-</span>
+                  </button>
+                </Link>
+                <p className="quantity">
+                  <b>Quantity: {item.quantity}</b>
+                </p>
+                <Link to="/cart">
+                  <button
+                    className="quantity-btn"
+                    onClick={() => {
+                      this.handleAddQuantity(item.id);
+                    }}
+                  >
+                    <span>+</span>
+                  </button>
+                </Link>
+              </div>
+            </td>
+          </tr>
+        );
+      })
+    ) : (
+      <p style={{ textAlign: "center" }}>
+        {localStorage.removeItem("state")}Nothing.
+      </p>
+    );
 
     let addedItems = this.props.addedItems.length ? (
       this.props.addedItems.map((item) => {
