@@ -1,16 +1,16 @@
 import React,{useEffect, Suspense, lazy} from "react";
 import "./App.css";
-import Nav from './components/General/Nav';
-import Header from './components/General/Header';
 import NotFound from './containers/404';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import {useDispatch} from 'react-redux';
 import {usrLogin} from './action/user-login'
 import axios from 'axios';
+const Nav = lazy (()=>import('./components/General/Nav'));
+const Header = lazy(()=> import('./components/General/Header'));
 const Home = lazy (()=>import('./containers/Home'));
-const About = lazy(()=> import('./containers/About')) ;
+const About = lazy(()=> import('./containers/About'));
 const signUp = lazy(()=> import('./containers/signUp'));
-const Footer = lazy(()=> import('./components/General/Footer'));
+const Footer = lazy(()=> import('./components/General/footer'));
 const Policy = lazy(()=> import ("./containers/Policy"));
 const Forgot_pass = lazy(()=> import("./containers/ForgetPass"));
 const Products = lazy(()=>import("./containers/Product"));
@@ -38,10 +38,7 @@ fetchUser();}
     <Router>
     <Suspense fallback='loading...'>
         <Header/>
-        {/* <Suspense fallback={<div/>}> */}
-          <Nav /> 
-        {/* </Suspense>    */}
-        
+        <Nav /> 
         <Switch>
           <Route path="/" exact component={Home}/>
           <Route path ="/Policy" component={WaitingComponent(Policy)}/>
@@ -56,7 +53,6 @@ fetchUser();}
           <Route path="/" component={NotFound}/>
           <Route component={NotFound}/>
       </Switch>
-      
       <div>
       <MessengerCustomerChat
         pageId="100367225056687"
