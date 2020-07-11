@@ -10,6 +10,7 @@ const verify = require('./verifyToken');
 //Register
 router.post('/SignUp',async (req,res)=>{
    //Validate
+   console.log(req.body)
    const {error} = registerValidation(req.body);
    if(error) {return res.status(400).send(error.details); }
 
