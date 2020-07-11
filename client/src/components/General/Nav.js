@@ -81,7 +81,7 @@ const Nav = () => {
           <li className="nav-item">
             <NavLink
               to="/Products"
-              activeStyle={styles1}
+              activeStyle={styles}
               onClick={() => {
                 dispatch(sortChoose("default"));
                 dispatch(filterChoose("default"));
@@ -92,12 +92,12 @@ const Nav = () => {
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink to="/Policy" activeStyle={styles2}>
+            <NavLink to="/Policy" activeStyle={styles}>
               Policy
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink to="/About" activeStyle={styles3}>
+            <NavLink to="/About" activeStyle={styles}>
               About us
             </NavLink>
           </li>
