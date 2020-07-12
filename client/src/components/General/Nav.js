@@ -18,20 +18,9 @@ const Nav = () => {
   const dispatch = useDispatch();
   const [searchInput, setSearchInput] = useState("");
   const styles = {
-    borderRadius: 10,
-    color: "#fff",
-  };
-  const styles1 = {
-    borderRadius: 10,
-    color: "red",
-  };
-  const styles2 = {
-    borderRadius: 10,
-    color: "green",
-  };
-  const styles3 = {
-    borderRadius: 10,
-    color: "blue",
+    backgroundImage: "radial-gradient( circle 862px at 6% 18%,  rgba(21,219,149,1) 9.4%, rgba(26,35,160,1) 83.6% )",
+    color: "white",
+    borderRadius: 10
   };
   //https://stackoverflow.com/questions/47879663/root-navlink-always-get-active-class-react-router-dom
   const checkActive = (match, location) => {
