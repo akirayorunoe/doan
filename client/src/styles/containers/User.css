@@ -131,7 +131,7 @@ input:focus {
   height: auto;
 }
 
-.header-btn {
+.u-mail .header-btn {
   margin-top: 0;
   padding: 0.3rem;
   border: 1px solid black;
