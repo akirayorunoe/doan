@@ -111,6 +111,7 @@ class UserPage extends React.Component {
   render() {
     return (
       <div className="profile-container">
+        {/* HERO */}
         <div className="profile-hero">
           <img src={bgImgProfile} alt="background image"></img>
           <h2>Your Profile</h2>
@@ -135,6 +136,8 @@ class UserPage extends React.Component {
               />
             )}
           </div>
+
+          {/* User Profile Form */}
           <div className="user-profile">
             <div className="u-id">
               <p>ID : {this.state.id}</p>
