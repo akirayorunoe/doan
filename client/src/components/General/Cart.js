@@ -75,9 +75,15 @@ class Cart extends PureComponent {
                     <span>-</span>
                   </button>
                 </Link>
-                <p className="quantity">
-                  <b>Quantity: {item.quantity}</b>
-                </p>
+
+                {/* <b>Quantity: {item.quantity}</b> */}
+                <input
+                  className="quantity"
+                  type={Text}
+                  name="name"
+                  value={item.quantity}
+                />
+
                 <Link to="/cart">
                   <button
                     className="quantity-btn"
