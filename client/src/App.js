@@ -1,14 +1,14 @@
 import React,{useEffect, Suspense, lazy} from "react";
 import "./App.css";
-import Nav from './components/General/Nav';
-import Header from './components/General/Header';
 import NotFound from './containers/404';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import {useDispatch} from 'react-redux';
 import {usrLogin} from './action/user-login'
 import axios from 'axios';
+const Nav = lazy (()=>import('./components/General/Nav'));
+const Header = lazy(()=> import('./components/General/Header'));
 const Home = lazy (()=>import('./containers/Home'));
-const About = lazy(()=> import('./containers/About')) ;
+const About = lazy(()=> import('./containers/About'));
 const signUp = lazy(()=> import('./containers/signUp'));
 const Footer = lazy(()=> import('./components/General/Footer'));
 const Policy = lazy(()=> import ("./containers/Policy"));
@@ -19,6 +19,7 @@ const Cart = lazy(()=>import("./components/General/Cart"));
 const SearchPage = lazy(()=>import ("./containers/SearchPage"));
 const UserPage = lazy(()=>import ("./containers/UserPage"));
 const MessengerCustomerChat = lazy(()=>import('react-messenger-customer-chat'));
+const ChangePass = lazy(()=>import('./containers/ChangePass'));
 
 function App() {
   const dispatch=useDispatch();
@@ -38,10 +39,7 @@ fetchUser();}
     <Router>
     <Suspense fallback='loading...'>
         <Header/>
-        {/* <Suspense fallback={<div/>}> */}
-          <Nav /> 
-        {/* </Suspense>    */}
-        
+        <Nav /> 
         <Switch>
           <Route path="/" exact component={Home}/>
           <Route path ="/Policy" component={WaitingComponent(Policy)}/>
@@ -53,14 +51,14 @@ fetchUser();}
           <Route path="/Products/:id" component={WaitingComponent(ProductInfo)}/>
           <Route path="/Search" component={WaitingComponent(SearchPage)}/>
           <Route path="/User" component={WaitingComponent(UserPage)}/>
+          <Route path="/ChangePass" component={WaitingComponent(ChangePass)}/>
           <Route path="/" component={NotFound}/>
           <Route component={NotFound}/>
       </Switch>
-      
       <div>
       <MessengerCustomerChat
         pageId="100367225056687"
-        appId="2687294444826178"
+        appId="1148277815539948"// appId="2687294444826178"
       />
       </div>
           <Footer />

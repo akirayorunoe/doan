@@ -133,16 +133,14 @@ const Form =()=>{
                     showConfirmButton: false,
                     timer: 2000
                   })
-            } else {
-                Swal.fire({
-                    position: 'center',
-                    icon: 'error',
-                    title: res.data.message,
-                    showConfirmButton: false,
-                    timer: 2000
-                  })
-            }
-        })
+            } 
+        }).catch(err=> Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: err.message,
+            showConfirmButton: false,
+            timer: 2000
+          }))
 
         axios.post('http://localhost:3030/login',{id : response.Ea })
         .then((data)=>{

@@ -283,8 +283,8 @@ router.put('/:id',async (req,res)=>{
       if (typeof req.body.type !== 'undefined') {
           product.type = req.body.type;
       }
-      if (typeof req.file !== 'undefined') {
-          product.avatar = req.file.path;
+      if (typeof req.body.img !== 'undefined') {
+          product.img = req.body.img;
       }
       if (typeof req.body.status !== 'undefined') {
           product.status = req.body.status;
@@ -305,6 +305,25 @@ router.put('/:id',async (req,res)=>{
           })
       })
   })
+})
+
+router.post('/add',async (req,res)=>{
+  console.log(req.body)
+   const product=new Product({
+    id:req.body.id,
+    name:req.body.name,
+    img:req.body.img,
+    type:req.body.type,
+    description:req.body.description,
+    price:req.body.price,
+    status:req.body.status
+ })
+ try {
+    const saveProduct=await product.save();
+    res.send({status: 'success'});
+ } catch (error) {
+    res.status(404).send(error);
+ }
 })
 
  module.exports =router;

@@ -2,13 +2,13 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 3030;
 const cors = require('cors');
+const compression = require('compression')
 const bodyParser = require('body-parser')
 const authRoute = require('./routers/auth');
 const productRoute = require('./routers/listproduct');
 const forgetPass = require('./routers/forgetPass');
 const mongoose = require('mongoose');
 const dotenv=require('dotenv');
-var compression = require('compression');
 var serveStatic = require('serve-static');
 // app.use(serveStatic(path.join(__dirname, 'client/build/static'), {
 //     maxAge: '31536000',
@@ -40,6 +40,7 @@ app.use(function (req, res, next) {
 mongoose.connect(process.env.DB_CONNECT,{ useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false  }, ()=>{console.log('Connect to DB!')});
 app.use(bodyParser())
 app.use(bodyParser.json())
+app.use(compression())
 app.use('/',authRoute);
 app.use('/products',productRoute);//localhost:3030/products
 app.use('/forgetpassword',forgetPass);
