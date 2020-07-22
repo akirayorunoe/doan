@@ -66,14 +66,23 @@ const Footer = () => {
             <p>UncleFarm is a company for buying food and vegetable</p>
 
             <ul className="footer-about__icon">
-              <li>
-                <FontAwesomeIcon icon={faFacebookSquare} />
+            
+            <li>
+              <a href="https://www.facebook.com/Uncle-Veggies-100367225056687/">
+                <i> <FontAwesomeIcon icon={faFacebookSquare} /></i>
+               
+                </a>
               </li>
+           
+             
               <li>
+                <a href="https://www.instagram.com/unclefarmveggies/">
                 <FontAwesomeIcon icon={faInstagramSquare} />
+                </a>
               </li>
               <li>
-                <FontAwesomeIcon icon={faTwitterSquare} />
+              <a href="https://twitter.com/uncleveggies/">
+                <FontAwesomeIcon icon={faTwitterSquare} /></a>
               </li>
             </ul>
           </div>
